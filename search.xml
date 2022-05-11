@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>how to use blog</title>
+    <url>/2022/05/09/blog-use1/</url>
+    <content><![CDATA[<h2 id="how-to-use-blog"><a href="#how-to-use-blog" class="headerlink" title="how to use blog"></a>how to use blog</h2><ol>
+<li><p>在<em>source_posts</em>下新建一个md文档（可以使用模板功能但是要在外面用hexo新建？）</p>
+</li>
+<li><p>编辑好md后，在根目录下执行hexo clean -&gt; hexo g-&gt;hexo d</p>
+</li>
+</ol>
+<hr>
+<h2 id="md文档常用的格式"><a href="#md文档常用的格式" class="headerlink" title="md文档常用的格式"></a>md文档常用的格式</h2><ol>
+<li><p>标题的使用<br>‘#’代表一级标题<br>‘##’代表二级标题<br> etc.</p>
+</li>
+<li><p>斜体文字的使用<br><em>斜体文本</em><br><strong>粗体文本</strong><br><em><strong>粗斜体文本</strong></em></p>
+</li>
+<li><p>‘***’代表分割线  </p>
+</li>
+<li><p>带下划线文字<br><u>带下划线文本</u></p>
+</li>
+<li><p>列表嵌套</p>
+<ol>
+<li>在字列表前加四个空格</li>
+</ol>
+<ul>
+<li>like this</li>
+<li>or this</li>
+</ul>
+</li>
+<li><blockquote>
+<p>区块的使用</p>
+</blockquote>
+</li>
+<li><p>markdown 代码</p>
+</li>
+</ol>
+<p><code>printf()</code>函数  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> a:</span><br><span class="line">    <span class="built_in">print</span>(a) </span><br><span class="line"><span class="keyword">else</span>: </span><br><span class="line">    <span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>链接的使用</li>
+</ol>
+<blockquote>
+<p><a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80">链接名称</a><br>或者<br>&lt;链接地址&gt;</p>
+</blockquote>
+<p>高级使用</p>
+<blockquote>
+<p>这个链接用 1 作为网址变量 <a href="http://www.google.com/">Google</a><br>这个链接用 runoob 作为网址变量 <a href="http://www.runoob.com/">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
+</blockquote>
+<ol start="9">
+<li>picture<br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="alt 属性文本"><br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="alt 属性文本" title="可选标题"><ul>
+<li>开头一个感叹号 !</li>
+<li>接着一个方括号，里面放上图片的替代文字</li>
+<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。</li>
+</ul>
+</li>
+</ol>
+<p><strong>如果想改变图片的大小和位置要用css格式。like:</strong><br><img src="https://pic.imgdb.cn/item/627935a7094754312920d6d2.png" width = "100%" height = "25%" alt="图片名称" align=center /></p>
+<ol start="10">
+<li>table<br>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</li>
+</ol>
+<p>语法格式如下：</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody></table>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">表头</th>
+<th align="right">表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+</tr>
+<tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>blog-use</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/05/05/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>study-note1</title>
+    <url>/2022/05/10/study-note1/</url>
+    <content><![CDATA[<h2 id="1-blog中图片的正确使用方式"><a href="#1-blog中图片的正确使用方式" class="headerlink" title="1.blog中图片的正确使用方式"></a>1.blog中图片的正确使用方式</h2><div align=center>
+<img src="https://raw.githubusercontent.com/datawhalechina/dive-into-cv-pytorch/master/markdown_imgs/whale_pytorch.jpg" width="250">
+</div>
+
+<h2 id="2-transfer-learning"><a href="#2-transfer-learning" class="headerlink" title="2.transfer learning"></a>2.transfer learning</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">resnet18 model:</span><br><span class="line"><span class="keyword">import</span> torch, torchvision</span><br><span class="line">model = torchvision.models.resnet18(pretrained=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量"><a href="#3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量" class="headerlink" title="3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量"></a>3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量</h2><p>torch.randn用于生成服从均值为0、方差为1正太分布的随机张量</p>
+<h2 id="4-tensor-detach"><a href="#4-tensor-detach" class="headerlink" title="4.tensor.detach()"></a>4.tensor.detach()</h2><p>如果某个张量不想要被继续追踪，可以调用.detach()将其从追踪记录中分离出来，可以防止将来的计算被追踪，这样梯度就传不过去了。</p>
+<h2 id="5-pytorch一些包的总结"><a href="#5-pytorch一些包的总结" class="headerlink" title="5.pytorch一些包的总结"></a>5.pytorch一些包的总结</h2><p><strong>torch.nn：包含一些网络和module(构造网络）,functional（激活函数，需要在开始导入包)<br>import torch.nn.functional as F<br>torch.optim：包含优化器<br>torch.utils.data: 包含dataset和dataloadaer（构造数据集和loader）<br>torchvision: 包含transforms，datasets（数据集），models（模型用于transfer learning</strong></p>
+<span id="more"></span>
+
+<h2 id="6-dataloader-本质是一个list迭代器？"><a href="#6-dataloader-本质是一个list迭代器？" class="headerlink" title="6.dataloader 本质是一个list迭代器？"></a>6.dataloader 本质是一个list迭代器？</h2><p>可以用len（某个loader）知道样本数量</p>
+<h2 id="7-torchvision-数据集的下载方法"><a href="#7-torchvision-数据集的下载方法" class="headerlink" title="7.torchvision 数据集的下载方法"></a>7.torchvision 数据集的下载方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision </span><br><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms        </span><br></pre></td></tr></table></figure>
+
+<p>读取训练集</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">custom_transform=transforms.transforms.Compose([</span><br><span class="line">              transforms.Resize((<span class="number">64</span>, <span class="number">64</span>)),    <span class="comment"># 缩放到指定大小 64*64</span></span><br><span class="line">              transforms.ColorJitter(<span class="number">0.2</span>, <span class="number">0.2</span>, <span class="number">0.2</span>),    <span class="comment"># 随机颜色变换</span></span><br><span class="line">              transforms.RandomRotation(<span class="number">5</span>),    <span class="comment"># 随机旋转</span></span><br><span class="line">              transforms.Normalize([<span class="number">0.485</span>,<span class="number">0.456</span>,<span class="number">0.406</span>],    <span class="comment"># 对图像像素进行归一化</span></span><br><span class="line">                                   [<span class="number">0.229</span>,<span class="number">0.224</span>,<span class="number">0.225</span>])])</span><br><span class="line">train_data=torchvision.datasets.CIFAR10(<span class="string">&#x27;../../../dataset&#x27;</span>, </span><br><span class="line">                                        train=<span class="literal">True</span>,                                       </span><br><span class="line">                                        transform=custom_transforms,</span><br><span class="line">                                        target_transform=<span class="literal">None</span>, </span><br><span class="line">                                        download=<span class="literal">False</span>)   </span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<blockquote>
+<p>dataset_dir：存放数据集的路径。<br>train（bool，可选）–如果为True，则构建训练集，否则构建测试集。<br>transform：定义数据预处理，数据增强方案都是在这里指定。<br>target_transform：标注的预处理，分类任务不常用。<br>download：是否下载，若为True则从互联网下载，如果已经在dataset_dir下存在，就不会再次下载</p>
+</blockquote>
+<h2 id="8-构建数据集"><a href="#8-构建数据集" class="headerlink" title="8.构建数据集"></a>8.构建数据集</h2><p>图像数据 ➡ 图像索引文件 ➡ 使用Dataset构建数据集 ➡ 使用DataLoader读取数据</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDataset</span>(<span class="title class_ inherited__">Dataset</span>):  <span class="comment"># 继承Dataset类</span></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="comment"># 初始化图像文件路径或图像文件名列表等</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="comment"># 1.根据索引index从文件中读取一个数据（例如，使用numpy.fromfile，PIL.Image.open，cv2.imread）</span></span><br><span class="line">        <span class="comment"># 2.预处理数据（例如torchvision.Transform）</span></span><br><span class="line">        <span class="comment"># 3.返回数据对（例如图像和标签）</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="keyword">return</span> count  <span class="comment"># 返回数据量</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-imagefolder"><a href="#9-imagefolder" class="headerlink" title="9.imagefolder"></a>9.imagefolder</h2><p>特殊的构造数据集方式imagefolder（针对以文件目录分类好的图像）</p>
+<h2 id="10-数据增强简介"><a href="#10-数据增强简介" class="headerlink" title="10.数据增强简介"></a>10.数据增强简介</h2><p>图像的增广是通过对训练图像进行一系列变换，产生相似但不同于主体图像的训练样本，来扩大数据集的规模的一种常用技巧。另一方面，随机改变训练样本降低了模型对特定数据进行记忆的可能，有利于增强模型的泛化能⼒，提高模型的预测效果，因此可以说数据增强已经不算是一种优化技巧，而是CNN训练中默认要使用的标准操作。在常见的数据增广方法中，一般会从图像颜色、尺寸、形态、亮度&#x2F;对比度、噪声和像素等角度进行变换。当然不同的数据增广方法可以自由进行组合，得到更加丰富的数据增广方法。<br><strong><a href="https://datawhalechina.github.io/dive-into-cv-pytorch/#/chapter02_image_classification_introduction/appendix/appendixA_data_augment">torchvision.transforms速查</a></strong></p>
+]]></content>
+      <tags>
+        <tag>study notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>how to create blog</title>
+    <url>/2022/05/09/blog-use2/</url>
+    <content><![CDATA[<h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><h3 id="1-创建一篇新文章或新页面"><a href="#1-创建一篇新文章或新页面" class="headerlink" title="1.创建一篇新文章或新页面"></a>1.创建一篇新文章或新页面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建标签页"><a href="#2-创建标签页" class="headerlink" title="2.创建标签页"></a>2.创建标签页</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-创建分类页"><a href="#3-创建分类页" class="headerlink" title="3.创建分类页"></a>3.创建分类页</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-通过npm安装包"><a href="#4-通过npm安装包" class="headerlink" title="4.通过npm安装包"></a>4.通过npm安装包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm or cnpm install</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>blog-use</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>study-note2</title>
+    <url>/2022/05/11/study-note2/</url>
+    <content><![CDATA[<h2 id="街景识别思路"><a href="#街景识别思路" class="headerlink" title="街景识别思路"></a>街景识别思路</h2><h3 id="1-model-dataset：建立两个数据集，两个模型"><a href="#1-model-dataset：建立两个数据集，两个模型" class="headerlink" title="1.model-dataset：建立两个数据集，两个模型"></a>1.model-dataset：建立两个数据集，两个模型</h3><p>标签数据集img_path,img_label,transforms<br>长度数据集接收img_path,img_length,transforms<br>transforms:进行数据增强还改变了原像素</p>
+<p>模型为transfer learning中的resnet18<br>标签模型经过四个全连接层返回list<br>长度模型经过一个全连接层返回【x，4】</p>
+<p>注：传入crossentropyloss的length和label要是能转变成one-hot编码的longtensor，length传入前要减1<br>label训练时每次传入补齐的四个标签，使模型学习到的预测总有四个</p>
+<h3 id="2-length-recognition："><a href="#2-length-recognition：" class="headerlink" title="2.length_recognition："></a>2.length_recognition：</h3><p>先要得到去掉长度大于四的path和length<br>构建trainloader<br>…<br>构建validoader<br>定义训练函数（trainloader，model，criterion，optimizer，epoch）<br>定义验证函数（validloader，model，criterion）<br><strong>参考网站进行可视化</strong>:在train和valid中加入loss，acc，每次epoch结束添加losses，acces</p>
+<h3 id="3-label-recognition"><a href="#3-label-recognition" class="headerlink" title="3.label_recognition:"></a>3.label_recognition:</h3><h2 id="torch-from-numpy-VS-torch-Tensor"><a href="#torch-from-numpy-VS-torch-Tensor" class="headerlink" title="torch.from_numpy VS torch.Tensor"></a>torch.from_numpy VS torch.Tensor</h2><p>当转换的源是float类型，torch.Tensor与torch.from_numpy会共享一块内存！且转换后的结果的类型是torch.float32<br>当转换的源不是float类型，torch.Tensor得到的是torch.float32，而torch.from_numpy则是与源类型一致！<br><strong>尽量使用torch.from_numpy()</strong></p>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p>CPU或GPU张量之间的转换<br><strong>一般只要在Tensor后加long(), int(), double(),float(),byte()等函数就能将Tensor进行类型转换；</strong> 例如：Torch.LongTensor—&gt;Torch.FloatTensor, 直接使用data.float()即可<br>还可以使用type()函数，data为Tensor数据类型，data.type()为给出data的类型，如果使用data.type(torch.FloatTensor)则强制转换为torch.FloatTensor类型张量。<br><strong>一般先换成tensor再转换数据类型(普通数据还要先变成ndarry)</strong></p>
+<h2 id="tensor-to-gpu"><a href="#tensor-to-gpu" class="headerlink" title="tensor to gpu"></a>tensor to gpu</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>如果GPU可用，将模型和张量加载到GPU上</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    model = model.cuda()</span><br><span class="line">    x = x.cuda()</span><br><span class="line">    y = y.cuda()</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#分配到的GPU或CPU</span></span><br><span class="line">device=torch.device(<span class="string">&quot;cuda:0&quot;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&quot;cpu&quot;</span>)</span><br><span class="line"><span class="comment">#将模型加到GPU</span></span><br><span class="line">model=model.to(device)</span><br><span class="line"><span class="comment">#将张量加到GPU</span></span><br><span class="line">x=x.to(device)</span><br><span class="line">y=y.to(device)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>study notes</tag>
+      </tags>
+  </entry>
+</search>
