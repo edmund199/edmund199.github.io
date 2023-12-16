@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -251,11 +251,9 @@
     
     <div class="post-body" itemprop="articleBody"><h2 id="colab的使用"><a href="#colab的使用" class="headerlink" title="colab的使用"></a>colab的使用</h2><p>将文件（代码和dataset）上传到Googledrive中在云盘中进入需要创建ipynb的地方打开colab（此时会在改目录下创建ipynb），在ipynb中运行代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载盘</span></span><br><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&#x27;/content/drive/&#x27;</span>) <span class="comment">#目前还无法挂载云盘指定的文件，只能将云盘整个挂载上来</span></span><br><span class="line"><span class="comment"># 指定当前的工作文件夹</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># 此处为google drive中的文件路径,drive为之前指定的工作根目录，要加上</span></span><br><span class="line">os.chdir(<span class="string">&quot;/content/drive/My Drive/Colab/Notebooks/17.yoloV3&quot;</span>) </span><br><span class="line"><span class="comment">###之后就可以在ipynb中import</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="在colab中的一些常用操作"><a href="#在colab中的一些常用操作" class="headerlink" title="在colab中的一些常用操作"></a>在colab中的一些常用操作</h3><p><code>!pip install</code><br><code>!ls #查看当前路径的文件</code><br><code>!pwd #查看当前路径</code><br><code>!python xxx.py #运行py文件</code></p>
 <h3 id="下载数据集："><a href="#下载数据集：" class="headerlink" title="下载数据集："></a>下载数据集：</h3><ol>
-<li><p>先定位到要存放数据集的文件地址</p>
-</li>
+<li>先定位到要存放数据集的文件地址</li>
 <li><p>对于某些大型数据集可直接在官网找到下载url</p>
 <ul>
 <li>!wget url ##下载数据集</li>
@@ -265,7 +263,7 @@
 <ul>
 <li>!pip install kaggle</li>
 <li>上传kaggle.json文件到colab中</li>
-<li>!mkdir -p ~&#x2F;.kaggle<br> !cp kaggle.json ~&#x2F;.kaggle&#x2F;<br> !chmod 600 ~&#x2F;.kaggle&#x2F;kaggle.json </li>
+<li>!mkdir -p ~/.kaggle<br>!cp kaggle.json ~/.kaggle/<br>!chmod 600 ~/.kaggle/kaggle.json </li>
 <li>在kaggle数据集找到下载api，在前面加上!既可下载</li>
 </ul>
 </li>
@@ -273,16 +271,16 @@
 <ul>
 <li>!unzip 解压压缩包（解压时先在根目录解压较快）</li>
 <li><blockquote>
-<p>import zipfile<br> filename&#x3D;’xxx.zip’<br> outpath&#x3D;’xxx&#x2F;xxx’<br> with zipfile.ZipFile(filename) as zfile:<br>  zfile.extractall(outpath)</p>
+<p>import zipfile<br>filename=’xxx.zip’<br>outpath=’xxx/xxx’<br>with zipfile.ZipFile(filename) as zfile:<br>  zfile.extractall(outpath)</p>
 </blockquote>
 </li>
 </ul>
 </li>
 </ol>
 <h3 id="防止colab断开"><a href="#防止colab断开" class="headerlink" title="防止colab断开"></a>防止colab断开</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Thebest_jack/article/details/124565741">https://blog.csdn.net/Thebest_jack/article/details/124565741</a></p>
-<h3 id="colab保存选了模型"><a href="#colab保存选了模型" class="headerlink" title="colab保存选了模型"></a>colab保存选了模型</h3><p>在drive文件夹内的内容会保存到Googledrive上，所以训练后的模型要存到drive下<br>!cp -r checkpoints ‘&#x2F;content&#x2F;drive&#x2F;MyDrive&#x2F;checkpoints’</p>
-<h2 id="目标检测mAP计算（mean-average-precision）"><a href="#目标检测mAP计算（mean-average-precision）" class="headerlink" title="目标检测mAP计算（mean average precision）"></a>目标检测mAP计算（mean average precision）</h2><p><strong>TP、FP、FN、TN</strong><br>TP（True Positive）：IoU &gt; IoU<del>threshold</del>（threshold 一般取 0.5）的检测框数量（同一Ground Truth只计算一次）<br>FP（False Positive）：IoU &lt;&#x3D; IoU<del>threshold</del>的检测框，或者是检测到同一个GT的多余检测框的数量<br>FN（False Negative）：没有检测到的GT的数量<br>TN（True Negative）：在mAP评价指标中不会使用到</p>
-<p><strong>precision和recall</strong><br><img src="https://pic.imgdb.cn/item/6287274909475431292bd9b8.png"></p>
+<h3 id="colab保存选了模型"><a href="#colab保存选了模型" class="headerlink" title="colab保存选了模型"></a>colab保存选了模型</h3><p>在drive文件夹内的内容会保存到Googledrive上，所以训练后的模型要存到drive下<br>!cp -r checkpoints ‘/content/drive/MyDrive/checkpoints’</p>
+<h2 id="目标检测mAP计算（mean-average-precision）"><a href="#目标检测mAP计算（mean-average-precision）" class="headerlink" title="目标检测mAP计算（mean average precision）"></a>目标检测mAP计算（mean average precision）</h2><p><strong>TP、FP、FN、TN</strong><br>TP（True Positive）：IoU &gt; IoU~threshold~（threshold 一般取 0.5）的检测框数量（同一Ground Truth只计算一次）<br>FP（False Positive）：IoU &lt;= IoU~threshold~的检测框，或者是检测到同一个GT的多余检测框的数量<br>FN（False Negative）：没有检测到的GT的数量<br>TN（True Negative）：在mAP评价指标中不会使用到</p>
+<p><strong>precision和recall</strong><br><img src="https://pic.imgdb.cn/item/6287274909475431292bd9b8.png" alt=""></p>
 <p><strong>ap就是p-r曲线下的面积</strong><br><strong>ap计算过程</strong><br>经过RPN等网络得到proposal -&gt; 对proposal用非极大值抑制筛选部分proposal -&gt;对proposal使用两个准则和ground truth配对并按confidence从大到小排列 -&gt;根据某个confidence计算TP FP FN</p>
 <p><strong>MAP计算和loss计算不同<br>map只是计算proposal和gt的precision<br>loss是计算结果的loss，考虑confidence</strong></p>
 

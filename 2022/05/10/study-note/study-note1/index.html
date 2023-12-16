@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False)  3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分">
+    <meta name="description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False) 3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分布">
 <meta property="og:type" content="article">
 <meta property="og:title" content="study-note1">
 <meta property="og:url" content="https://edmund199.github.io.git/2022/05/10/study-note/study-note1/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False)  3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分">
+<meta property="og:description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False) 3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分布">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/datawhalechina/dive-into-cv-pytorch/master/markdown_imgs/whale_pytorch.jpg">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6294e0bf09475431295c6e4d.png">
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -255,7 +255,6 @@
 </div>
 
 <h2 id="2-transfer-learning"><a href="#2-transfer-learning" class="headerlink" title="2.transfer learning"></a>2.transfer learning</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resnet18 model:</span><br><span class="line"><span class="keyword">import</span> torch, torchvision</span><br><span class="line">model = torchvision.models.resnet18(pretrained=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量"><a href="#3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量" class="headerlink" title="3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量"></a>3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量</h2><p>torch.randn用于生成服从均值为0、方差为1正太分布的随机张量</p>
 <h2 id="4-tensor-detach"><a href="#4-tensor-detach" class="headerlink" title="4.tensor.detach()"></a>4.tensor.detach()</h2><p>如果某个张量不想要被继续追踪，可以调用.detach()将其从追踪记录中分离出来，可以防止将来的计算被追踪，这样梯度就传不过去了。</p>
 <h2 id="5-pytorch一些包的总结"><a href="#5-pytorch一些包的总结" class="headerlink" title="5.pytorch一些包的总结"></a>5.pytorch一些包的总结</h2><p><strong>torch.nn：包含一些网络和module(构造网络）,functional（激活函数，需要在开始导入包)<br>import torch.nn.functional as F<br>torch.optim：包含优化器<br>torch.utils.data: 包含dataset和dataloadaer（构造数据集和loader）<br>torchvision: 包含transforms，datasets（数据集），models（模型用于transfer learning)</strong></p>
@@ -265,23 +264,19 @@
 <li>transforms：提供常用的数据预处理操作，主要包括对Tensor以及PIL Image对象的操作。</li>
 </ul>
 <span id="more"></span>
-
 <h2 id="6-dataloader-本质是一个list迭代器？"><a href="#6-dataloader-本质是一个list迭代器？" class="headerlink" title="6.dataloader 本质是一个list迭代器？"></a>6.dataloader 本质是一个list迭代器？</h2><p>可以用len（某个loader）知道样本数量</p>
 <h2 id="7-torchvision-数据集的下载方法"><a href="#7-torchvision-数据集的下载方法" class="headerlink" title="7.torchvision 数据集的下载方法"></a>7.torchvision 数据集的下载方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision </span><br><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms        </span><br></pre></td></tr></table></figure>
-
 <p>读取训练集</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">custom_transform=transforms.transforms.Compose([</span><br><span class="line">              transforms.Resize((<span class="number">64</span>, <span class="number">64</span>)),    <span class="comment"># 缩放到指定大小 64*64</span></span><br><span class="line">              transforms.ColorJitter(<span class="number">0.2</span>, <span class="number">0.2</span>, <span class="number">0.2</span>),    <span class="comment"># 随机颜色变换</span></span><br><span class="line">              transforms.RandomRotation(<span class="number">5</span>),    <span class="comment"># 随机旋转</span></span><br><span class="line">              transforms.Normalize([<span class="number">0.485</span>,<span class="number">0.456</span>,<span class="number">0.406</span>],    <span class="comment"># 对图像像素进行归一化</span></span><br><span class="line">                                   [<span class="number">0.229</span>,<span class="number">0.224</span>,<span class="number">0.225</span>])])</span><br><span class="line">train_data=torchvision.datasets.CIFAR10(<span class="string">&#x27;../../../dataset&#x27;</span>, </span><br><span class="line">                                        train=<span class="literal">True</span>,                                       </span><br><span class="line">                                        transform=custom_transforms,</span><br><span class="line">                                        target_transform=<span class="literal">None</span>, </span><br><span class="line">                                        download=<span class="literal">False</span>)   </span><br></pre></td></tr></table></figure>
-
 <p>参数：</p>
 <blockquote>
 <p>dataset_dir：存放数据集的路径。<br>train（bool，可选）–如果为True，则构建训练集，否则构建测试集。<br>transform：定义数据预处理，数据增强方案都是在这里指定。<br>target_transform：标注的预处理，分类任务不常用。<br>download：是否下载，若为True则从互联网下载，如果已经在dataset_dir下存在，就不会再次下载</p>
 </blockquote>
 <h2 id="8-构建数据集"><a href="#8-构建数据集" class="headerlink" title="8.构建数据集"></a>8.构建数据集</h2><p>图像数据 ➡ 图像索引文件 ➡ 使用Dataset构建数据集 ➡ 使用DataLoader读取数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDataset</span>(<span class="title class_ inherited__">Dataset</span>):  <span class="comment"># 继承Dataset类</span></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="comment"># 初始化图像文件路径或图像文件名列表等</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="comment"># 1.根据索引index从文件中读取一个数据（例如，使用numpy.fromfile，PIL.Image.open，cv2.imread）</span></span><br><span class="line">        <span class="comment"># 2.预处理数据（例如torchvision.Transform）</span></span><br><span class="line">        <span class="comment"># 3.返回数据对（例如图像和标签）</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="keyword">return</span> count  <span class="comment"># 返回数据量</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="9-imagefolder"><a href="#9-imagefolder" class="headerlink" title="9.imagefolder"></a>9.imagefolder</h2><p>特殊的构造数据集方式imagefolder（针对以文件目录分类好的图像）</p>
 <blockquote>
-<p>ImageFolder(root, transform&#x3D;None, target_transform&#x3D;None, loader&#x3D;default_loader)</p>
+<p>ImageFolder(root, transform=None, target_transform=None, loader=default_loader)</p>
 </blockquote>
 <p>它主要有四个参数：</p>
 <ul>
@@ -294,7 +289,7 @@
 <img src="https://pic.imgdb.cn/item/6294e0bf09475431295c6e4d.png" width ="90%">
 </div>
 
-<h2 id="10-数据增强简介"><a href="#10-数据增强简介" class="headerlink" title="10.数据增强简介"></a>10.数据增强简介</h2><p>图像的增广是通过对训练图像进行一系列变换，产生相似但不同于主体图像的训练样本，来扩大数据集的规模的一种常用技巧。另一方面，随机改变训练样本降低了模型对特定数据进行记忆的可能，有利于增强模型的泛化能⼒，提高模型的预测效果，因此可以说数据增强已经不算是一种优化技巧，而是CNN训练中默认要使用的标准操作。在常见的数据增广方法中，一般会从图像颜色、尺寸、形态、亮度&#x2F;对比度、噪声和像素等角度进行变换。当然不同的数据增广方法可以自由进行组合，得到更加丰富的数据增广方法。<br><strong><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/dive-into-cv-pytorch/#/chapter02_image_classification_introduction/appendix/appendixA_data_augment">torchvision.transforms速查</a></strong></p>
+<h2 id="10-数据增强简介"><a href="#10-数据增强简介" class="headerlink" title="10.数据增强简介"></a>10.数据增强简介</h2><p>图像的增广是通过对训练图像进行一系列变换，产生相似但不同于主体图像的训练样本，来扩大数据集的规模的一种常用技巧。另一方面，随机改变训练样本降低了模型对特定数据进行记忆的可能，有利于增强模型的泛化能⼒，提高模型的预测效果，因此可以说数据增强已经不算是一种优化技巧，而是CNN训练中默认要使用的标准操作。在常见的数据增广方法中，一般会从图像颜色、尺寸、形态、亮度/对比度、噪声和像素等角度进行变换。当然不同的数据增广方法可以自由进行组合，得到更加丰富的数据增广方法。<br><strong><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/dive-into-cv-pytorch/#/chapter02_image_classification_introduction/appendix/appendixA_data_augment">torchvision.transforms速查</a></strong></p>
 
     </div>
 

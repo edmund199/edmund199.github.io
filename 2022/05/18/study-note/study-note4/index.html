@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -252,7 +252,6 @@
 
 <h2 id="python中assert的用法"><a href="#python中assert的用法" class="headerlink" title="python中assert的用法"></a>python中assert的用法</h2><p>使用assert是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，与其让它在运行时崩溃，不如在出现错误条件时就崩溃。用一个程序说明：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">zero</span>(<span class="params">s</span>):</span><br><span class="line">    a = <span class="built_in">int</span>(s)</span><br><span class="line">    <span class="keyword">assert</span> a &gt; <span class="number">0</span>,<span class="string">&quot;a超出范围&quot;</span>   <span class="comment">#这句的意思：如果a确实大于0，程序正常往下运行</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">zero(<span class="string">&quot;-2&quot;</span>)  <span class="comment">#但是如果a是小于0的，程序会抛出AssertionError错误，报错为参数内容“a超出范围”</span></span><br></pre></td></tr></table></figure>
-
 <p>运行结果如下：</p>
 <blockquote>
 <p>Traceback (most recent call last):<br>  File “e:\Python_list\class_student\temp.py”, line 6, in <module><br>    zero(“-2”)<br>  File “e:\Python_list\class_student\temp.py”, line 3, in zero<br>    assert a &gt; 0,”a超出范围”<br>AssertionError: a超出范围</p>
@@ -269,10 +268,10 @@
 </div>
 
 <p><strong>位置损失</strong>为 smooth l1 loss </p>
-<p><img src="https://pic.imgdb.cn/item/62850fea0947543129ce599d.png"></p>
+<p><img src="https://pic.imgdb.cn/item/62850fea0947543129ce599d.png" alt=""></p>
 <p>参考网站<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjp_xujiping/article/details/107589950">目标检测常用损失函数-类别损失+位置损失</a></p>
-<h3 id="Hard-negative-minin"><a href="#Hard-negative-minin" class="headerlink" title="Hard negative minin"></a>Hard negative minin</h3><p>值得注意的是，一般情况下negative prior bboxes数量 &gt;&gt; positive prior bboxes数量，直接训练会导致网络过于重视负样本，预测效果很差。为了保证正负样本尽量平衡，我们这里使用SSD使用的在线难例挖掘策略(hard negative mining)，即依据confidience loss对属于负样本的prior bbox进行排序，只挑选其中confidience loss高的bbox进行训练，将正负样本的比例控制在positive：negative&#x3D;1:3。其核心作用就是只选择负样本中容易被分错类的困难负样本来进行网络训练，来保证正负样本的平衡和训练的有效性。</p>
-<p>举个例子：假设在这 441 个 prior bbox 里，经过匹配后得到正样本先验框P个，负样本先验框 441−P 个。将负样本prior bbox按照prediction loss从大到小顺序排列后选择最高的M个prior bbox。这个M需要根据我们设定的正负样本的比例确定，比如我们约定正负样本比例为1:3时。我们就取M&#x3D;3P，这M个loss最大的负样本难例将会被作为真正参与计算loss的prior bboxes，其余的负样本将不会参与分类损失的loss计算。</p>
+<h3 id="Hard-negative-minin"><a href="#Hard-negative-minin" class="headerlink" title="Hard negative minin"></a>Hard negative minin</h3><p>值得注意的是，一般情况下negative prior bboxes数量 &gt;&gt; positive prior bboxes数量，直接训练会导致网络过于重视负样本，预测效果很差。为了保证正负样本尽量平衡，我们这里使用SSD使用的在线难例挖掘策略(hard negative mining)，即依据confidience loss对属于负样本的prior bbox进行排序，只挑选其中confidience loss高的bbox进行训练，将正负样本的比例控制在positive：negative=1:3。其核心作用就是只选择负样本中容易被分错类的困难负样本来进行网络训练，来保证正负样本的平衡和训练的有效性。</p>
+<p>举个例子：假设在这 441 个 prior bbox 里，经过匹配后得到正样本先验框P个，负样本先验框 441−P 个。将负样本prior bbox按照prediction loss从大到小顺序排列后选择最高的M个prior bbox。这个M需要根据我们设定的正负样本的比例确定，比如我们约定正负样本比例为1:3时。我们就取M=3P，这M个loss最大的负样本难例将会被作为真正参与计算loss的prior bboxes，其余的负样本将不会参与分类损失的loss计算。</p>
 
     </div>
 
