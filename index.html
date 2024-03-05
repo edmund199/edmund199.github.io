@@ -146,7 +146,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -157,7 +157,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -174,6 +174,731 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/02/28/paper-note/RUL/Remaining%20Useful%20Life%20(RUL)%20Prediction%20of%20Mechanical%20Bearings%20Using%20Convolution%20Neural%20Network%20(CNN)%20and%20Long%20Short%20Term%20Memory%20(LSTM)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/28/paper-note/RUL/Remaining%20Useful%20Life%20(RUL)%20Prediction%20of%20Mechanical%20Bearings%20Using%20Convolution%20Neural%20Network%20(CNN)%20and%20Long%20Short%20Term%20Memory%20(LSTM)/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-28 19:50:01" itemprop="dateCreated datePublished" datetime="2024-02-28T19:50:01+08:00">2024-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-29 11:25:39" itemprop="dateModified" datetime="2024-02-29T11:25:39+08:00">2024-02-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Remaining-Useful-Life-RUL-Prediction-of-Mechanical-Bearings-Using-Convolution-Neural-Network-CNN-and-Long-Short-Term-Memory-LSTM"><a href="#Remaining-Useful-Life-RUL-Prediction-of-Mechanical-Bearings-Using-Convolution-Neural-Network-CNN-and-Long-Short-Term-Memory-LSTM" class="headerlink" title="Remaining Useful Life (RUL) Prediction of Mechanical Bearings Using Convolution Neural Network (CNN) and Long Short Term Memory (LSTM)"></a>Remaining Useful Life (RUL) Prediction of Mechanical Bearings Using Convolution Neural Network (CNN) and Long Short Term Memory (LSTM)</h2><p><strong>high technology letters</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>In this article, PRONOSTIA Dataset for Bearings(PHM IEEE 2012 Data Challenge Dataset) is used. For every 10 seconds, vibration signals are recorded for 0.1 seconds in the dataset. The recorded signals are 1D raw vibration signals(Time-Domain). The 1D signals are difﬁcult to analyze, so 1D vibration signals are transformed into the 2D image-like features(Time and Frequency-Domain) using CWT(Continuous Wavelet Transform). And CNN(Convolution Neural Network) + LSTM(Long Short-Term Memory) is applied to the acquired features from CWT to calculate the HI. The calculated HI is then used for RUL Prediction.</p>
+<h3 id="keys"><a href="#keys" class="headerlink" title="keys"></a>keys</h3><p>We employed Data Normalization technique after applying CWT to the 1D collected data to normalize the coefﬁcients of 2D CWT data. To achieve Data Normalization we performed Data Re-scaling method A.K.A min max normalization to re-scale or adjust all the 2D data</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">WIN_SIZE=<span class="number">20</span></span><br><span class="line">DATA_POINTS_PRE_FILE=<span class="number">2560</span></span><br><span class="line">WAVELET_TYPE=<span class="string">&#x27;morl&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_feature_image</span>(<span class="params">ind, feature_name=<span class="string">&#x27;horiz accel&#x27;</span></span>):</span><br><span class="line">    data_range = df_row_ind_to_data_range(ind)</span><br><span class="line">    data = df[feature_name].values[data_range[<span class="number">0</span>]:data_range[<span class="number">1</span>]]</span><br><span class="line">    <span class="comment"># use window to process(= prepare, develop) 1D signal</span></span><br><span class="line">    data = np.array([np.mean(data[i:i+WIN_SIZE]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, DATA_POINTS_PER_FILE, WIN_SIZE)])</span><br><span class="line">    <span class="comment">#data (128,1)</span></span><br><span class="line">    <span class="comment"># perform CWT on 1D data(= 1D array)</span></span><br><span class="line">    coef, _ = pywt.cwt(data, np.linspace(<span class="number">1</span>,<span class="number">128</span>,<span class="number">128</span>), WAVELET_TYPE)</span><br><span class="line">    <span class="comment">#coef (128,128)</span></span><br><span class="line">    <span class="comment"># transform to power and apply logarithm?!</span></span><br><span class="line">    coef = np.log2(coef**<span class="number">2</span>+<span class="number">0.001</span>)</span><br><span class="line">    <span class="comment"># normalize coef</span></span><br><span class="line">    coef = (coef - coef.<span class="built_in">min</span>())/(coef.<span class="built_in">max</span>() - coef.<span class="built_in">min</span>()) </span><br><span class="line">    <span class="keyword">return</span> coef</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for bearing1_1 the data finally be (2803, 2, 128, 128)</li>
+<li>the scale of cwt decide the size of coef which also means the scale of the wavelet</li>
+</ul>
+<p>todo</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/01/14/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/14/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/" class="post-title-link" itemprop="url">Variational encoding approach for interpretable assessment of remaining useful life estimation</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-14 20:10:48" itemprop="dateCreated datePublished" datetime="2024-01-14T20:10:48+08:00">2024-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-16 09:38:38" itemprop="dateModified" datetime="2024-01-16T09:38:38+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Variational-encoding-approach-for-interpretable-assessment-of-remaining-useful-life-estimation"><a href="#Variational-encoding-approach-for-interpretable-assessment-of-remaining-useful-life-estimation" class="headerlink" title="Variational encoding approach for interpretable assessment of remaining useful life estimation"></a>Variational encoding approach for interpretable assessment of remaining useful life estimation</h2><p><strong>2022.1 西班牙 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p><strong>most of them lack an explanatory component to understand model learning and/or the nature of the data. To overcome this gap we propose a novel approach based on variational encoding.</strong>The model consists of a recurrent encoder and a regression model: the encoder learns to compress the input data to a latent space that serves as a basis to build a self-explanatory map that can visually evaluate the rate of deterioration of aircraft engines. <strong>Obtaining such a latent space is regularized by a new cost function guided by variational inference and a term that penalizes prediction errors.</strong></p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><ul>
+<li>model-based and data-driven approaches </li>
+<li>the use of machine learing models</li>
+<li>the use of cnn and rnn(there is a clear gap between all Deep Learning oriented approaches: although they do achieve remarkable results, models are treated as black boxes where inputs are used to obtain some output) </li>
+<li>To meet the goals stated one can think of unsupervised learning techniques as a possible way to approach this. Especially, when it comes to reveal insights about the nature of the data, Representation Learning approaches such as autoencoders come in handy</li>
+<li>Variational Autoencoders (VAEs).(In VAEs, variational inference is added to the error function through the Kullback–Leibler term, which guarantees that data with similar patterns will also be encoded nearby in the latent space. VAEs are a recent but well-known alternative with numerous applications in anomaly analysis)</li>
+<li>This problem has many points in common with the diagnosis of anomalies and has also been solved by using autoencoders [36,37]. Despite these similarities, both problems have a fundamental difference: in anomaly diagnosis, the aim is to look for individuals in unlikely areas of the latent space. In RUL prediction, on the contrary, the objective for a complete and interpretable diagnosis should be to project the evolution of the system in the latent space</li>
+</ul>
+<h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><p>2.1 piece-wise RUL</p>
+<p>2.2 metric<br>RMSE and Score</p>
+<h3 id="3model"><a href="#3model" class="headerlink" title="3model"></a>3model</h3><h4 id="3-1model1"><a href="#3-1model1" class="headerlink" title="3.1model1"></a>3.1model1</h4><p>The proposed model consists of three components: an encoder network, a regression model and a latent space.<br><strong>encode:</strong><br> The encoder learns to compress the data into the latent space so that it is described by the parameters that initialize the probability distribution to which the data belongs. Variational inference is added to the loss function through the <strong>Kullback–Leibler divergence, which measures how much one probability distribution diverges from another, to learn the abovementioned parameters. A second term is also added to penalize wrong estimations of the regression model.</strong><br>Thereby, the main difference with respect to a VAE is that we replace the decoder with a regression model, as shown in Fig. 3, and the training is done differently.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5de07871b83018a2c1688.png" >
+</div>
+
+<p><strong>regression</strong><br>Among the different types of RNNs that can be found, LSTM networks are the most popular. These networks process data from backward to forward conserving information from the past through hidden states. However,<br>Bidirectional LSTM networks are in high demand because they provide not only information about the past but also about the future: data is first processed from past to future and then from future to past, thus preserving the information from both periods.</p>
+<h4 id="3-2-Interpretable-diagnosis"><a href="#3-2-Interpretable-diagnosis" class="headerlink" title="3.2. Interpretable diagnosis"></a>3.2. Interpretable diagnosis</h4><p>The diagnostic tool introduced in this work is a map that shows the actual state of the engine and also the rate of change from healthy to deteriorated</p>
+<h3 id="4-Experimental-design"><a href="#4-Experimental-design" class="headerlink" title="4. Experimental design"></a>4. Experimental design</h3><p>preprocess:<br>With this approach, all records of the same operating condition are grouped together and scaled using a standard scaler.(工况标准化)</p>
+<p>On the other hand, although sensor data have a general trend, it is known that they are subject to local oscillations, mainly caused by highfrequency sensors, which lead to noise [23,43]. To ease the processing of the series, an exponential weighted moving average is carried out.（输入指数平滑）</p>
+<p>In time series problems it is quite recurrent to split the data into sequences for better prediction performance.In those cases a masked value is used and will be treated in the first layer of the model by simply ignoring those values. In this way, as much information as possible is used.（time window）</p>
+<p><strong>along with the use of the Hyperopt Bayesian optimization library（hyperparameter 确定）</strong></p>
+<p><strong>The choice of the sensors is not arbitrary, we only use the following six: T30, T50, P30, EPRA, PS30 and phi。Moreover, for datasets FD001 and FD003 the EPRA sensor is not necessary since it measures the engine thrust under different operating conditions while FD001 and FD003 operate under the same condition</strong></p>
+<h3 id="5-Experimental-results"><a href="#5-Experimental-results" class="headerlink" title="5. Experimental results"></a>5. Experimental results</h3><p>bold. It can be quickly noted that with datasets FD001 and FD003, although the metrics are considered good, they are not the best. However, the interest lies mostly in FD002 and FD004 as the increasing number of operating conditions and failure modes make these two datasets contain more complicated multiscale degradation features.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/01/14/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/14/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/" class="post-title-link" itemprop="url">Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-14 14:34:04" itemprop="dateCreated datePublished" datetime="2024-01-14T14:34:04+08:00">2024-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-16 09:38:01" itemprop="dateModified" datetime="2024-01-16T09:38:01+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Dual-Aspect-Self-Attention-Based-on-Transformer-for-Remaining-Useful-Life-Prediction"><a href="#Dual-Aspect-Self-Attention-Based-on-Transformer-for-Remaining-Useful-Life-Prediction" class="headerlink" title="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction"></a>Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction</h2><p><strong>2022.12 电子科技大学  arxiv</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>With the widespread deployment of sensors on industrial equipment, building the Industrial Internet of Things (IIoT) to interconnect these devices has become an inexorable trend in the development of the digital factory.<br>介绍了IIOT</p>
+<p>We investigated the mainstream RUL prediction models and summarized the basic steps of RUL prediction modeling in this scenario. On this basis, a data-driven approach for RUL estimation is proposed in this paper.<br>介绍方法</p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>The emergence of low-cost micro-sensors and high-bandwidth wireless networks enables real-time access to machine data. Big data and AI extract valuable insights, enhancing productivity and reducing failure risks. This has led to the rise of Industrial Internet of Things (IIoT), transforming data into a critical resource. A key IIoT application involves using big data for predictive maintenance of complex machinery.</p>
+<p>RUL estimation algorithm is the core algorithms for predictive maintenance and PHM systems.</p>
+<p>In recent years, data-driven RUL prediction algorithms have received increasing attention.</p>
+<p>Traditional machine learning algorithms (such as SVM[11], ANN[12], and DBN[13]) have achieved good results in RUL prediction.</p>
+<p><strong>However, these networks all treat the time series of multiple sensors equally, but in fact, different sensors have different contributions to theRUL values.According to where the attention mechanisms are used, they are divided into three types: time weighting, feature (sensor) weighting, and two dimensions weighting together.Furthermore, the basic attention mechanism cannot model the intrinsic connection of features.</strong><br>上述方法中没有考虑不同传感器的重要程度，而对于注意力机制有time weighting和feature weighting and two dimensions weighting together，而传统的注意力机制没有考虑特征的内在联系。</p>
+<p>the self-attention mechanism does not require external information and is better at capturing the internal correlations of features. Additionally, the multi-head attention mechanism uses the attention weights of multiple dimensions to aggregate different contributions of features from multiple perspectives.</p>
+<h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><h3 id="2-1-Multi-head-Attention"><a href="#2-1-Multi-head-Attention" class="headerlink" title="2.1 Multi-head Attention"></a>2.1 Multi-head Attention</h3><p>Polosukhin, Attention is all you need (2017）</p>
+<h3 id="2-2-proposed-methond"><a href="#2-2-proposed-methond" class="headerlink" title="2.2 proposed methond"></a>2.2 proposed methond</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6d871b83018a2add19.png" >
+</div>
+
+<h3 id="3-Experiment-Setting"><a href="#3-Experiment-Setting" class="headerlink" title="3. Experiment Setting"></a>3. Experiment Setting</h3><h4 id="3-1DATAset"><a href="#3-1DATAset" class="headerlink" title="3.1DATAset"></a>3.1DATAset</h4><p>CMAPSS dataset</p>
+<h4 id="3-2-Data-Pre——Processing"><a href="#3-2-Data-Pre——Processing" class="headerlink" title="3.2 Data Pre——Processing"></a>3.2 Data Pre——Processing</h4><p><strong>piece-wise RUL</strong></p>
+<p>refer：<br>Sun, Remaining useful life estimation in prognostics using deep convolution neural networks, Reliability Engineering &amp; System Safety 172 (2018) 1–11</p>
+<p>Li, Machine remaining useful life prediction via an attention-based deep learning approach, IEEE Transactions on Industrial Electronics 68 (3) (2021) 2521–2531</p>
+<p><strong>cluster and normalization</strong></p>
+<p>In the absence of prior expertise, reasonable max-min values for sensors are difficult to determine, so we use z-score normalization,</p>
+<p>why norm by cluster：<br>Figure 7.c) illustrates the data colored by working conditions, and 7.d) is the data normalized separately by working conditions, which shows that the data trend with the time step is distinct from the unnormalized data.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2adda1.png" >
+</div>
+
+<p><strong>time window</strong></p>
+<p>sliding_size=T step=1</p>
+<p>对于序列长度小于time window的用第一个数据值对数据pad</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># row number &lt; sequence length, only one sequence</span></span><br><span class="line"><span class="comment"># pad width first time-cycle value</span></span><br><span class="line">all_array.append(np.pad(id_array, ((seq_len - id_array.shape[<span class="number">0</span>], <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>)), <span class="string">&#x27;edge&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-setup"><a href="#3-3-setup" class="headerlink" title="3.3 setup"></a>3.3 setup</h4><p><strong>metric</strong></p>
+<p>RMSE and score</p>
+<p><strong>hyper parameters</strong></p>
+<p>T=30<br>use all sensor feature</p>
+<p>The Adam[44] algorithm was applied to optimize the proposed model. The learning rate of Adam was set to 0.0002. The number of training batches was set to 128, and the early stop mechanism was employed to stop training after 50 rounds without better results. For the proposed model, the LSTM uses three hidden layers with 100 nodes per layer. The MLP layer has a hidden layer with 100 nodes, the activation function is ReLU[45], and the dropout is set to 0.5. The final output layer uses a single node to predict the RUL value.</p>
+<h3 id="4-result-analysis"><a href="#4-result-analysis" class="headerlink" title="4 result analysis"></a>4 result analysis</h3><h4 id="4-1-parameter-study"><a href="#4-1-parameter-study" class="headerlink" title="4.1 parameter study"></a>4.1 parameter study</h4><p><strong>feature head</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2addea.png" >
+</div>
+
+<p><strong>time head</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade24.png" >
+</div>
+
+<p><strong>Impact of RNN Cell</strong></p>
+<p>RNN and GRU：Among them, RNN has the worst performance, followed by GRU. Meanwhile, the repeated trials of these two models are not as stable as others.</p>
+<p>Bi-LSTM performs better than GRU but worse than LSTM because the bidirectional LSTM increases the model complexity. Further, the Bi-LSTM is intended to infer the following content through the bidirectional relationship of the sequences. In contrast, the signal sequence of the sensor in the RUL estimation scenario is meaningless when reversed. Therefore BiLSTM did not achieve the desired results.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade73.png" >
+</div>
+
+<p><strong>Impact of Window Size</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b7810.png" >
+</div>
+
+<p><strong>Impact of Piece-Wise RUL</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b787a.png" >
+</div>
+
+<h4 id="4-2-ablation-study"><a href="#4-2-ablation-study" class="headerlink" title="4.2 ablation study"></a>4.2 ablation study</h4><p>Where L denotes the single LSTM network, A denotes the single head attention mechanism on features, F denotes using only multi-head attention on features, and F + T denotes using multi-head attention both on features and sequences.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b78db.png" >
+</div>
+
+
+<h4 id="4-3-Attention-Scheme-Study"><a href="#4-3-Attention-Scheme-Study" class="headerlink" title="4.3 Attention Scheme Study"></a>4.3 Attention Scheme Study</h4><p>Where P is the proposed model; F and S are basic attention weighted in feature and time dimension, respectively; F+S represents first weighted by features and then weighted by time.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb7871b83018a2b7939.png" >
+</div>
+
+<h4 id="4-4Case-Study"><a href="#4-4Case-Study" class="headerlink" title="4.4Case Study"></a>4.4Case Study</h4><h4 id="4-5-Interpretability-of-Attention"><a href="#4-5-Interpretability-of-Attention" class="headerlink" title="4.5. Interpretability of Attention"></a>4.5. Interpretability of Attention</h4><h4 id="4-6-Comparison-with-other-work"><a href="#4-6-Comparison-with-other-work" class="headerlink" title="4.6. Comparison with other work"></a>4.6. Comparison with other work</h4><p>Results on C-MAPSS</p>
+<p>Results on PHM08</p>
+<h3 id="5-Conclution"><a href="#5-Conclution" class="headerlink" title="5 Conclution"></a>5 Conclution</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/12/17/paper-note/RUL/layout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/17/paper-note/RUL/layout/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-12-17 21:28:30 / 修改时间：21:43:05" itemprop="dateCreated datePublished" datetime="2023-12-17T21:28:30+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><p><strong>2021 西安交通大学 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><div align=center>
+<img src="" >
+</div>
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/12/17/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/17/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/" class="post-title-link" itemprop="url">A deep attention residual neural network-based remaining useful life prediction of machinery</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-17 16:59:27" itemprop="dateCreated datePublished" datetime="2023-12-17T16:59:27+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-20 22:03:33" itemprop="dateModified" datetime="2023-12-20T22:03:33+08:00">2023-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery"><a href="#A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery" class="headerlink" title="A deep attention residual neural network-based remaining useful life prediction of machinery"></a>A deep attention residual neural network-based remaining useful life prediction of machinery</h2><p><strong>2021 东北大学 5.6 2区 measurement</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>这篇论文提出了一种新颖的深度注意力残差神经网络（DARNN）用于机械剩余寿命（RUL）的预测。DARNN可以有效提取信号中的降解特征，并且在预测性能和自稳定性上显著优于现有方法。</p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>PHM -&gt; Model-based approaches -&gt; The AI-based approach -&gt; deep learning (DL) -&gt; RNN models for RUL estimation -&gt; Although the above research has achieved great success, the following <strong>limitations</strong> still exist. (1) The performance of the data-driven model depends on a large amount of training data, and the prediction accuracy is still limited by the lack of training samples. (2) In practical application, the established model may be affected by noise, resulting in a serious decline in prediction accuracy.<br>-&gt; <strong>DARNN</strong> is proposed in this paper. The proposed method has the following advantages. (1) The proposed deep attention residual (DAR) module can effectively improve the feature extraction capability of the model and improve the prediction performance of the model. (2) The Bayesian approximation technique is applied to the established model to turn point forecasting into interval forecasting and improve the self-stability of the proposed model.</p>
+<h3 id="2-Proposed-DARNN-model"><a href="#2-Proposed-DARNN-model" class="headerlink" title="2. Proposed DARNN model"></a>2. Proposed DARNN model</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b2c458853aef1653a0.png" >
+</div>
+
+<h4 id="2-1-DAR-module"><a href="#2-1-DAR-module" class="headerlink" title="2.1. DAR module"></a>2.1. DAR module</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef1654de.png" >
+</div>
+
+<p>2.1.1. Temporal convolution<br>Both causal convolution operation as well as dilation rate strategy are used in the temporal convolution to improve the representative extraction capability of the established DL model.<br>(1) Causal convolution:<br>(2) Dilation rate strategy:</p>
+<p>2.1.2. PReLU activation function<br>‘‘Dead ReLU Problem’’ for using the ReLU activation function, i.e., during the process of training, when the weighted inputs of neurons are negative, outputs of neurons become 0 consistently</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165522.png" >
+</div>
+
+<p>2.1.3. Dual attention mechanism</p>
+<p>(1) Channel attention mechanism<br>The channel attention mechanism [28,29] is utilized to judge which channels are more informative, and an attention weights are given to each channel according to their importance.<br>(2) Temporal attention mechanism<br>Similar to the principle of channel attention mechanism, temporal attention mechanism is capable of aggregating some crucial information in the time dimension of feature maps.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165637.png" >
+</div>
+
+<p>2.1.4. BayesIan approximation technique (Dropout)</p>
+<p>To improve the self-stability of model, the Bayesian approximation technique is adopted in our DARNN to reduce the interference from environmental noise and turn point estimation into interval estimation</p>
+<h4 id="2-2-Deep-domain-adaption"><a href="#2-2-Deep-domain-adaption" class="headerlink" title="2.2. Deep domain adaption"></a>2.2. Deep domain adaption</h4><p>In order to solve these two problems and improve the generalization ability of the established model, maximum mean discrepancy is applied to realize deep domain adaption.</p>
+<h3 id="3-Case-study-1-FEMTO-dataset"><a href="#3-Case-study-1-FEMTO-dataset" class="headerlink" title="3. Case study 1: FEMTO dataset"></a>3. Case study 1: FEMTO dataset</h3><h4 id="3-1-Data-description"><a href="#3-1-Data-description" class="headerlink" title="3.1. Data description"></a>3.1. Data description</h4><p>z-score</p>
+<h4 id="3-2-Prognostic-metrics"><a href="#3-2-Prognostic-metrics" class="headerlink" title="3.2. Prognostic metrics"></a>3.2. Prognostic metrics</h4><ol>
+<li>RMSE</li>
+<li>score</li>
+<li>CRA is also used to illustrate performance of models. The closer the calculated CRA value is to 1, the smaller the relative error between the real values and the predicted values is. CRA is defined as:</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b2c458853aef165213.png" >
+</div>
+
+<h4 id="3-3-Hyperparameters-selection-of-DARNN"><a href="#3-3-Hyperparameters-selection-of-DARNN" class="headerlink" title="3.3. Hyperparameters selection of DARNN"></a>3.3. Hyperparameters selection of DARNN</h4><p>Rectified Adam (RAdam) Optimizer ,early stopping and gradient cropping<br>to promote the convergence of the model, the RUL label corresponding to the data is converted into RUL percentage for training.</p>
+<h4 id="3-4-Ablation-studies"><a href="#3-4-Ablation-studies" class="headerlink" title="3.4. Ablation studies"></a>3.4. Ablation studies</h4><p>(1) Effectiveness of dual attention block:<br>a model without dual attention mechanism,</p>
+<p>(2) Effectiveness of temporal convolution: Meanwhile, a model with traditional convolution is also established,</p>
+<h4 id="3-5-Experiment-results-and-discussion"><a href="#3-5-Experiment-results-and-discussion" class="headerlink" title="3.5. Experiment results and discussion"></a>3.5. Experiment results and discussion</h4><p>3.5.1. Effectiveness of the proposed DARNN<br>the absolute value of Pearson correlation coefficient is adopted to evaluate the correlation between features and predicted values. The Pearson correlation coefficient is defined as</p>
+<p>3.5.2. Comparison and discussion</p>
+<p>3.5.3. Self-stability of the proposed DARNN<br>Signal–Noise ratio (SNR) is usually used to describe the level of noise in the signal, which is defined as</p>
+<p><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00e0c458853aef1719f3.png" >
+</div><br>where 𝑃𝑆 and 𝑃𝑁 denote the power of signal and noise respectively. The lower the SNR, the larger the random noise contained in the data, e.g., when the SNR equals 0 dB, the power of noise is equivalent to that of the original signal. In the experiment, signals with different levels of additive white Gaussian noise from −2 dB to 8 dB were used as noisy data.</p>
+<h3 id="4-Case-study-2-CAMPSS-dataset"><a href="#4-Case-study-2-CAMPSS-dataset" class="headerlink" title="4. Case study 2: CAMPSS dataset"></a>4. Case study 2: CAMPSS dataset</h3><p>4.1. Dataset description and preprocessing<br>preprocess the training data set and the test data set by using min–max normalization and time window strategy, and the size of time window is 30.</p>
+<p>4.2. Experiment results and discussion</p>
+<h3 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h3><p>(1) In this paper, a DAR module is proposed to improve the representations extraction capability and prediction performance. Also, the Bayesian approximation technique is also applied to the proposed DARNN model to improve the self-stability of the DARNN model. (2) To demonstrate the effectiveness and superiority of the proposed DARNN, we organized two case study experiments. In the first case study, rolling element bearing dataset is adopted to illustrate the effectiveness and self-stability of the proposed DARNN model. In the second experiment, the famous CMAPSS dataset is utilized to further validate the effectiveness of the proposed model by making a comparison with the four state-of-art methods. The experimental results demonstrate the proposed model actually has better performance compared with other four data driven methods.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/12/17/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/17/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/" class="post-title-link" itemprop="url">Deep separable convolutional network for remaining useful life prediction of machinery</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-17 15:15:09" itemprop="dateCreated datePublished" datetime="2023-12-17T15:15:09+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-21 11:47:50" itemprop="dateModified" datetime="2023-12-21T11:47:50+08:00">2023-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery"><a href="#Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery" class="headerlink" title="Deep separable convolutional network for remaining useful life prediction of machinery"></a>Deep separable convolutional network for remaining useful life prediction of machinery</h2><p><strong>2019 西安交通大学 8.4 1区 Mechanical Systems and Signal Processing</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>These deep learning-based prognostics approaches, however, have the following weaknesses: 1) Their prediction performance largely depends on the hand-crafted feature design. 2) The correlations of different sensor data are not explicitly considered in representation learning.</p>
+<h3 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1 introduction"></a>1 introduction</h3><ul>
+<li>With the advancement of sensor technologies, telecommunications and computer science, industrial internet of things has been widely applied into health monitoring of machinery in recent years, and a considerable number of monitoring data are acquired by multiple sensors during machine operation.</li>
+<li>In general,<strong>data-driven RUL prediction</strong> consists of four major processes: data acquisition, feature extraction and selection, degradation behavior learning and RUL estimation<br>Recently, <strong>deep learning</strong> [13] is gaining more and more attention in data-driven RUL prediction. </li>
+<li>Although deep learning has achieved promising results in RUL prediction of machinery, existing prognostics approaches suffer from the following limitations. 1) Their prediction performance largely depends on the hand-crafted feature design in RUL prediction of many machines 2) Current deep prognostics models do not explicitly consider the correlations of different sensor data in representation learning.</li>
+<li>To deal with the above-mentioned limitations, a new deep prognostics network, named deep separable convolutional network (DSCN), is proposed for RUL prediction of machinery in this paper.</li>
+</ul>
+<h3 id="2-preliminary"><a href="#2-preliminary" class="headerlink" title="2 preliminary"></a>2 preliminary</h3><h4 id="2-1Convolutional-networks"><a href="#2-1Convolutional-networks" class="headerlink" title="2.1Convolutional networks"></a>2.1Convolutional networks</h4><p>1) Convolutional layer.<br>2) Pooling layer.<br>3) Fully-connected layer.</p>
+<h4 id="2-2-Residual-connections-for-convolutional-networks"><a href="#2-2-Residual-connections-for-convolutional-networks" class="headerlink" title="2.2. Residual connections for convolutional networks"></a>2.2. Residual connections for convolutional networks</h4><p>Residual connections are first proposed by He et al. in [27], aiming at reducing the training complexity of convolutional networks and enabling them to be substantially deeper.</p>
+<h3 id="3-Proposed-DSCN-for-RUL-prediction-of-machinery"><a href="#3-Proposed-DSCN-for-RUL-prediction-of-machinery" class="headerlink" title="3 Proposed DSCN for RUL prediction of machinery"></a>3 Proposed DSCN for RUL prediction of machinery</h3><h4 id="3-1-Separable-convolutions"><a href="#3-1-Separable-convolutions" class="headerlink" title="3.1. Separable convolutions"></a>3.1. Separable convolutions</h4><p>multi-channel time-series data are usually used as the inputs of deep prognostics models, where each channel represents one sensor sequence,aiming to effectively model interrelationships of different sensor data by decoupling temporal correlations and cross-channel correlations.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27d21.png" >
+</div>
+
+<p>代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Separable_conv</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_ch, out_ch</span>):</span><br><span class="line">        <span class="built_in">super</span>(Separable_conv, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.channelwise_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                          out_channels=in_ch,</span><br><span class="line">                                          kernel_size=<span class="number">8</span>,</span><br><span class="line">                                          stride=<span class="number">1</span>,</span><br><span class="line">                                          groups=in_ch)</span><br><span class="line">        <span class="comment">#在创建conv1d时指定groups数量可以设定卷积核数量实现separable_conv</span></span><br><span class="line">        self.point_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                    out_channels=out_ch,</span><br><span class="line">                                    kernel_size=<span class="number">1</span>,</span><br><span class="line">                                    stride=<span class="number">1</span>,</span><br><span class="line">                                    padding=<span class="number">0</span>,</span><br><span class="line">                                    groups=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,<span class="built_in">input</span></span>):</span><br><span class="line">        <span class="built_in">input</span> = F.pad(<span class="built_in">input</span>=<span class="built_in">input</span>, pad=(<span class="number">4</span>,<span class="number">3</span>), mode=<span class="string">&#x27;constant&#x27;</span>, value=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># print(input.shape)</span></span><br><span class="line">        out = self.channelwise_conv(<span class="built_in">input</span>)</span><br><span class="line">        out = self.point_conv(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<p><strong>conv1d中groups作用</strong></p>
+<ul>
+<li>groups: 控制输入和输出之间的连接， group=1，输出是所有的输入的卷积；group=2，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来。</li>
+</ul>
+<p>groups=1时与标准卷积一致，具体作用参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/616003771">1</a></p>
+<h4 id="3-2-Feature-response-recalibrations"><a href="#3-2-Feature-response-recalibrations" class="headerlink" title="3.2. Feature response recalibrations"></a>3.2. Feature response recalibrations</h4><p>the process of feature response recalibrations is comprised of two steps, including squeeze operation and excitation operation.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27e00.png" >
+</div>
+
+<h4 id="3-3-Separable-convolutional-building-blocks"><a href="#3-3-Separable-convolutional-building-blocks" class="headerlink" title="3.3. Separable convolutional building blocks"></a>3.3. Separable convolutional building blocks</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f2c458853aefe27e92.png" >
+</div>
+
+<p><strong>pre-activate</strong><br>BN and ReLU are added after convolution operations in the standard convolutional networks, but this postactivation strategy may not take full advantage of the benefits of BN in the convolutional networks with residual connections [33].the pre-activation strategy in [33] is also used to improve the regularization of DSCN so as to relieve the problem of overfitting.<br><strong>bn</strong><br>the use of BN is to make the input distribution of each separable convolution more stable and reduce the overfitting [34]. Further, BN is able to allow DSCN to use much higher learning rates and to be insensitive to the parameter initialization.<br><strong>identity skip connection</strong><br>kernel size为1<br>stride为4，为了与另一条conv输出特征一样的conv1d</p>
+<h4 id="3-4-Architecture-of-the-proposed-DSCN"><a href="#3-4-Architecture-of-the-proposed-DSCN" class="headerlink" title="3.4. Architecture of the proposed DSCN"></a>3.4. Architecture of the proposed DSCN</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27b76.png" >
+</div>
+
+<p>1) The representation learning sub-network firstly uses a separable convolutional layer to convolute the input sensor data，$\rightarrow$ an average pooling layer is employed to conduct down-sampling $\rightarrow$  forwarded to succeeding separable convolutional building blocks to obtain higher-level representations<br>2) The RUL estimation sub-network utilizes a global average pooling layer to receive the high-level representations from the representation learning sub-network,</p>
+<h3 id="4-Experimental-verification"><a href="#4-Experimental-verification" class="headerlink" title="4. Experimental verification"></a>4. Experimental verification</h3><h4 id="4-1-Case-study-1-XJTU-SU-dataset"><a href="#4-1-Case-study-1-XJTU-SU-dataset" class="headerlink" title="4.1. Case study 1: XJTU-SU dataset"></a>4.1. Case study 1: XJTU-SU dataset</h4><p>4.1.1. Data description</p>
+<p>4.1.2. Evaluation metrics</p>
+<p>1) Scoring function<br>2) RMSE</p>
+<p>4.1.3. Data preprocessing</p>
+<p>1) Normalization<br>2) Time window embedding</p>
+<p><strong>4.1.4. Configuration of DSCN</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27bf7.png" >
+</div>
+
+<p>hyperparameters are determined by performing 4-fold cross-validation on the training datasets</p>
+<p>the input to net is (batch_size,chanel,time_windows_lengh*time_sequence_length)<br>(128,2,5*2560)<br>the out put of net is (128)</p>
+<p><strong>4.1.5. Experimental results</strong></p>
+<p>1) Analysis of time window embedding<br>the time window embedding is able to gather more useful degradation information<br>2) Effect of dimensionality reduction ratio and network depth<br>The dimensionality reduction ratio r is a critical hyperparameter in the SE units, whose size may affect the capacity and computational cost of SE units.<br>3) Benefits of separable convolutions and feature response recalibrations<br>the network with standard convolutions (denoted as standard ConvNet) and the network with separable convolutions (denoted as separable ConvNet). Except for not containing the SE units, these two prognostics networks have the same architecture and hyperparameter settings as the proposed DSCN.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb835c458853aefe37206.png" >
+</div>
+
+<p>4) Comparison with state-of-the-art prognostics approaches<br>SVM [9], DBN [24], multi-scale CNN (MCNN) [25] and convolutional LSTM (CLSTM) [26].</p>
+<h4 id="4-2-Case-study-2-Public-C-MAPSS-datasets"><a href="#4-2-Case-study-2-Public-C-MAPSS-datasets" class="headerlink" title="4.2. Case study 2: Public C-MAPSS datasets"></a>4.2. Case study 2: Public C-MAPSS datasets</h4><p>4.2.1. C-MAPSS datasets</p>
+<p><strong>4.2.2. Prognostics results, comparison and discussion</strong></p>
+<p>using min-max scaling [28]. In addition, a time window of size 30.piece-wise linear degradation assumption,the same configuration tabulated in Table 2 except for the time window size<br>the input of net is (batch_size,num_sensor,time_windows_lengh*time_sequence_length)<br>(128,14,30*1)</p>
+<h3 id="5-Conclusions"><a href="#5-Conclusions" class="headerlink" title="5. Conclusions"></a>5. Conclusions</h3><p>引入可分离卷积操作来代替标准卷积操作，以有效地建模不同传感器数据之间的相互关系。同时，为了提高对信息特征图的敏感性，构建了一个SE单元来执行自适应特征响应重新校准<br>1）DSCN直接使用原始的多传感器数据作为输入，摆脱了手动特征提取和选择的复杂过程。2）DSCN明确考虑了不同传感器数据之间的相关性。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -201,7 +926,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/14/new-study-note/new-study-note4/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/2023/12/14/new-study-note/new-study-note4/" class="post-title-link" itemprop="url">new-study-note4</a>
         </h2>
 
         <div class="post-meta-container">
@@ -214,6 +939,22 @@
 
       <time title="创建时间：2023-12-14 09:43:37" itemprop="dateCreated datePublished" datetime="2023-12-14T09:43:37+08:00">2023-12-14</time>
     </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-26 11:27:52" itemprop="dateModified" datetime="2024-01-26T11:27:52+08:00">2024-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -225,7 +966,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h2 id="数据扩充"><a href="#数据扩充" class="headerlink" title="数据扩充"></a>数据扩充</h2><p>对于时间序列，当数据长度不满足于time_window时可以采用插值或填充首数据的方法获取数据（对于CMAPSS数据集）。</p>
+<h3 id="插值：todo"><a href="#插值：todo" class="headerlink" title="插值：todo"></a>插值：todo</h3><h3 id="拟合"><a href="#拟合" class="headerlink" title="拟合"></a>拟合</h3><p>多项式拟合（Polynomial Fitting）：多项式拟合是一种基本的拟合方法，它使用多项式函数来逼近数据。多项式拟合可以通过最小二乘法（Least Squares Method）或使用多项式拟合函数（如<code>numpy.polyfit</code>）来实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例散点数据</span></span><br><span class="line">x_data = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br><span class="line">y_data = np.array([<span class="number">1.2</span>, <span class="number">1.9</span>, <span class="number">3.2</span>, <span class="number">4.1</span>, <span class="number">5.5</span>, <span class="number">6.8</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拟合多项式的阶数</span></span><br><span class="line">degree = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多项式拟合</span></span><br><span class="line">coefficients = np.polyfit(x_data, y_data, degree)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据拟合系数生成拟合曲线的x值</span></span><br><span class="line">x_fit = np.linspace(<span class="built_in">min</span>(x_data), <span class="built_in">max</span>(x_data), <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算拟合曲线的y值</span></span><br><span class="line">y_fit = np.polyval(coefficients, x_fit)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制原始散点和拟合曲线</span></span><br><span class="line">plt.scatter(x_data, y_data, label=<span class="string">&#x27;Data&#x27;</span>)</span><br><span class="line">plt.plot(x_fit, y_fit, <span class="string">&#x27;r&#x27;</span>, label=<span class="string">&#x27;Fit&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Polynomial Fitting&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment">#具体例子</span></span><br><span class="line"><span class="comment">#多项式拟合</span></span><br><span class="line">data = np.zeros((time_window, self.x.shape[<span class="number">1</span>]))</span><br><span class="line"><span class="comment">#对每一列数据单独计算</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(data.shape[<span class="number">1</span>]):</span><br><span class="line">    x_old = np.linspace(<span class="number">0</span>, <span class="built_in">len</span>(self.x)-<span class="number">1</span>, <span class="built_in">len</span>(self.x), dtype=np.float64)</span><br><span class="line">    <span class="comment">#用原来的数据通过polyfit求出参数</span></span><br><span class="line">    params = np.polyfit(x_old, self.x[:, j].flatten(), deg=<span class="number">1</span>)</span><br><span class="line">    k = params[<span class="number">0</span>]</span><br><span class="line">    b = params[<span class="number">1</span>]</span><br><span class="line">    x_new = np.linspace(<span class="number">0</span>, time_window-<span class="number">1</span>, time_window, dtype=np.float64)</span><br><span class="line">    <span class="comment">#用新的x和参数计算新的值</span></span><br><span class="line">    data[:, j] = (x_new * <span class="built_in">len</span>(self.x) / time_window * k + b)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><p>直接用首第一个元素pad成time_window长度，对于ndarry可以直接用np.pad</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=np.pad(self.x, ((time_window - self.x.shape[0], 0), (0, 0)), &#x27;edge&#x27;)</span><br><span class="line">X=data[:, 5:-2]</span><br></pre></td></tr></table></figure>
+<h2 id="轴承故障诊断-振动信号分析"><a href="#轴承故障诊断-振动信号分析" class="headerlink" title="轴承故障诊断-振动信号分析"></a>轴承故障诊断-振动信号分析</h2><h3 id="时域"><a href="#时域" class="headerlink" title="时域"></a>时域</h3><h4 id="时域波形"><a href="#时域波形" class="headerlink" title="时域波形"></a>时域波形</h4><h3 id="频域"><a href="#频域" class="headerlink" title="频域"></a>频域</h3><h4 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h4><p>通过频谱分析我们可以将信号从其原始的时间域（即随时间变化的形式）转换到频域（即按频率分布的形式）。<br>然而，传统的傅里叶变换有一个限制：它假设信号是平稳的，即其频率成分不会随时间改变。</p>
+<h4 id="频谱"><a href="#频谱" class="headerlink" title="频谱"></a>频谱</h4><p>傅里叶谱（即频谱）表示：某一点频率上的幅值表示在整个信号里和在整个时间范围内，有一个含有此频率的三角函数组分。（横坐标为频率，纵坐标为幅值）</p>
+<h4 id="包络谱"><a href="#包络谱" class="headerlink" title="包络谱"></a>包络谱</h4><p>包络谱：对信号进行hilbert变换之后，然后取极值，然后对取极值之后得到的一维数据取包络，对包络信号进行FFT变换得到的数据。（横坐标为频率，纵坐标为幅值）包络谱对冲击事件的故障比较敏感。包络谱图中各频率幅值的分布与的频谱图有所区别。频谱图中故障特征频率幅值较小，包络谱图中故障特征频率的幅值很高，窖易辨认。闪此，相对对于频谱分析，包络谱分析剔除了不必要的频率干扰，更能够凸显故障特征频率。根据包络谱图能更容易地对滚动轴承的故障种类进行判断。</p>
+<p>频谱与包络谱的频率分布没有多大关系，①<strong>包络谱峰值较高的地方表示原始信号在该频率处有对应的频率分量</strong>；<strong>频谱峰值高的地方表示</strong>在整个信号里和在整个时间范围内，<strong>有一个含有此频率的三角函数组分</strong>。②频谱是直接对原信号做fft；包络谱是对原信号做hilbert变换之后的曲线取的包络线进行fft，得到的频域曲线理应不同。</p>
+<h3 id="时频域"><a href="#时频域" class="headerlink" title="时频域"></a>时频域</h3><h4 id="STFT"><a href="#STFT" class="headerlink" title="STFT"></a>STFT</h4><p>对FFT进行加窗</p>
+<p>在短时傅里叶变换（STFT）中，窗口函数及其大小选择是分析的关键。窗口函数决定了在任何给定时间点，信号的哪一部分被用于分析。窗口大小的选择直接影响了分析结果的时间分辨率和频率分辨率，这是进行有效STFT分析的最重要的权衡。</p>
+<p>窗口大小的时间分辨率影响：时间分辨率与窗口的宽度密切相关。一个窄窗口提供较高的时间分辨率，因为它捕捉了信号在很短时间内的变化。这对于分析包含快速变化的瞬态事件，如敲击声或爆炸声，是非常有用的。然而，较小的窗口将限制频率分辨率，因为频率分析需要足够的周期来准确估计。</p>
+<p>窗口大小的频率分辨率影响：频率分辨率与窗口的宽度呈反比。一个宽窗口覆盖了信号的较长时间段，提供了较高的频率分辨率。这是因为更多的周期可以在窗口内被分析，从而更准确地确定低频成分。但是，这会牺牲时间分辨率，因为窗口中的信号被假定在这段时间内是平稳的。</p>
+<h4 id="CWT"><a href="#CWT" class="headerlink" title="CWT"></a>CWT</h4><p>高频部分具有较高的时间分辨率和较低的频率分辨率，而低频部分具有较高的频率分辨率和较低的时间分辨率，这就恰好解决了STFT的痛点。（PS：小波是复信号，上图中只画了实部投影）</p>
+<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p>插值与拟合：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927003/article/details/120310513">https://blog.csdn.net/qq_45927003/article/details/120310513</a><br>python常见拟合方法：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/671063617">https://zhuanlan.zhihu.com/p/671063617</a></p>
+<p>从傅里叶变换，到短时傅里叶变换，再到小波分析（CWT：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/589651368">https://zhuanlan.zhihu.com/p/589651368</a></p>
+
       
     </div>
 
@@ -380,7 +1137,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/11/26/paper-note/RUL/todo/">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/11/26/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -398,7 +1155,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/26/paper-note/RUL/todo/" class="post-title-link" itemprop="url">Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction</a>
+          <a href="/2023/11/26/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/" class="post-title-link" itemprop="url">Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction</a>
         </h2>
 
         <div class="post-meta-container">
@@ -416,7 +1173,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-30 15:49:07" itemprop="dateModified" datetime="2023-11-30T15:49:07+08:00">2023-11-30</time>
+      <time title="修改时间：2023-12-16 21:38:58" itemprop="dateModified" datetime="2023-12-16T21:38:58+08:00">2023-12-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -669,660 +1426,8 @@ X^{l+1}=\widetilde{D}^{-1/2}\widetilde{A}\widetilde{D}^{-1/2}X^l</script><p>其�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/11/19/paper-note/RUL/Remaining%20useful%20life%20estimation%20via%20transformer%20encoder%20enhanced%20by%20a%20gated%20convolutional%20unit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/19/paper-note/RUL/Remaining%20useful%20life%20estimation%20via%20transformer%20encoder%20enhanced%20by%20a%20gated%20convolutional%20unit/" class="post-title-link" itemprop="url">Remaining useful life estimation via transformer encoder enhanced by a gated convolutional unit</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-11-19 20:46:53" itemprop="dateCreated datePublished" datetime="2023-11-19T20:46:53+08:00">2023-11-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-26 22:01:33" itemprop="dateModified" datetime="2023-11-26T22:01:33+08:00">2023-11-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Remaining-useful-life-estimation-via-transformer-encoder-enhanced-by-a-gated-convolutional-unit"><a href="#Remaining-useful-life-estimation-via-transformer-encoder-enhanced-by-a-gated-convolutional-unit" class="headerlink" title="Remaining useful life estimation via transformer encoder enhanced by a gated convolutional unit"></a>Remaining useful life estimation via transformer encoder enhanced by a gated convolutional unit</h2><h3 id="Journal-of-Intelligent-Manufacturing-8-3-1区"><a href="#Journal-of-Intelligent-Manufacturing-8-3-1区" class="headerlink" title="Journal of Intelligent Manufacturing 8.3 1区"></a>Journal of Intelligent Manufacturing 8.3 1区</h3><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>使用的数据：C-MAPSS数据集。<br>创新点：论文使用了基于深度神经网络的新方法，采用了Transformer编码器作为模型主体，并结合点积自注意力机制和门控卷积单元，以捕捉时间序列中的短期和长期依赖关系。与传统的卷积神经网络和循环神经网络方法相比，该模型克服了核大小和顺序依赖性的限制，同时充分利用了并行计算的优势。在实验中，该模型在C-MAPSS数据集上展现出优于或与其他现有方法相当的性能，同时通过消融研究证明了所使用组件的必要性和有效性。</p>
-<h2 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>该部分介绍了剩余寿命（RUL）估计的研究背景和传统基于物理模型和数据驱动模型的方法。</p>
-<h3 id="related-work"><a href="#related-work" class="headerlink" title="related work"></a>related work</h3><p>introduces the related work on RUL estimation and backbone of the proposed method </p>
-<p>Deep learning based RUL estimation</p>
-<p>Transformer architecture</p>
-<h3 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h3><p>describe the proposed model structure</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/655caee7c458853aef2fc757.png" >
-</div>
-
-<h4 id="1-Encoder-Layer"><a href="#1-Encoder-Layer" class="headerlink" title="1.Encoder Layer"></a>1.Encoder Layer</h4><h5 id="Multi-head-attention"><a href="#Multi-head-attention" class="headerlink" title="Multi-head attention"></a>Multi-head attention</h5><p>重点是把q，k，v分成H份，移到前面的维度。使计算权重系数a时为每个头分别计算。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MultiHeadAttention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, heads, d_model, dropout=<span class="number">0.5</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.d_model = d_model</span><br><span class="line">        self.d_k = d_model // heads</span><br><span class="line">        self.h = heads</span><br><span class="line"></span><br><span class="line">        self.q_linear = nn.Linear(d_model, d_model)</span><br><span class="line">        self.v_linear = nn.Linear(d_model, d_model)</span><br><span class="line">        self.k_linear = nn.Linear(d_model, d_model)</span><br><span class="line">        self.dropout = nn.Dropout(dropout)</span><br><span class="line">        self.out = nn.Linear(d_model, d_model)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, q, k, v, mask=<span class="literal">None</span></span>):</span><br><span class="line">        bs = q.size(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># perform linear operation and split into h heads</span></span><br><span class="line"></span><br><span class="line">        k = self.k_linear(k).view(bs, -<span class="number">1</span>, self.h, self.d_k)</span><br><span class="line">        q = self.q_linear(q).view(bs, -<span class="number">1</span>, self.h, self.d_k)</span><br><span class="line">        v = self.v_linear(v).view(bs, -<span class="number">1</span>, self.h, self.d_k)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># transpose to get dimensions bs * h * sl * d_model</span></span><br><span class="line"></span><br><span class="line">        k = k.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        q = q.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        v = v.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># calculate attention using function we will define next</span></span><br><span class="line">        scores = attention(q, k, v, self.d_k, mask, self.dropout)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># concatenate heads and put through final linear layer</span></span><br><span class="line">        concat = scores.transpose(<span class="number">1</span>, <span class="number">2</span>).contiguous() \</span><br><span class="line">            .view(bs, -<span class="number">1</span>, self.d_model)</span><br><span class="line">        <span class="comment"># scores.trabspose().contiguous() 使scores不会被改变</span></span><br><span class="line">        output = self.out(concat)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">attention</span>(<span class="params">q, k, v, d_k, mask=<span class="literal">None</span>, dropout=<span class="literal">None</span></span>):</span><br><span class="line">    scores = torch.matmul(q, k.transpose(-<span class="number">2</span>, -<span class="number">1</span>)) / math.sqrt(d_k)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        mask = mask.unsqueeze(<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># scores = scores.masked_fill(mask == 0, -1e9)</span></span><br><span class="line">    scores = F.softmax(scores, dim=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> dropout <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        scores = dropout(scores)</span><br><span class="line"></span><br><span class="line">    output = torch.matmul(scores, v)</span><br><span class="line">    <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
-<h5 id="Feed-forward-network"><a href="#Feed-forward-network" class="headerlink" title="Feed forward network"></a>Feed forward network</h5><p>FC</p>
-<h4 id="2-Local-featrue-extraction-layer"><a href="#2-Local-featrue-extraction-layer" class="headerlink" title="2.Local featrue extraction layer"></a>2.Local featrue extraction layer</h4><h5 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h5><p>Conv2d</p>
-<h5 id="Gating-mechanism"><a href="#Gating-mechanism" class="headerlink" title="Gating mechanism"></a>Gating mechanism</h5><h5 id="Liner-mapping"><a href="#Liner-mapping" class="headerlink" title="Liner mapping"></a>Liner mapping</h5><h5 id="Position-Encoding"><a href="#Position-Encoding" class="headerlink" title="Position Encoding"></a>Position Encoding</h5><div align=center>
-<img src="https://pic.imgdb.cn/item/655caee7c458853aef2fc660.png" >
-</div>
-
-
-<h4 id="3-Regression-layer"><a href="#3-Regression-layer" class="headerlink" title="3.Regression layer"></a>3.Regression layer</h4><h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h4><h5 id="Benchmark-Datasets："><a href="#Benchmark-Datasets：" class="headerlink" title="Benchmark Datasets："></a>Benchmark Datasets：</h5><p>C-MAPSS</p>
-<h5 id="Data-pre-processing："><a href="#Data-pre-processing：" class="headerlink" title="Data pre-processing："></a>Data pre-processing：</h5><p><strong><em>sensor selection</em></strong><br>More specifically, the monotonicity matrix and correlation matrix are used for sensor selection. The monotonicity matrix represents the tendency of features along the time dimension, the feature dimensions with monotonicity contain more abundant degeneration information. The correlation matrix reflects the relationship between feature dimension and operation time.<br>reason:数据集共有26个传感器，但不是所以传感器都有与RUL相关的信息，因此根据论文[1]进行传感器选择。主要计算相关性矩阵和单调矩阵（？）</p>
-<p><strong><em>Normalization</em></strong><br>min-max normalization</p>
-<p><strong><em>Piece-wise RUL</em></strong><br>we first label RULs at the beginning with a constant RU Lmax, i.e., the horizon dot line. After running for a period of time, the system begins to enter a phase of linear degradation until it fails.<br>reason:the system degradation is negligible at the early stage of its life cycle</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/655caee7c458853aef2fc7f1.png" >
-</div>
-
-<h5 id="Implementation-details"><a href="#Implementation-details" class="headerlink" title="Implementation details"></a>Implementation details</h5><p>参数设置</p>
-<h5 id="Evaluation-metric"><a href="#Evaluation-metric" class="headerlink" title="Evaluation metric"></a>Evaluation metric</h5><p>RMSE</p>
-<h4 id="Performers-comparison"><a href="#Performers-comparison" class="headerlink" title="Performers comparison"></a>Performers comparison</h4><h4 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h4><p>1.w/o GCU<br>2.w/o GCU w/o sigmoid</p>
-<h3 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h3><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><blockquote>
-<p>baseline only for FD001<br>( <a target="_blank" rel="noopener" href="https://github.com/jiaxiang-cheng/PyTorch-Transformer-for-RUL-Prediction">https://github.com/jiaxiang-cheng/PyTorch-Transformer-for-RUL-Prediction</a>)</p>
-<p>more complicate realize<br>(<a target="_blank" rel="noopener" href="https://github.com/GuoHaoren/Implementation-of-GCU-Transformer-for-RUL-Prediction-on-CMAPSS">https://github.com/GuoHaoren/Implementation-of-GCU-Transformer-for-RUL-Prediction-on-CMAPSS</a>)</p>
-</blockquote>
-<p>[1]:Wu, Q., Ding, K., &amp; Huang, B. (2018). Approach for fault prognosis using recurrent neural network. Journal of Intelligent Manufacturing, 1–13.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/10/31/new-study-note/new-study-note1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/31/new-study-note/new-study-note1/" class="post-title-link" itemprop="url">new-study-note1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-31 12:15:01" itemprop="dateCreated datePublished" datetime="2023-10-31T12:15:01+08:00">2023-10-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-28 14:43:33" itemprop="dateModified" datetime="2023-11-28T14:43:33+08:00">2023-11-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="type、dtype和astype的区别。"><a href="#type、dtype和astype的区别。" class="headerlink" title="type、dtype和astype的区别。"></a>type、dtype和astype的区别。</h2><p>1、type</p>
-<p>返回的是数据结构类型，如list、dict、numpy.ndarray、pandas.core.frame.DataFrame等。</p>
-<p>2、dtype</p>
-<p>返回的是数据元素类型，如int、str、float等。</p>
-<p>由于list、dict等可以包含不同的数据元素类型，因此不可调用dtype函数，np.array中要求所有元素都属于同一数据类型，因此可以调用dtype函数。</p>
-<p>3、astype</p>
-<p>改变数据元素类型如：float64 —&gt; int32，会将小数部分截断；string_ —&gt; float64 如果字符串数组表示的全是数字，也可以用astype转化为数值类型；如果字符串数组里不是以数字存储，则不能转换。</p>
-<h2 id="用skleran-preprocessing进行数据预处理"><a href="#用skleran-preprocessing进行数据预处理" class="headerlink" title="用skleran.preprocessing进行数据预处理"></a>用skleran.preprocessing进行数据预处理</h2><p>sklearn.preprocessing中含有常用的标准化函数可对DF使用，例如preprocessing.MinMaxScaler()<br>正则化是将样本在向量空间模型上的一个转换，经常被使用在分类与聚类中。 preprocessing.Normalizer()<br>为类别特征编码。preprocessing.OneHotEncoder()<br>标准化也叫z-score。preprocessing.StandardScaler()</p>
-<p><strong>使用案例</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line">input_features = preprocessing.StandardScaler().fit_transform(features)</span><br><span class="line"></span><br><span class="line"><span class="keyword">or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler                <span class="comment">#数据归一化</span></span><br><span class="line">data=[</span><br><span class="line">    [-<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">    ,[-<span class="number">0.5</span>,<span class="number">6</span>]</span><br><span class="line">    ,[<span class="number">0</span>,<span class="number">10</span>]</span><br><span class="line">    ,[<span class="number">1</span>,<span class="number">18</span>]</span><br><span class="line">]</span><br><span class="line">scaler=MinMaxScaler(feature_range=[<span class="number">5</span>,<span class="number">10</span>])                     <span class="comment">#实例化（feature_range为范围）</span></span><br><span class="line">scaler_fit=scaler.fit(data)                                   <span class="comment">#模型，如果fit报错特征值过多无法计算可用partial_fit</span></span><br><span class="line">result=scaler_fit.transform(data)                             <span class="comment">#输出接口</span></span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(scaler.fit_transform(data))                             <span class="comment">#fit和transform的综合，等于将2和3步合并</span></span><br><span class="line"><span class="built_in">print</span>(scaler.inverse_transform(result))                       <span class="comment">#逆转归一化</span></span><br></pre></td></tr></table></figure>
-<h2 id="exponential-smoothing"><a href="#exponential-smoothing" class="headerlink" title="exponential-smoothing"></a>exponential-smoothing</h2><p><strong>基本原理</strong>：指数平滑法是移动平均法中的一种，其特点在于给过去的观测值不一样的权重，即较近期观测值的权数比较远期观测值的权数要大。根据平滑次数不同，指数平滑法分为一次指数平滑法、二次指数平滑法和三次指数平滑法等。但它们的基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权数，新数据给予较大的权数，旧数据给予较小的权数。</p>
-<p><strong>计算公式</strong></p>
-<div align=center>
-<img src=https://pic.imgdb.cn/item/656571bec458853aefc587b0.png >
-</div>
-
-<p><strong>对于DF数据的快速实现</strong><br>NDFrame.ewm()快速计算指数加权移动平均数（Exponential Weighted Moving Average），用于计算时间序列数据的平均值。</p>
-<blockquote>
-<p>DataFrame.ewm(self, com=None, span=None, halflife=None, alpha=None, min_periods=0, adjust=True, ignore_na=False, axis=0)</p>
-</blockquote>
-<p><strong>com</strong>：根据质心指定衰减， α=1/(1+com), for com≥0</p>
-<p><strong>span</strong> ：根据范围指定衰减， α=2/(span+1), for span≥1</p>
-<p><strong>halflife</strong> ：根据半衰期指定衰减， α=1−exp(log(0.5)/halflife),forhalflife&gt;0</p>
-<p><strong>alpha</strong>：直接指定平滑系数α， 0&lt;α≤1。</p>
-<p><strong>min_periods</strong> ：窗口中具有值的最小观察数</p>
-<p>用.mean()进行调用</p>
-<p><strong>示例</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">input</span> :</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;B&#x27;</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, np.nan, <span class="number">4</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br><span class="line"><span class="built_in">print</span>(df.ewm(span=<span class="number">2</span>).mean())</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">     B</span><br><span class="line"><span class="number">0</span>  <span class="number">0.0</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1.0</span></span><br><span class="line"><span class="number">2</span>  <span class="number">2.0</span></span><br><span class="line"><span class="number">3</span>  NaN</span><br><span class="line"><span class="number">4</span>  <span class="number">4.0</span></span><br><span class="line">          B</span><br><span class="line"><span class="number">0</span>  <span class="number">0.000000</span></span><br><span class="line"><span class="number">1</span>  <span class="number">0.750000</span></span><br><span class="line"><span class="number">2</span>  <span class="number">1.615385</span></span><br><span class="line"><span class="number">3</span>  <span class="number">1.615385</span></span><br><span class="line"><span class="number">4</span>  <span class="number">3.670213</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="DF中的groupby"><a href="#DF中的groupby" class="headerlink" title="DF中的groupby"></a>DF中的groupby</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;key1&#x27;</span> : [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;a&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;key2&#x27;</span> : [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;one&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;data1&#x27;</span> : np.random.randn(<span class="number">5</span>),</span><br><span class="line">    <span class="string">&#x27;data2&#x27;</span> : np.random.randn(<span class="number">5</span>)&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用groupby对DF按某一列分组DF.groupby(&#x27;keyname&#x27;),返回DataFrameGroupBy，可用list(grouped)进行查看</span></span><br><span class="line">grouped = df[<span class="string">&#x27;data1&#x27;</span>].groupby(df[<span class="string">&#x27;key1&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#GroupBy对象支持迭代操作，会产生一个由分组变量名和数据块组成的二元元组：</span></span><br><span class="line"><span class="keyword">for</span> (k1,k2), group <span class="keyword">in</span> df.groupby([<span class="string">&#x27;key1&#x27;</span>,<span class="string">&#x27;key2&#x27;</span>]):</span><br><span class="line">    <span class="built_in">print</span> k1,k2</span><br><span class="line">    <span class="built_in">print</span> group</span><br><span class="line"></span><br><span class="line"><span class="comment">#分组后常用操作包括：求和(sum)、平均值(mean)、计数(count)等等</span></span><br><span class="line">grouped.mean()</span><br><span class="line">df.groupby(<span class="string">&#x27;key1&#x27;</span>)[<span class="string">&#x27;data1&#x27;</span>].agg([<span class="string">&#x27;sum&#x27;</span>,<span class="string">&#x27;mean&#x27;</span>,<span class="string">&#x27;std&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#group后进行apply操作，在每一个分组内进行操作</span></span><br><span class="line">df.groupby(<span class="string">&#x27;key1&#x27;</span>)[<span class="string">&#x27;data1&#x27;</span>].apply(<span class="keyword">lambda</span> x: x.ewm(alpha=alpha).mean())</span><br><span class="line"></span><br><span class="line"><span class="comment">#把非标准形式转化为标准的 DataFrame 形式，利用的方法就是重置索引reset_index()</span></span><br><span class="line">df.groupby(<span class="string">&#x27;key1&#x27;</span>)[<span class="string">&#x27;data1&#x27;</span>].reset_index(level=<span class="number">0</span>, drop=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/06/07/study-note/study-note7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/07/study-note/study-note7/" class="post-title-link" itemprop="url">study-note7</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-06-07 10:30:57 / 修改时间：14:00:51" itemprop="dateCreated datePublished" datetime="2022-06-07T10:30:57+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><p>在PyTorch中，以下对象可以持久化到硬盘，并能通过相应的方法加载到内存中：</p>
-<ul>
-<li>Tensor</li>
-<li>Variable</li>
-<li>nn.Module</li>
-<li>Optimizer</li>
-</ul>
-<p>本质上上述这些信息最终都是保存成Tensor。Tensor的保存和加载十分的简单，使用t.save和t.load即可完成相应的功能。在save/load时可指定使用的pickle模块，在load时还可将GPU tensor映射到CPU或其它GPU上。</p>
-<p>我们可以通过<code>t.save(obj, file_name)</code>等方法保存任意可序列化的对象，然后通过<code>obj = t.load(file_name)</code>方法加载保存的数据。对于Module和Optimizer对象，这里建议保存对应的<code>state_dict</code>，而不是直接保存整个Module/Optimizer对象。Optimizer对象保存的主要是参数，以及动量信息，通过加载之前的动量信息，能够有效地减少模型震荡，下面举例说明。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Module对象的保存与加载</span></span><br><span class="line"><span class="keyword">import</span> torch <span class="keyword">as</span> t</span><br><span class="line">t.save(model.state_dict(), <span class="string">&#x27;squeezenet.pth&#x27;</span>)</span><br><span class="line">model.load_state_dict(t.load(<span class="string">&#x27;squeezenet.pth&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<h2 id="文件组织架构"><a href="#文件组织架构" class="headerlink" title="文件组织架构"></a>文件组织架构</h2><p>checkpoints/： 用于保存训练好的模型，可使程序在异常退出后仍能重新载入模型，恢复训练<br>data/：数据相关操作，包括数据预处理、dataset实现等<br>models/：模型定义，可以有多个模型，例如上面的AlexNet和ResNet34，一个模型对应一个文件<br>utils/：可能用到的工具函数，在本次实验中主要是封装了可视化工具<br>config.py：配置文件，所有可配置的变量都集中在此，并提供默认值<br>main.py：主文件，训练和测试程序的入口，可通过不同的命令来指定不同的操作和参数<br>requirements.txt：程序依赖的第三方库<br>README.md：提供程序的必要说明</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├── checkpoints/</span><br><span class="line">├── data/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── dataset.py</span><br><span class="line">│   └── get_data.sh</span><br><span class="line">├── models/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── AlexNet.py</span><br><span class="line">│   ├── BasicModule.py</span><br><span class="line">│   └── ResNet34.py</span><br><span class="line">└── utils/</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── visualize.py</span><br><span class="line">├── config.py</span><br><span class="line">├── main.py</span><br><span class="line">├── requirements.txt</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<h2 id="关于init-py"><a href="#关于init-py" class="headerlink" title="关于init.py"></a>关于<strong>init</strong>.py</h2><p>可以看到，几乎每个文件夹下都有<strong>init</strong>.py，一个目录如果包含了<strong>init</strong>.py 文件，那么它就变成了一个包（package）。<strong>init</strong>.py可以为空，也可以定义包的属性和方法，但其必须存在，其它程序才能从这个目录中导入相应的模块或函数。例如在data/文件夹下有<strong>init</strong>.py，则在main.py 中就可以<br><code>from data.dataset import DogCat</code></p>
-<p>而如果在data/<strong>init</strong>.py中写入<br><code>from .dataset import DogCat</code><br>则在main.py中就可以直接写为：<br><code>from data import DogCat</code></p>
-<h2 id="hasattr-getattr-setattr"><a href="#hasattr-getattr-setattr" class="headerlink" title="hasattr,getattr,setattr"></a>hasattr,getattr,setattr</h2><h3 id="hasattr-object-name-函数"><a href="#hasattr-object-name-函数" class="headerlink" title="hasattr(object,name) 函数"></a>hasattr(object,name) 函数</h3><p>判断一个对象里面是否有 name 属性或者 name 方法，返回 bool 值，如果有 name 属性（方法）则返回 True ，否则返回 False 。注意： name 需要使用引号括起来。</p>
-<h3 id="getattr-object-name-default-函数"><a href="#getattr-object-name-default-函数" class="headerlink" title="getattr(object,name[,default]) 函数"></a>getattr(object,name[,default]) 函数</h3><p>获取对象 object 的属性或者方法，若存在则打印出来；若不存在，则打印默认值，默认值可选。注意：如果返回的是对象的方法，那么打印的结果是方法的内存地址。如果需要运行这个方法，那么可以在后面添加括号 () 。</p>
-<h3 id="setattr-object-name-values-函数"><a href="#setattr-object-name-values-函数" class="headerlink" title="setattr(object,name,values) 函数"></a>setattr(object,name,values) 函数</h3><p>给对象的属性赋值，若属性不存在，则先创建再赋值。</p>
-<h2 id="torch进入no-grad-的两种方式"><a href="#torch进入no-grad-的两种方式" class="headerlink" title="torch进入no_grad()的两种方式"></a>torch进入no_grad()的两种方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">eval</span>()                                </span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">   <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@torch.no_grad()</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">eval</span>():</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
-<h2 id="与-区别"><a href="#与-区别" class="headerlink" title="/与../区别"></a>/与../区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40967319/article/details/107671625">https://blog.csdn.net/qq_40967319/article/details/107671625</a></p>
-<h2 id="nn-Module和nn-functinal中模型的区别"><a href="#nn-Module和nn-functinal中模型的区别" class="headerlink" title="nn.Module和nn.functinal中模型的区别"></a>nn.Module和nn.functinal中模型的区别</h2><p>如果模型有可学习的参数，最好用nn.Module，否则既可以使用nn.functional也可以使用nn.Module，二者在性能上没有太大差异，具体的使用取决于个人的喜好。<strong>如激活函数（ReLU、sigmoid、tanh），池化（MaxPool）等层由于没有可学习参数，则可以使用对应的functional函数代替，而对于卷积、全连接等具有可学习参数的网络建议使用nn.Module</strong>。下面举例说明，如何在模型中搭配使用nn.Module和nn.functional。另外虽然dropout操作也没有可学习操作，但建议还是使用<code>nn.Dropout</code>而不是<code>nn.functional.dropout</code>，因为dropout在训练和测试两个阶段的行为有所差别，使用<code>nn.Module</code>对象能够通过<code>model.eval</code>操作加以区分。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/30/study-note/study-note6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/30/study-note/study-note6/" class="post-title-link" itemprop="url">study-note6</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-05-30 23:14:05 / 修改时间：23:33:06" itemprop="dateCreated datePublished" datetime="2022-05-30T23:14:05+08:00">2022-05-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="zip函数的用法"><a href="#zip函数的用法" class="headerlink" title="zip函数的用法"></a>zip函数的用法</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn15698845876/article/details/73411541?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-73411541-blog-79242387.pc_relevant_antiscanv3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-73411541-blog-79242387.pc_relevant_antiscanv3&amp;utm_relevant_index=5">参考</a></p>
-<h2 id="pytorch常用工具模块"><a href="#pytorch常用工具模块" class="headerlink" title="pytorch常用工具模块"></a>pytorch常用工具模块</h2><p>针对上述问题，PyTorch提供了torchvision。它是一个视觉工具包，提供了很多视觉图像处理的工具，其中<code>transforms</code>模块提供了对PIL <code>Image</code>对象和<code>Tensor</code>对象的常用操作。</p>
-<p>对PIL Image的操作包括：</p>
-<ul>
-<li><code>Scale</code>：调整图片尺寸，长宽比保持不变</li>
-<li><code>CenterCrop</code>、<code>RandomCrop</code>、<code>RandomResizedCrop</code>： 裁剪图片</li>
-<li><code>Pad</code>：填充</li>
-<li><code>ToTensor</code>：将PIL Image对象转成Tensor，会自动将[0, 255]归一化至[0, 1]</li>
-</ul>
-<p>对Tensor的操作包括：</p>
-<ul>
-<li>Normalize：标准化，即减均值，除以标准差</li>
-<li>ToPILImage：将Tensor转为PIL Image对象</li>
-</ul>
-<p>如果要对图片进行多个操作，可通过<code>Compose</code>函数将这些操作拼接起来，类似于<code>nn.Sequential</code>。注意，这些操作定义后是以函数的形式存在，真正使用时需调用它的<code>__call__</code>方法，这点类似于<code>nn.Module</code>。例如要将图片调整为$224\times 224$，首先应构建这个操作<code>trans = Resize((224, 224))</code>，然后调用<code>trans(img)</code>。下面我们就用transforms的这些操作来优化上面实现的dataset。<br>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">transform = T.Compose([</span><br><span class="line">    T.Resize(<span class="number">224</span>), <span class="comment"># 缩放图片(Image)，保持长宽比不变，最短边为224像素</span></span><br><span class="line">    T.CenterCrop(<span class="number">224</span>), <span class="comment"># 从图片中间切出224*224的图片</span></span><br><span class="line">    T.ToTensor(), <span class="comment"># 将图片(Image)转成Tensor，归一化至[0, 1]</span></span><br><span class="line">    T.Normalize(mean=[<span class="number">.5</span>, <span class="number">.5</span>, <span class="number">.5</span>], std=[<span class="number">.5</span>, <span class="number">.5</span>, <span class="number">.5</span>]) <span class="comment"># 标准化至[-1, 1]，规定均值和标准差</span></span><br><span class="line">])</span><br><span class="line">data=transform（data）</span><br></pre></td></tr></table></figure>
-<h2 id="fliter函数的用法"><a href="#fliter函数的用法" class="headerlink" title="fliter函数的用法"></a>fliter函数的用法</h2><p>filter() 函数用于过滤列表形式的序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表，并以迭代器对象的形式返回。<br><code>filter(function, iterable)</code></p>
-<ul>
-<li>function – 判断函数。</li>
-<li>iterable – 可迭代对象。</li>
-</ul>
-<p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">过滤出列表中的所有奇数</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_odd</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></span><br><span class="line">newlist = <span class="built_in">filter</span>(is_odd, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</span><br><span class="line"><span class="comment"># 因为返回的是迭代器，所以要打印出迭代器中每个元素</span></span><br><span class="line"><span class="built_in">print</span>(newlist.__next__())</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/20/study-note/study-note5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/20/study-note/study-note5/" class="post-title-link" itemprop="url">study-note5</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-20 13:26:21" itemprop="dateCreated datePublished" datetime="2022-05-20T13:26:21+08:00">2022-05-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-07 14:22:03" itemprop="dateModified" datetime="2022-06-07T14:22:03+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="colab的使用"><a href="#colab的使用" class="headerlink" title="colab的使用"></a>colab的使用</h2><p>将文件（代码和dataset）上传到Googledrive中在云盘中进入需要创建ipynb的地方打开colab（此时会在改目录下创建ipynb），在ipynb中运行代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载盘</span></span><br><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&#x27;/content/drive/&#x27;</span>) <span class="comment">#目前还无法挂载云盘指定的文件，只能将云盘整个挂载上来</span></span><br><span class="line"><span class="comment"># 指定当前的工作文件夹</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># 此处为google drive中的文件路径,drive为之前指定的工作根目录，要加上</span></span><br><span class="line">os.chdir(<span class="string">&quot;/content/drive/My Drive/Colab/Notebooks/17.yoloV3&quot;</span>) </span><br><span class="line"><span class="comment">###之后就可以在ipynb中import</span></span><br></pre></td></tr></table></figure>
-<h3 id="在colab中的一些常用操作"><a href="#在colab中的一些常用操作" class="headerlink" title="在colab中的一些常用操作"></a>在colab中的一些常用操作</h3><p><code>!pip install</code><br><code>!ls #查看当前路径的文件</code><br><code>!pwd #查看当前路径</code><br><code>!python xxx.py #运行py文件</code></p>
-<h3 id="下载数据集："><a href="#下载数据集：" class="headerlink" title="下载数据集："></a>下载数据集：</h3><ol>
-<li>先定位到要存放数据集的文件地址</li>
-<li><p>对于某些大型数据集可直接在官网找到下载url</p>
-<ul>
-<li>!wget url ##下载数据集</li>
-</ul>
-</li>
-<li><p>对于kaggle中数据集 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433334194">ref</a></p>
-<ul>
-<li>!pip install kaggle</li>
-<li>上传kaggle.json文件到colab中</li>
-<li>!mkdir -p ~/.kaggle<br>!cp kaggle.json ~/.kaggle/<br>!chmod 600 ~/.kaggle/kaggle.json </li>
-<li>在kaggle数据集找到下载api，在前面加上!既可下载</li>
-</ul>
-</li>
-<li><p>解压数据集</p>
-<ul>
-<li>!unzip 解压压缩包（解压时先在根目录解压较快）</li>
-<li><blockquote>
-<p>import zipfile<br>filename=’xxx.zip’<br>outpath=’xxx/xxx’<br>with zipfile.ZipFile(filename) as zfile:<br>  zfile.extractall(outpath)</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="防止colab断开"><a href="#防止colab断开" class="headerlink" title="防止colab断开"></a>防止colab断开</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Thebest_jack/article/details/124565741">https://blog.csdn.net/Thebest_jack/article/details/124565741</a></p>
-<h3 id="colab保存选了模型"><a href="#colab保存选了模型" class="headerlink" title="colab保存选了模型"></a>colab保存选了模型</h3><p>在drive文件夹内的内容会保存到Googledrive上，所以训练后的模型要存到drive下<br>!cp -r checkpoints ‘/content/drive/MyDrive/checkpoints’</p>
-<h2 id="目标检测mAP计算（mean-average-precision）"><a href="#目标检测mAP计算（mean-average-precision）" class="headerlink" title="目标检测mAP计算（mean average precision）"></a>目标检测mAP计算（mean average precision）</h2><p><strong>TP、FP、FN、TN</strong><br>TP（True Positive）：IoU &gt; IoU~threshold~（threshold 一般取 0.5）的检测框数量（同一Ground Truth只计算一次）<br>FP（False Positive）：IoU &lt;= IoU~threshold~的检测框，或者是检测到同一个GT的多余检测框的数量<br>FN（False Negative）：没有检测到的GT的数量<br>TN（True Negative）：在mAP评价指标中不会使用到</p>
-<p><strong>precision和recall</strong><br><img src="https://pic.imgdb.cn/item/6287274909475431292bd9b8.png" alt=""></p>
-<p><strong>ap就是p-r曲线下的面积</strong><br><strong>ap计算过程</strong><br>经过RPN等网络得到proposal -&gt; 对proposal用非极大值抑制筛选部分proposal -&gt;对proposal使用两个准则和ground truth配对并按confidence从大到小排列 -&gt;根据某个confidence计算TP FP FN</p>
-<p><strong>MAP计算和loss计算不同<br>map只是计算proposal和gt的precision<br>loss是计算结果的loss，考虑confidence</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/18/study-note/study-note4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/18/study-note/study-note4/" class="post-title-link" itemprop="url">study-note4</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-05-18 23:12:03 / 修改时间：23:54:41" itemprop="dateCreated datePublished" datetime="2022-05-18T23:12:03+08:00">2022-05-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="bounding-box-目标的外接矩形框"><a href="#bounding-box-目标的外接矩形框" class="headerlink" title="bounding box(目标的外接矩形框)"></a>bounding box(目标的外接矩形框)</h2><p>用来表达bbox的格式通常有两种，(x1, y1, x2, y2) 和 (c_x, c_y, w, h)如图 </p>
-<div align=center>
-<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5992.png'width='70%'higth='70%'>
-</div>
-
-<h2 id="python中assert的用法"><a href="#python中assert的用法" class="headerlink" title="python中assert的用法"></a>python中assert的用法</h2><p>使用assert是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，与其让它在运行时崩溃，不如在出现错误条件时就崩溃。用一个程序说明：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">zero</span>(<span class="params">s</span>):</span><br><span class="line">    a = <span class="built_in">int</span>(s)</span><br><span class="line">    <span class="keyword">assert</span> a &gt; <span class="number">0</span>,<span class="string">&quot;a超出范围&quot;</span>   <span class="comment">#这句的意思：如果a确实大于0，程序正常往下运行</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">zero(<span class="string">&quot;-2&quot;</span>)  <span class="comment">#但是如果a是小于0的，程序会抛出AssertionError错误，报错为参数内容“a超出范围”</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<blockquote>
-<p>Traceback (most recent call last):<br>  File “e:\Python_list\class_student\temp.py”, line 6, in <module><br>    zero(“-2”)<br>  File “e:\Python_list\class_student\temp.py”, line 3, in zero<br>    assert a &gt; 0,”a超出范围”<br>AssertionError: a超出范围</p>
-</blockquote>
-<h2 id="iou-交并比"><a href="#iou-交并比" class="headerlink" title="iou(交并比)"></a>iou(交并比)</h2><p>在目标检测任务中，关于IOU的计算贯穿整个模型的训练测试和评价过程，是非常非常重要的一个概念，其目的是用来衡量两个目标框的重叠程度。<br>IoU的全称是交并比（Intersection over Union），表示两个目标框的交集占其并集的比例</p>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h3 id="matching-strategy"><a href="#matching-strategy" class="headerlink" title="matching strategy"></a>matching strategy</h3><p>第一个原则：从ground truth box出发，寻找与每一个ground truth box有最大的jaccard overlap的prior bbox，这样就能保证每一个groundtruth box一定与一个prior bbox对应起来(jaccard overlap就是IOU)。 反之，若一个prior bbox没有与任何ground truth进行匹配，那么该prior bbox只能与背景匹配，就是负样本。<br>第二个原则：从prior bbox出发，对剩余的还没有配对的prior bbox与任意一个ground truth box尝试配对，只要两者之间的jaccard overlap大于阈值（一般是0.5），那么该prior bbox也与这个ground truth进行匹配。这意味着某个ground truth可能与多个Prior box匹配，这是可以的。但是反过来却不可以，因为一个prior bbox只能匹配一个ground truth，如果多个ground truth与某个prior bbox的 IOU 大于阈值，那么prior bbox只与IOU最大的那个ground truth进行匹配。</p>
-<h3 id="目标检测常用损失函数-类别损失-位置损失"><a href="#目标检测常用损失函数-类别损失-位置损失" class="headerlink" title="目标检测常用损失函数-类别损失+位置损失"></a>目标检测常用损失函数-类别损失+位置损失</h3><div align=center>
-<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg'width=100%>
-</div>
-
-<p><strong>类别损失</strong>为交叉熵损失cross entropy loss 如图4 因为背景的类别为0所以添加一项</p>
-<div align=center>
-<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg'width=100%>
-</div>
-
-<p><strong>位置损失</strong>为 smooth l1 loss </p>
-<p><img src="https://pic.imgdb.cn/item/62850fea0947543129ce599d.png" alt=""></p>
-<p>参考网站<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjp_xujiping/article/details/107589950">目标检测常用损失函数-类别损失+位置损失</a></p>
-<h3 id="Hard-negative-minin"><a href="#Hard-negative-minin" class="headerlink" title="Hard negative minin"></a>Hard negative minin</h3><p>值得注意的是，一般情况下negative prior bboxes数量 &gt;&gt; positive prior bboxes数量，直接训练会导致网络过于重视负样本，预测效果很差。为了保证正负样本尽量平衡，我们这里使用SSD使用的在线难例挖掘策略(hard negative mining)，即依据confidience loss对属于负样本的prior bbox进行排序，只挑选其中confidience loss高的bbox进行训练，将正负样本的比例控制在positive：negative=1:3。其核心作用就是只选择负样本中容易被分错类的困难负样本来进行网络训练，来保证正负样本的平衡和训练的有效性。</p>
-<p>举个例子：假设在这 441 个 prior bbox 里，经过匹配后得到正样本先验框P个，负样本先验框 441−P 个。将负样本prior bbox按照prediction loss从大到小顺序排列后选择最高的M个prior bbox。这个M需要根据我们设定的正负样本的比例确定，比如我们约定正负样本比例为1:3时。我们就取M=3P，这M个loss最大的负样本难例将会被作为真正参与计算loss的prior bboxes，其余的负样本将不会参与分类损失的loss计算。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1333,7 +1438,7 @@ X^{l+1}=\widetilde{D}^{-1/2}\widetilde{A}\widetilde{D}^{-1/2}X^l</script><p>其�
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -1389,5 +1494,5 @@ X^{l+1}=\widetilde{D}^{-1/2}\widetilde{A}\widetilde{D}^{-1/2}X^l</script><p>其�
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru02.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</body>
 </html>
