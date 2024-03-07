@@ -146,7 +146,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,6 +174,128 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/11/20/new-study-note/new-study-note2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/20/new-study-note/new-study-note2/" class="post-title-link" itemprop="url">GCN</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-20 21:32:11" itemprop="dateCreated datePublished" datetime="2023-11-20T21:32:11+08:00">2023-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-28 12:53:21" itemprop="dateModified" datetime="2023-11-28T12:53:21+08:00">2023-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="什么是图"><a href="#什么是图" class="headerlink" title="什么是图"></a>什么是图</h2><p>A graph represents the relations (edges) between a collection of entities (nodes).</p>
+<p>G=(V,E,U)<br>Vertex (or node) attributes<br>Edge (or link) attributes and directions<br>Global (or master node) attributes</p>
+<h2 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h2><p>图卷积网络的本质就是提取图结构的空间特征，基于提取方式的不同可以分为：基于空间域的图网络（GraphSAGE，GAT，MPNN等）、基于谱域的图网络（Spectral CNN、ChebyNet、GCN等）。</p>
+<blockquote>
+<p>①基于空间的方法就是直接从图结构出发，聚合邻居节点的信息作为新的特征，不断的进行消息传递的过程。<br>②基于谱域的方法就是将原始数据转换至谱域中，利用图谱理论，引入滤波器进行滤波，在转换回时域的一个过程。</p>
+</blockquote>
+<h3 id="从空间域理解"><a href="#从空间域理解" class="headerlink" title="从空间域理解"></a>从空间域理解</h3><p>图网络的计算就是不断考虑邻居及自身信息的一个迭代过程，每进行一次迭代就是一次特征重组，下一层的特征为上一层特征的图卷积。<br>对于图网络的特征矩阵X</p>
+<script type="math/tex; mode=display">
+X^{l+1}=\widetilde{D}^{-1/2}\widetilde{A}\widetilde{D}^{-1/2}X^l</script><p>其中</p>
+<script type="math/tex; mode=display">
+考虑自身信息的邻接矩阵\widetilde{A}=A+I
+\\D为度矩阵\widetilde{D}=D+I</script><p>度矩阵就是与该节点相邻节点的数据，因此就是邻接矩阵A每一行的求和组成的对角阵，</p>
+<div align=center>
+<img src=https://pic.imgdb.cn/item/656571bfc458853aefc588ef.png >
+</div>
+
+<div align=center>
+<img src= https://pic.imgdb.cn/item/656571bfc458853aefc58c48.png>
+</div>
+
+<div align=center>
+<img src= https://pic.imgdb.cn/item/656571bec458853aefc58738.png>
+</div>
+
+<p>基础的GCN信息传递的权重是通过度矩阵也既与节点相连的节点数得来的，GCN的权重还可以通过注意力机制获得称为GAT</p>
+<div align=center>
+<img src=https://pic.imgdb.cn/item/656571bfc458853aefc58a8a.png >
+</div>
+
+<h3 id="从频域理解"><a href="#从频域理解" class="headerlink" title="从频域理解"></a>从频域理解</h3><p>todo</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="torch-geometric库用来构造GNN"><a href="#torch-geometric库用来构造GNN" class="headerlink" title="torch_geometric库用来构造GNN"></a>torch_geometric库用来构造GNN</h3><h4 id="实例化一个图"><a href="#实例化一个图" class="headerlink" title="实例化一个图"></a>实例化一个图</h4><p>图一般被用来建模和描述目标（节点）间成对的关系（边）。在Pytorch Gemometric（以后均简称pyg）中，一个图是由<em>torch_geometric.data.Data</em>的一个实例来描述的，<br>设此图有N个节点，每个节点有n个特征，M条边，每条边有m个特征，默认情况下拥有如下的属性：</p>
+<p><strong>data.x</strong>: 节点的特征矩阵，形状：[N，n]<br><strong>data.edge_index</strong>: 用COO格式储存的图数据，形状：[2,M]（如不理解没事，后面我会在栗子中详细介绍），数据类型是torch.long<br>ex:[[0,1,2,3],[1,1,2,2]] 0,1,2,3分别与1,1,2,2相连<br><strong>data.edge_attr</strong>: 边特征矩阵，形状[M，m]<br><strong>data.y</strong>: 要训练的目标（可以是任意形状），如节点级目标[节点数，<em>]，图级目标[1,</em>]（寿命预测常用，用rul作为图的label）,此处<em>代表样本数量。<br><em>*data.pos</em></em>: 节点位置矩阵，形状：[N,num_dimensions],在有些图中，节点是具有坐标属性，比如3D点云，每个节点都是3维空间中的一个坐标，类似的也可以是其它维度的。<br>这些属性都不是必须属性，实际上Data对象并不局限于这些属性。例如：我们可以通过data.face来扩展它，用以保存形状为[3，num_Faces]（数据类型为torch.long）的三维网格中三角形的连通性。</p>
+<h4 id="PyG的DataLoader"><a href="#PyG的DataLoader" class="headerlink" title="PyG的DataLoader"></a>PyG的DataLoader</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch_scatter <span class="keyword">import</span> scatter_mean</span><br><span class="line"><span class="keyword">from</span> torch_geometric.datasets <span class="keyword">import</span> TUDataset</span><br><span class="line"><span class="keyword">from</span> torch_geometric.data <span class="keyword">import</span> DataLoader</span><br><span class="line"></span><br><span class="line">dataset = TUDataset(root=<span class="string">&#x27;/tmp/ENZYMES&#x27;</span>, name=<span class="string">&#x27;ENZYMES&#x27;</span>, use_node_attr=<span class="literal">True</span>)</span><br><span class="line">loader = DataLoader(dataset, batch_size=<span class="number">32</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> loader:</span><br><span class="line">    data</span><br><span class="line">    &gt;&gt;&gt; Batch(batch=[<span class="number">1082</span>], edge_index=[<span class="number">2</span>, <span class="number">4066</span>], x=[<span class="number">1082</span>, <span class="number">21</span>], y=[<span class="number">32</span>])</span><br><span class="line"></span><br><span class="line">    data.num_graphs</span><br><span class="line">    &gt;&gt;&gt; <span class="number">32</span></span><br><span class="line"></span><br><span class="line">    x = scatter_mean(data.x, data.batch, dim=<span class="number">0</span>)</span><br><span class="line">    x.size()</span><br><span class="line">    &gt;&gt;&gt; torch.Size([<span class="number">32</span>, <span class="number">21</span>])</span><br></pre></td></tr></table></figure>
+<p>torch_geometric.data.Batch 继承自 torch_geometric.data.Data 并且包含了一个额外的属性：batch.<br>batch 是一个列向量，它将整个图的所有节点映射到不同的批次中。</p>
+<h4 id="基础的GCN"><a href="#基础的GCN" class="headerlink" title="基础的GCN"></a>基础的GCN</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch_geometric.nn <span class="keyword">import</span> GCNConv</span><br><span class="line"></span><br><span class="line">self.conv1 = GCNConv(num_node_features,num_hidden) <span class="comment">#实例化</span></span><br><span class="line">x = self.conv1(x, edge_index) <span class="comment">#前先传播</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>GCN空间和频域理解<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/633419078?utm_id=0">https://zhuanlan.zhihu.com/p/633419078?utm_id=0</a></p>
+<p>GCN原理<br><a target="_blank" rel="noopener" href="https://distill.pub/2021/gnn-intro/">https://distill.pub/2021/gnn-intro/</a></p>
+<p>PyG文档之二：快速入门<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yichar/article/details/107856411">https://blog.csdn.net/Yichar/article/details/107856411</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1118,96 +1240,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/09/blog-use/blog-use2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/09/blog-use/blog-use2/" class="post-title-link" itemprop="url">how to create blog</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-09 23:44:53" itemprop="dateCreated datePublished" datetime="2022-05-09T23:44:53+08:00">2022-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-07 13:44:55" itemprop="dateModified" datetime="2022-06-07T13:44:55+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/blog-use/" itemprop="url" rel="index"><span itemprop="name">blog use</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><h3 id="1-创建一篇新文章或新页面"><a href="#1-创建一篇新文章或新页面" class="headerlink" title="1.创建一篇新文章或新页面"></a>1.创建一篇新文章或新页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;  </span><br></pre></td></tr></table></figure>
-<h3 id="2-创建标签页"><a href="#2-创建标签页" class="headerlink" title="2.创建标签页"></a>2.创建标签页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-<h3 id="3-创建分类页"><a href="#3-创建分类页" class="headerlink" title="3.创建分类页"></a>3.创建分类页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-<h3 id="4-通过npm安装包"><a href="#4-通过npm安装包" class="headerlink" title="4.通过npm安装包"></a>4.通过npm安装包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm or cnpm install</span><br></pre></td></tr></table></figure>
-<h2 id="一些使用时可能遇到的问题"><a href="#一些使用时可能遇到的问题" class="headerlink" title="一些使用时可能遇到的问题"></a>一些使用时可能遇到的问题</h2><h3 id="重新配置ssh公钥"><a href="#重新配置ssh公钥" class="headerlink" title="重新配置ssh公钥"></a>重新配置ssh公钥</h3><p>先在git上删除原本的公钥 -&gt;在bash窗口执行<code>ssh-keygen -t rsa -C &quot;邮箱地址”</code> -&gt;复制生存的公钥在git上重新添加 -&gt;<code>ssh -T git@github.com (验证是否成功)</code></p>
-<h3 id="next主题更新方法"><a href="#next主题更新方法" class="headerlink" title="next主题更新方法"></a>next主题更新方法</h3><p> 1.在D:\新桌面\blog\blog\themes\next 运行<code>git pull</code><br> 2.（若提示commit your changes… ）运行git add (配置文件名)-&gt;<code>git commit -m My message</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1271,7 +1303,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
