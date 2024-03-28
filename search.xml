@@ -1405,4 +1405,151 @@ L{total} = L_{MSE}(ω)+ αL_{att}(Θ)</script><h3 id="6-model-analysis"><a href=
         <category>paper note</category>
       </categories>
   </entry>
+  <entry>
+    <title>Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model</title>
+    <url>/2024/03/18/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/</url>
+    <content><![CDATA[<p><strong>2024.02.08 西北工业大学 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>To solve the above problems, a novel adaptive multi-source fusion method based on genetic programming is proposed for building a HI that can effectively reflect the health state of machines. Subsequently, a new LSTM model with a dual-attention mechanism</p>
+<h2 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h2><p>Condition-based maintenance (CBM) exploits condition monitoring (CM) information to identify or predict potential problems</p>
+<h3 id="1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction"><a href="#1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction" class="headerlink" title="1.1. Review of different signals for machinery CM and RUL prediction"></a>1.1. Review of different signals for machinery CM and RUL prediction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb868.png" >
+</div>
+Considering the advantages of high utility and low cost of vibration and temperature signals, this paper proposes a novel method for machine degradation monitoring and RUL prediction based on the fusion of vibration and temperature signals.
+
+### 1.2. Review of LSTM-based RUL prediction methods
+
+>**lstm不足:**
+ uses the same updating method for all input and recurrent information which fails to process the data in accordance with the importance of the information
+**Attention不足：**
+ the attentional mechanisms on the input side to weigh different input features. These methods ignore the backward and forward dependencies of the sequences and seldom investigate the attentional mechanism of the recurrent information in the sequences.
+
+### 1.3. Contributions
+
+- First, feature extraction is performed based on vibration and temperature signals, and two optimal features are selected respectively.提取振动和温度信号的特征。 
+- Second, considering that vibration and temperature features may contribute differently to the RUL prediction, genetic programming (GP) is adopted to adaptively fuse the above two features, which in turn yields the HI characterizing the equipment’s health state. 用GP算法进行特征融合，构造HI
+- Finally, based on the proposed LSTMDAU, an unsupervised learning framework is developed to predict the health state and RUL of machines.用LSTM结合注意力的网络进行预测
+
+## 2. GP-based feature fusion
+
+**why GP?**
+>GP is a popular heuristic **nonlinear algorithm**. It not only preserves the original features as much as possible but also finds the optimal HI in a shorter time. Most importantly, the HI generated adaptively by GP can be expressed in an easy-to-read and well-interpretable form, which **solves the black-box modeling problem** of some approaches, such as NN.
+
+## 3. Developed LSTM-DAU method
+
+3.1. Input attention unit
+3.2. Recurrent attention unit
+3.3. Dual attention unit
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb9a2.png" >
+</div>
+
+<h2 id="4-Proposed-methodology"><a href="#4-Proposed-methodology" class="headerlink" title="4. Proposed methodology"></a>4. Proposed methodology</h2><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035ebbeb.png" >
+</div>
+
+<h3 id="4-1-HI-construction"><a href="#4-1-HI-construction" class="headerlink" title="4.1. HI construction"></a>4.1. HI construction</h3><h4 id="4-1-1-Feature-extraction"><a href="#4-1-1-Feature-extraction" class="headerlink" title="4.1.1. Feature extraction"></a>4.1.1. Feature extraction</h4><p>振动信号特征<br>AWSPT-Kurtosis, AWSPT-SI, AWSPT-NE, AWSPT-SI, AWSPT-GI [41]<br>温度信号特征<br>mean, root mean square (RMS), maximum (Max), and minimum (Min) of temperature signals</p>
+<h4 id="4-1-2-Feature-selection"><a href="#4-1-2-Feature-selection" class="headerlink" title="4.1.2. Feature selection"></a>4.1.2. Feature selection</h4><p><strong>why</strong>?</p>
+<blockquote>
+<p>The purpose of feature selection is to obtain preferred features from the original feature set according to some rules that minimize the redundancy between features while containing the most valuable degradation features [42]. This section describes the detailed steps of feature selection</p>
+</blockquote>
+<p>筛选指标<br>composite evaluation index (CEI)</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebc92.png" >
+</div>
+
+<h4 id="4-1-3-Feature-fusion"><a href="#4-1-3-Feature-fusion" class="headerlink" title="4.1.3. Feature fusion"></a>4.1.3. Feature fusion</h4><p><strong>why？</strong></p>
+<blockquote>
+<p>the vibration signal is more sensitive to structural damage and the temperature signal is more sensitive to non-structural damage</p>
+</blockquote>
+<p>Employ the GP algorithm to adaptively fuse the preferred features by the fitness function</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebd30.png" >
+</div>
+
+<h3 id="4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU"><a href="#4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU" class="headerlink" title="4.2. The specific procedure of RUL prediction based on LSTM-DAU"></a>4.2. The specific procedure of RUL prediction based on LSTM-DAU</h3><p>pass</p>
+<h2 id="5-Case-study"><a href="#5-Case-study" class="headerlink" title="5. Case study"></a>5. Case study</h2><h3 id="5-1-Data-description-and-preprocessing"><a href="#5-1-Data-description-and-preprocessing" class="headerlink" title="5.1. Data description and preprocessing"></a>5.1. Data description and preprocessing</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360abfd.png" >
+</div>
+
+<h3 id="5-2-HI-construction"><a href="#5-2-HI-construction" class="headerlink" title="5.2. HI construction"></a>5.2. HI construction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360ad5f.png" >
+</div>
+
+<p>对比不同的降维方法在bearing1_1</p>
+<blockquote>
+<p>Moreover, GP is nonlinear learning compared to PCA. To better characterize the nonlinear nature of the degradation process, GP is adopted to generate HI.</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360afd2.png" >
+</div>
+
+<h3 id="5-3-LSTM-DAU-network-setting-and-evaluation-metric"><a href="#5-3-LSTM-DAU-network-setting-and-evaluation-metric" class="headerlink" title="5.3. LSTM-DAU network setting and evaluation metric"></a>5.3. LSTM-DAU network setting and evaluation metric</h3><h3 id="5-4-RUL-prognosis-and-comparison-analysis"><a href="#5-4-RUL-prognosis-and-comparison-analysis" class="headerlink" title="5.4. RUL prognosis and comparison analysis"></a>5.4. RUL prognosis and comparison analysis</h3><p>only the data in the degradation phase of a bearing are adopted to train the LSTM-DAU. The determination of the degradation phase can be found in Ref. [42].</p>
+<p>实验部分：<br>对比不同窗口大小，对比不同训练数据集大小，消融实验（两个单特征，两个单注意力LSTM，和LSTM），对比实验（对比SOTA）</p>
+<p>[41]:Hou B, Wang D, Wang Y, Yan T, Peng Z, Tsui K-L. Adaptive weighted signal preprocessing technique for machine health monitoring. IEEE Trans Instrum Meas 2020;70:1–11.<br>[42]:Mi J, Liu L, Zhuang Y, Bai L, Li Y-F. A synthetic feature processing method for remaining useful life prediction of rolling bearings. IEEE Trans Reliab 2022;72(1):125–36.</p>
+]]></content>
+      <categories>
+        <category>paper note</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>AE构建HI</title>
+    <url>/2024/03/21/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/8.Remaining%20useful%20life%20prediction%20of%20bearing%20based%20on%20stacked%20autoencoder%20and%20recurrent%20neural%20network/</url>
+    <content><![CDATA[<h1 id="Remaining-useful-life-prediction-of-bearing-based-on-stacked-autoencoder-and-recurrent-neural-network"><a href="#Remaining-useful-life-prediction-of-bearing-based-on-stacked-autoencoder-and-recurrent-neural-network" class="headerlink" title="Remaining useful life prediction of bearing based on stacked autoencoder and recurrent neural network"></a>Remaining useful life prediction of bearing based on stacked autoencoder and recurrent neural network</h1><p><strong>2021.04 北京科技大学 12.1 1区 Journal of Manufacturing Systems</strong></p>
+<h2 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h2><p>非线性HI的优势</p>
+<blockquote>
+<p>nonlinear degradation processes are common in nature, and the nonlinear shape of degradation proves their advantage in tracking the dynamics of many actual degradation processes used for prediction [17,18]</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404549f345e8d036311d8.png" >
+</div>
+
+<p>flow chat</p>
+<ol>
+<li>训练部分(ims)<ol>
+<li>提取十种时域特征，筛选出四种特征，因为只采用退化阶段数据进行训练，数据量小所以对数据进行了三次指数线性插值，将特征输入带注意力的aotu encoder构建HI指标</li>
+<li>将数据的STD特征作为输入，HI作为标签对LSTM模型进行训练</li>
+</ol>
+</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d0363132a.png" >
+</div>
+
+<ol>
+<li>测试部分(ims)<ol>
+<li>将测试数据的std输入网络，将输出HI与原HI对比</li>
+</ol>
+</li>
+<li>验证部分(cwru)<ol>
+<li>用CWRU数据集中不同载荷下的数据提取出的STD输入网络，看输出的HI是否合理</li>
+</ol>
+</li>
+</ol>
+<h1 id="A-new-supervised-multi-head-self-attention-autoencoder-for-health-indicator-construction-and-similarity-based-machinery-RUL-prediction"><a href="#A-new-supervised-multi-head-self-attention-autoencoder-for-health-indicator-construction-and-similarity-based-machinery-RUL-prediction" class="headerlink" title="A new supervised multi-head self-attention autoencoder for health indicator construction and similarity-based machinery RUL prediction"></a>A new supervised multi-head self-attention autoencoder for health indicator construction and similarity-based machinery RUL prediction</h1><p>重庆大学 2023.01. 8.8 1区</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><blockquote>
+<p>why hi?<br>However, it is unreasonable to treat the degradation rate of a machine as a constant value in practice, since the accumulation of damage would lead to the accelerated degradation at the end of its life. In addition, the detection of the initial degradation point is an extremely difficult task, and it is also related to the experience of engineer [35]. Therefore, it is necessary to design an appropriate HI label to reflect the machine degradation trend.</p>
+</blockquote>
+<h2 id="简记"><a href="#简记" class="headerlink" title="简记"></a>简记</h2><div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d03631548.png" >
+</div>
+
+<p>flowchart</p>
+<ol>
+<li>振动信号先经过低通滤波，消除异常值等处理。之后按照公式5建立HI曲线作为标签，（对不同的数据组，进行HI构造实验，通过综合指标判断构建的HI的有效性），其与普通的线性HI区别如图fig4</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d036315d7.png" >
+</div>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d03631749.png" >
+</div>
+
+<ol>
+<li>用HI曲线作为标签，用振动信号作为输入，训练带注意力的自编码器，其中带有两项损失，分别是encoder的输入和decoder输出的差别的损失，还有中间变量与公式构建的HI差别的损失。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>paper note</category>
+      </categories>
+  </entry>
 </search>

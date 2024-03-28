@@ -146,7 +146,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -174,6 +174,305 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/03/21/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/8.Remaining%20useful%20life%20prediction%20of%20bearing%20based%20on%20stacked%20autoencoder%20and%20recurrent%20neural%20network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/21/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/8.Remaining%20useful%20life%20prediction%20of%20bearing%20based%20on%20stacked%20autoencoder%20and%20recurrent%20neural%20network/" class="post-title-link" itemprop="url">AE构建HI</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-21 09:44:40" itemprop="dateCreated datePublished" datetime="2024-03-21T09:44:40+08:00">2024-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-27 19:37:44" itemprop="dateModified" datetime="2024-03-27T19:37:44+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Remaining-useful-life-prediction-of-bearing-based-on-stacked-autoencoder-and-recurrent-neural-network"><a href="#Remaining-useful-life-prediction-of-bearing-based-on-stacked-autoencoder-and-recurrent-neural-network" class="headerlink" title="Remaining useful life prediction of bearing based on stacked autoencoder and recurrent neural network"></a>Remaining useful life prediction of bearing based on stacked autoencoder and recurrent neural network</h1><p><strong>2021.04 北京科技大学 12.1 1区 Journal of Manufacturing Systems</strong></p>
+<h2 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h2><p>非线性HI的优势</p>
+<blockquote>
+<p>nonlinear degradation processes are common in nature, and the nonlinear shape of degradation proves their advantage in tracking the dynamics of many actual degradation processes used for prediction [17,18]</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404549f345e8d036311d8.png" >
+</div>
+
+<p>flow chat</p>
+<ol>
+<li>训练部分(ims)<ol>
+<li>提取十种时域特征，筛选出四种特征，因为只采用退化阶段数据进行训练，数据量小所以对数据进行了三次指数线性插值，将特征输入带注意力的aotu encoder构建HI指标</li>
+<li>将数据的STD特征作为输入，HI作为标签对LSTM模型进行训练</li>
+</ol>
+</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d0363132a.png" >
+</div>
+
+<ol>
+<li>测试部分(ims)<ol>
+<li>将测试数据的std输入网络，将输出HI与原HI对比</li>
+</ol>
+</li>
+<li>验证部分(cwru)<ol>
+<li>用CWRU数据集中不同载荷下的数据提取出的STD输入网络，看输出的HI是否合理</li>
+</ol>
+</li>
+</ol>
+<h1 id="A-new-supervised-multi-head-self-attention-autoencoder-for-health-indicator-construction-and-similarity-based-machinery-RUL-prediction"><a href="#A-new-supervised-multi-head-self-attention-autoencoder-for-health-indicator-construction-and-similarity-based-machinery-RUL-prediction" class="headerlink" title="A new supervised multi-head self-attention autoencoder for health indicator construction and similarity-based machinery RUL prediction"></a>A new supervised multi-head self-attention autoencoder for health indicator construction and similarity-based machinery RUL prediction</h1><p>重庆大学 2023.01. 8.8 1区</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><blockquote>
+<p>why hi?<br>However, it is unreasonable to treat the degradation rate of a machine as a constant value in practice, since the accumulation of damage would lead to the accelerated degradation at the end of its life. In addition, the detection of the initial degradation point is an extremely difficult task, and it is also related to the experience of engineer [35]. Therefore, it is necessary to design an appropriate HI label to reflect the machine degradation trend.</p>
+</blockquote>
+<h2 id="简记"><a href="#简记" class="headerlink" title="简记"></a>简记</h2><div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d03631548.png" >
+</div>
+
+<p>flowchart</p>
+<ol>
+<li>振动信号先经过低通滤波，消除异常值等处理。之后按照公式5建立HI曲线作为标签，（对不同的数据组，进行HI构造实验，通过综合指标判断构建的HI的有效性），其与普通的线性HI区别如图fig4</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d036315d7.png" >
+</div>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404559f345e8d03631749.png" >
+</div>
+
+<ol>
+<li>用HI曲线作为标签，用振动信号作为输入，训练带注意力的自编码器，其中带有两项损失，分别是encoder的输入和decoder输出的差别的损失，还有中间变量与公式构建的HI差别的损失。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/03/18/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/18/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/" class="post-title-link" itemprop="url">Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-18 21:22:43" itemprop="dateCreated datePublished" datetime="2024-03-18T21:22:43+08:00">2024-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-27 19:37:43" itemprop="dateModified" datetime="2024-03-27T19:37:43+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>2024.02.08 西北工业大学 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>To solve the above problems, a novel adaptive multi-source fusion method based on genetic programming is proposed for building a HI that can effectively reflect the health state of machines. Subsequently, a new LSTM model with a dual-attention mechanism</p>
+<h2 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h2><p>Condition-based maintenance (CBM) exploits condition monitoring (CM) information to identify or predict potential problems</p>
+<h3 id="1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction"><a href="#1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction" class="headerlink" title="1.1. Review of different signals for machinery CM and RUL prediction"></a>1.1. Review of different signals for machinery CM and RUL prediction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb868.png" >
+</div>
+Considering the advantages of high utility and low cost of vibration and temperature signals, this paper proposes a novel method for machine degradation monitoring and RUL prediction based on the fusion of vibration and temperature signals.
+
+### 1.2. Review of LSTM-based RUL prediction methods
+
+>**lstm不足:**
+ uses the same updating method for all input and recurrent information which fails to process the data in accordance with the importance of the information
+**Attention不足：**
+ the attentional mechanisms on the input side to weigh different input features. These methods ignore the backward and forward dependencies of the sequences and seldom investigate the attentional mechanism of the recurrent information in the sequences.
+
+### 1.3. Contributions
+
+- First, feature extraction is performed based on vibration and temperature signals, and two optimal features are selected respectively.提取振动和温度信号的特征。 
+- Second, considering that vibration and temperature features may contribute differently to the RUL prediction, genetic programming (GP) is adopted to adaptively fuse the above two features, which in turn yields the HI characterizing the equipment’s health state. 用GP算法进行特征融合，构造HI
+- Finally, based on the proposed LSTMDAU, an unsupervised learning framework is developed to predict the health state and RUL of machines.用LSTM结合注意力的网络进行预测
+
+## 2. GP-based feature fusion
+
+**why GP?**
+>GP is a popular heuristic **nonlinear algorithm**. It not only preserves the original features as much as possible but also finds the optimal HI in a shorter time. Most importantly, the HI generated adaptively by GP can be expressed in an easy-to-read and well-interpretable form, which **solves the black-box modeling problem** of some approaches, such as NN.
+
+## 3. Developed LSTM-DAU method
+
+3.1. Input attention unit
+3.2. Recurrent attention unit
+3.3. Dual attention unit
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb9a2.png" >
+</div>
+
+<h2 id="4-Proposed-methodology"><a href="#4-Proposed-methodology" class="headerlink" title="4. Proposed methodology"></a>4. Proposed methodology</h2><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035ebbeb.png" >
+</div>
+
+<h3 id="4-1-HI-construction"><a href="#4-1-HI-construction" class="headerlink" title="4.1. HI construction"></a>4.1. HI construction</h3><h4 id="4-1-1-Feature-extraction"><a href="#4-1-1-Feature-extraction" class="headerlink" title="4.1.1. Feature extraction"></a>4.1.1. Feature extraction</h4><p>振动信号特征<br>AWSPT-Kurtosis, AWSPT-SI, AWSPT-NE, AWSPT-SI, AWSPT-GI [41]<br>温度信号特征<br>mean, root mean square (RMS), maximum (Max), and minimum (Min) of temperature signals</p>
+<h4 id="4-1-2-Feature-selection"><a href="#4-1-2-Feature-selection" class="headerlink" title="4.1.2. Feature selection"></a>4.1.2. Feature selection</h4><p><strong>why</strong>?</p>
+<blockquote>
+<p>The purpose of feature selection is to obtain preferred features from the original feature set according to some rules that minimize the redundancy between features while containing the most valuable degradation features [42]. This section describes the detailed steps of feature selection</p>
+</blockquote>
+<p>筛选指标<br>composite evaluation index (CEI)</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebc92.png" >
+</div>
+
+<h4 id="4-1-3-Feature-fusion"><a href="#4-1-3-Feature-fusion" class="headerlink" title="4.1.3. Feature fusion"></a>4.1.3. Feature fusion</h4><p><strong>why？</strong></p>
+<blockquote>
+<p>the vibration signal is more sensitive to structural damage and the temperature signal is more sensitive to non-structural damage</p>
+</blockquote>
+<p>Employ the GP algorithm to adaptively fuse the preferred features by the fitness function</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebd30.png" >
+</div>
+
+<h3 id="4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU"><a href="#4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU" class="headerlink" title="4.2. The specific procedure of RUL prediction based on LSTM-DAU"></a>4.2. The specific procedure of RUL prediction based on LSTM-DAU</h3><p>pass</p>
+<h2 id="5-Case-study"><a href="#5-Case-study" class="headerlink" title="5. Case study"></a>5. Case study</h2><h3 id="5-1-Data-description-and-preprocessing"><a href="#5-1-Data-description-and-preprocessing" class="headerlink" title="5.1. Data description and preprocessing"></a>5.1. Data description and preprocessing</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360abfd.png" >
+</div>
+
+<h3 id="5-2-HI-construction"><a href="#5-2-HI-construction" class="headerlink" title="5.2. HI construction"></a>5.2. HI construction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360ad5f.png" >
+</div>
+
+<p>对比不同的降维方法在bearing1_1</p>
+<blockquote>
+<p>Moreover, GP is nonlinear learning compared to PCA. To better characterize the nonlinear nature of the degradation process, GP is adopted to generate HI.</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360afd2.png" >
+</div>
+
+<h3 id="5-3-LSTM-DAU-network-setting-and-evaluation-metric"><a href="#5-3-LSTM-DAU-network-setting-and-evaluation-metric" class="headerlink" title="5.3. LSTM-DAU network setting and evaluation metric"></a>5.3. LSTM-DAU network setting and evaluation metric</h3><h3 id="5-4-RUL-prognosis-and-comparison-analysis"><a href="#5-4-RUL-prognosis-and-comparison-analysis" class="headerlink" title="5.4. RUL prognosis and comparison analysis"></a>5.4. RUL prognosis and comparison analysis</h3><p>only the data in the degradation phase of a bearing are adopted to train the LSTM-DAU. The determination of the degradation phase can be found in Ref. [42].</p>
+<p>实验部分：<br>对比不同窗口大小，对比不同训练数据集大小，消融实验（两个单特征，两个单注意力LSTM，和LSTM），对比实验（对比SOTA）</p>
+<p>[41]:Hou B, Wang D, Wang Y, Yan T, Peng Z, Tsui K-L. Adaptive weighted signal preprocessing technique for machine health monitoring. IEEE Trans Instrum Meas 2020;70:1–11.<br>[42]:Mi J, Liu L, Zhuang Y, Bai L, Li Y-F. A synthetic feature processing method for remaining useful life prediction of rolling bearings. IEEE Trans Reliab 2022;72(1):125–36.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1332,282 +1631,6 @@
 
 
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/12/17/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/17/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/" class="post-title-link" itemprop="url">A deep attention residual neural network-based remaining useful life prediction of machinery</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-17 16:59:27" itemprop="dateCreated datePublished" datetime="2023-12-17T16:59:27+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-20 22:03:33" itemprop="dateModified" datetime="2023-12-20T22:03:33+08:00">2023-12-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery"><a href="#A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery" class="headerlink" title="A deep attention residual neural network-based remaining useful life prediction of machinery"></a>A deep attention residual neural network-based remaining useful life prediction of machinery</h2><p><strong>2021 东北大学 5.6 2区 measurement</strong></p>
-<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>这篇论文提出了一种新颖的深度注意力残差神经网络（DARNN）用于机械剩余寿命（RUL）的预测。DARNN可以有效提取信号中的降解特征，并且在预测性能和自稳定性上显著优于现有方法。</p>
-<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>PHM -&gt; Model-based approaches -&gt; The AI-based approach -&gt; deep learning (DL) -&gt; RNN models for RUL estimation -&gt; Although the above research has achieved great success, the following <strong>limitations</strong> still exist. (1) The performance of the data-driven model depends on a large amount of training data, and the prediction accuracy is still limited by the lack of training samples. (2) In practical application, the established model may be affected by noise, resulting in a serious decline in prediction accuracy.<br>-&gt; <strong>DARNN</strong> is proposed in this paper. The proposed method has the following advantages. (1) The proposed deep attention residual (DAR) module can effectively improve the feature extraction capability of the model and improve the prediction performance of the model. (2) The Bayesian approximation technique is applied to the established model to turn point forecasting into interval forecasting and improve the self-stability of the proposed model.</p>
-<h3 id="2-Proposed-DARNN-model"><a href="#2-Proposed-DARNN-model" class="headerlink" title="2. Proposed DARNN model"></a>2. Proposed DARNN model</h3><div align=center>
-<img src="https://pic.imgdb.cn/item/657f00b2c458853aef1653a0.png" >
-</div>
-
-<h4 id="2-1-DAR-module"><a href="#2-1-DAR-module" class="headerlink" title="2.1. DAR module"></a>2.1. DAR module</h4><div align=center>
-<img src="https://pic.imgdb.cn/item/657f00b3c458853aef1654de.png" >
-</div>
-
-<p>2.1.1. Temporal convolution<br>Both causal convolution operation as well as dilation rate strategy are used in the temporal convolution to improve the representative extraction capability of the established DL model.<br>(1) Causal convolution:<br>(2) Dilation rate strategy:</p>
-<p>2.1.2. PReLU activation function<br>‘‘Dead ReLU Problem’’ for using the ReLU activation function, i.e., during the process of training, when the weighted inputs of neurons are negative, outputs of neurons become 0 consistently</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165522.png" >
-</div>
-
-<p>2.1.3. Dual attention mechanism</p>
-<p>(1) Channel attention mechanism<br>The channel attention mechanism [28,29] is utilized to judge which channels are more informative, and an attention weights are given to each channel according to their importance.<br>(2) Temporal attention mechanism<br>Similar to the principle of channel attention mechanism, temporal attention mechanism is capable of aggregating some crucial information in the time dimension of feature maps.</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165637.png" >
-</div>
-
-<p>2.1.4. BayesIan approximation technique (Dropout)</p>
-<p>To improve the self-stability of model, the Bayesian approximation technique is adopted in our DARNN to reduce the interference from environmental noise and turn point estimation into interval estimation</p>
-<h4 id="2-2-Deep-domain-adaption"><a href="#2-2-Deep-domain-adaption" class="headerlink" title="2.2. Deep domain adaption"></a>2.2. Deep domain adaption</h4><p>In order to solve these two problems and improve the generalization ability of the established model, maximum mean discrepancy is applied to realize deep domain adaption.</p>
-<h3 id="3-Case-study-1-FEMTO-dataset"><a href="#3-Case-study-1-FEMTO-dataset" class="headerlink" title="3. Case study 1: FEMTO dataset"></a>3. Case study 1: FEMTO dataset</h3><h4 id="3-1-Data-description"><a href="#3-1-Data-description" class="headerlink" title="3.1. Data description"></a>3.1. Data description</h4><p>z-score</p>
-<h4 id="3-2-Prognostic-metrics"><a href="#3-2-Prognostic-metrics" class="headerlink" title="3.2. Prognostic metrics"></a>3.2. Prognostic metrics</h4><ol>
-<li>RMSE</li>
-<li>score</li>
-<li>CRA is also used to illustrate performance of models. The closer the calculated CRA value is to 1, the smaller the relative error between the real values and the predicted values is. CRA is defined as:</li>
-</ol>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657f00b2c458853aef165213.png" >
-</div>
-
-<h4 id="3-3-Hyperparameters-selection-of-DARNN"><a href="#3-3-Hyperparameters-selection-of-DARNN" class="headerlink" title="3.3. Hyperparameters selection of DARNN"></a>3.3. Hyperparameters selection of DARNN</h4><p>Rectified Adam (RAdam) Optimizer ,early stopping and gradient cropping<br>to promote the convergence of the model, the RUL label corresponding to the data is converted into RUL percentage for training.</p>
-<h4 id="3-4-Ablation-studies"><a href="#3-4-Ablation-studies" class="headerlink" title="3.4. Ablation studies"></a>3.4. Ablation studies</h4><p>(1) Effectiveness of dual attention block:<br>a model without dual attention mechanism,</p>
-<p>(2) Effectiveness of temporal convolution: Meanwhile, a model with traditional convolution is also established,</p>
-<h4 id="3-5-Experiment-results-and-discussion"><a href="#3-5-Experiment-results-and-discussion" class="headerlink" title="3.5. Experiment results and discussion"></a>3.5. Experiment results and discussion</h4><p>3.5.1. Effectiveness of the proposed DARNN<br>the absolute value of Pearson correlation coefficient is adopted to evaluate the correlation between features and predicted values. The Pearson correlation coefficient is defined as</p>
-<p>3.5.2. Comparison and discussion</p>
-<p>3.5.3. Self-stability of the proposed DARNN<br>Signal–Noise ratio (SNR) is usually used to describe the level of noise in the signal, which is defined as</p>
-<p><div align=center>
-<img src="https://pic.imgdb.cn/item/657f00e0c458853aef1719f3.png" >
-</div><br>where 𝑃𝑆 and 𝑃𝑁 denote the power of signal and noise respectively. The lower the SNR, the larger the random noise contained in the data, e.g., when the SNR equals 0 dB, the power of noise is equivalent to that of the original signal. In the experiment, signals with different levels of additive white Gaussian noise from −2 dB to 8 dB were used as noisy data.</p>
-<h3 id="4-Case-study-2-CAMPSS-dataset"><a href="#4-Case-study-2-CAMPSS-dataset" class="headerlink" title="4. Case study 2: CAMPSS dataset"></a>4. Case study 2: CAMPSS dataset</h3><p>4.1. Dataset description and preprocessing<br>preprocess the training data set and the test data set by using min–max normalization and time window strategy, and the size of time window is 30.</p>
-<p>4.2. Experiment results and discussion</p>
-<h3 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h3><p>(1) In this paper, a DAR module is proposed to improve the representations extraction capability and prediction performance. Also, the Bayesian approximation technique is also applied to the proposed DARNN model to improve the self-stability of the DARNN model. (2) To demonstrate the effectiveness and superiority of the proposed DARNN, we organized two case study experiments. In the first case study, rolling element bearing dataset is adopted to illustrate the effectiveness and self-stability of the proposed DARNN model. In the second experiment, the famous CMAPSS dataset is utilized to further validate the effectiveness of the proposed model by making a comparison with the four state-of-art methods. The experimental results demonstrate the proposed model actually has better performance compared with other four data driven methods.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2023/12/17/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="edmund">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | null">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/17/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/" class="post-title-link" itemprop="url">Deep separable convolutional network for remaining useful life prediction of machinery</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-17 15:15:09" itemprop="dateCreated datePublished" datetime="2023-12-17T15:15:09+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-21 11:47:50" itemprop="dateModified" datetime="2023-12-21T11:47:50+08:00">2023-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery"><a href="#Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery" class="headerlink" title="Deep separable convolutional network for remaining useful life prediction of machinery"></a>Deep separable convolutional network for remaining useful life prediction of machinery</h2><p><strong>2019 西安交通大学 8.4 1区 Mechanical Systems and Signal Processing</strong></p>
-<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>These deep learning-based prognostics approaches, however, have the following weaknesses: 1) Their prediction performance largely depends on the hand-crafted feature design. 2) The correlations of different sensor data are not explicitly considered in representation learning.</p>
-<h3 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1 introduction"></a>1 introduction</h3><ul>
-<li>With the advancement of sensor technologies, telecommunications and computer science, industrial internet of things has been widely applied into health monitoring of machinery in recent years, and a considerable number of monitoring data are acquired by multiple sensors during machine operation.</li>
-<li>In general,<strong>data-driven RUL prediction</strong> consists of four major processes: data acquisition, feature extraction and selection, degradation behavior learning and RUL estimation<br>Recently, <strong>deep learning</strong> [13] is gaining more and more attention in data-driven RUL prediction. </li>
-<li>Although deep learning has achieved promising results in RUL prediction of machinery, existing prognostics approaches suffer from the following limitations. 1) Their prediction performance largely depends on the hand-crafted feature design in RUL prediction of many machines 2) Current deep prognostics models do not explicitly consider the correlations of different sensor data in representation learning.</li>
-<li>To deal with the above-mentioned limitations, a new deep prognostics network, named deep separable convolutional network (DSCN), is proposed for RUL prediction of machinery in this paper.</li>
-</ul>
-<h3 id="2-preliminary"><a href="#2-preliminary" class="headerlink" title="2 preliminary"></a>2 preliminary</h3><h4 id="2-1Convolutional-networks"><a href="#2-1Convolutional-networks" class="headerlink" title="2.1Convolutional networks"></a>2.1Convolutional networks</h4><p>1) Convolutional layer.<br>2) Pooling layer.<br>3) Fully-connected layer.</p>
-<h4 id="2-2-Residual-connections-for-convolutional-networks"><a href="#2-2-Residual-connections-for-convolutional-networks" class="headerlink" title="2.2. Residual connections for convolutional networks"></a>2.2. Residual connections for convolutional networks</h4><p>Residual connections are first proposed by He et al. in [27], aiming at reducing the training complexity of convolutional networks and enabling them to be substantially deeper.</p>
-<h3 id="3-Proposed-DSCN-for-RUL-prediction-of-machinery"><a href="#3-Proposed-DSCN-for-RUL-prediction-of-machinery" class="headerlink" title="3 Proposed DSCN for RUL prediction of machinery"></a>3 Proposed DSCN for RUL prediction of machinery</h3><h4 id="3-1-Separable-convolutions"><a href="#3-1-Separable-convolutions" class="headerlink" title="3.1. Separable convolutions"></a>3.1. Separable convolutions</h4><p>multi-channel time-series data are usually used as the inputs of deep prognostics models, where each channel represents one sensor sequence,aiming to effectively model interrelationships of different sensor data by decoupling temporal correlations and cross-channel correlations.</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27d21.png" >
-</div>
-
-<p>代码实现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Separable_conv</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_ch, out_ch</span>):</span><br><span class="line">        <span class="built_in">super</span>(Separable_conv, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.channelwise_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                          out_channels=in_ch,</span><br><span class="line">                                          kernel_size=<span class="number">8</span>,</span><br><span class="line">                                          stride=<span class="number">1</span>,</span><br><span class="line">                                          groups=in_ch)</span><br><span class="line">        <span class="comment">#在创建conv1d时指定groups数量可以设定卷积核数量实现separable_conv</span></span><br><span class="line">        self.point_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                    out_channels=out_ch,</span><br><span class="line">                                    kernel_size=<span class="number">1</span>,</span><br><span class="line">                                    stride=<span class="number">1</span>,</span><br><span class="line">                                    padding=<span class="number">0</span>,</span><br><span class="line">                                    groups=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,<span class="built_in">input</span></span>):</span><br><span class="line">        <span class="built_in">input</span> = F.pad(<span class="built_in">input</span>=<span class="built_in">input</span>, pad=(<span class="number">4</span>,<span class="number">3</span>), mode=<span class="string">&#x27;constant&#x27;</span>, value=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># print(input.shape)</span></span><br><span class="line">        out = self.channelwise_conv(<span class="built_in">input</span>)</span><br><span class="line">        out = self.point_conv(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
-<p><strong>conv1d中groups作用</strong></p>
-<ul>
-<li>groups: 控制输入和输出之间的连接， group=1，输出是所有的输入的卷积；group=2，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来。</li>
-</ul>
-<p>groups=1时与标准卷积一致，具体作用参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/616003771">1</a></p>
-<h4 id="3-2-Feature-response-recalibrations"><a href="#3-2-Feature-response-recalibrations" class="headerlink" title="3.2. Feature response recalibrations"></a>3.2. Feature response recalibrations</h4><p>the process of feature response recalibrations is comprised of two steps, including squeeze operation and excitation operation.</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27e00.png" >
-</div>
-
-<h4 id="3-3-Separable-convolutional-building-blocks"><a href="#3-3-Separable-convolutional-building-blocks" class="headerlink" title="3.3. Separable convolutional building blocks"></a>3.3. Separable convolutional building blocks</h4><div align=center>
-<img src="https://pic.imgdb.cn/item/657eb7f2c458853aefe27e92.png" >
-</div>
-
-<p><strong>pre-activate</strong><br>BN and ReLU are added after convolution operations in the standard convolutional networks, but this postactivation strategy may not take full advantage of the benefits of BN in the convolutional networks with residual connections [33].the pre-activation strategy in [33] is also used to improve the regularization of DSCN so as to relieve the problem of overfitting.<br><strong>bn</strong><br>the use of BN is to make the input distribution of each separable convolution more stable and reduce the overfitting [34]. Further, BN is able to allow DSCN to use much higher learning rates and to be insensitive to the parameter initialization.<br><strong>identity skip connection</strong><br>kernel size为1<br>stride为4，为了与另一条conv输出特征一样的conv1d</p>
-<h4 id="3-4-Architecture-of-the-proposed-DSCN"><a href="#3-4-Architecture-of-the-proposed-DSCN" class="headerlink" title="3.4. Architecture of the proposed DSCN"></a>3.4. Architecture of the proposed DSCN</h4><div align=center>
-<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27b76.png" >
-</div>
-
-<p>1) The representation learning sub-network firstly uses a separable convolutional layer to convolute the input sensor data，$\rightarrow$ an average pooling layer is employed to conduct down-sampling $\rightarrow$  forwarded to succeeding separable convolutional building blocks to obtain higher-level representations<br>2) The RUL estimation sub-network utilizes a global average pooling layer to receive the high-level representations from the representation learning sub-network,</p>
-<h3 id="4-Experimental-verification"><a href="#4-Experimental-verification" class="headerlink" title="4. Experimental verification"></a>4. Experimental verification</h3><h4 id="4-1-Case-study-1-XJTU-SU-dataset"><a href="#4-1-Case-study-1-XJTU-SU-dataset" class="headerlink" title="4.1. Case study 1: XJTU-SU dataset"></a>4.1. Case study 1: XJTU-SU dataset</h4><p>4.1.1. Data description</p>
-<p>4.1.2. Evaluation metrics</p>
-<p>1) Scoring function<br>2) RMSE</p>
-<p>4.1.3. Data preprocessing</p>
-<p>1) Normalization<br>2) Time window embedding</p>
-<p><strong>4.1.4. Configuration of DSCN</strong></p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27bf7.png" >
-</div>
-
-<p>hyperparameters are determined by performing 4-fold cross-validation on the training datasets</p>
-<p>the input to net is (batch_size,chanel,time_windows_lengh*time_sequence_length)<br>(128,2,5*2560)<br>the out put of net is (128)</p>
-<p><strong>4.1.5. Experimental results</strong></p>
-<p>1) Analysis of time window embedding<br>the time window embedding is able to gather more useful degradation information<br>2) Effect of dimensionality reduction ratio and network depth<br>The dimensionality reduction ratio r is a critical hyperparameter in the SE units, whose size may affect the capacity and computational cost of SE units.<br>3) Benefits of separable convolutions and feature response recalibrations<br>the network with standard convolutions (denoted as standard ConvNet) and the network with separable convolutions (denoted as separable ConvNet). Except for not containing the SE units, these two prognostics networks have the same architecture and hyperparameter settings as the proposed DSCN.</p>
-<div align=center>
-<img src="https://pic.imgdb.cn/item/657eb835c458853aefe37206.png" >
-</div>
-
-<p>4) Comparison with state-of-the-art prognostics approaches<br>SVM [9], DBN [24], multi-scale CNN (MCNN) [25] and convolutional LSTM (CLSTM) [26].</p>
-<h4 id="4-2-Case-study-2-Public-C-MAPSS-datasets"><a href="#4-2-Case-study-2-Public-C-MAPSS-datasets" class="headerlink" title="4.2. Case study 2: Public C-MAPSS datasets"></a>4.2. Case study 2: Public C-MAPSS datasets</h4><p>4.2.1. C-MAPSS datasets</p>
-<p><strong>4.2.2. Prognostics results, comparison and discussion</strong></p>
-<p>using min-max scaling [28]. In addition, a time window of size 30.piece-wise linear degradation assumption,the same configuration tabulated in Table 2 except for the time window size<br>the input of net is (batch_size,num_sensor,time_windows_lengh*time_sequence_length)<br>(128,14,30*1)</p>
-<h3 id="5-Conclusions"><a href="#5-Conclusions" class="headerlink" title="5. Conclusions"></a>5. Conclusions</h3><p>引入可分离卷积操作来代替标准卷积操作，以有效地建模不同传感器数据之间的相互关系。同时，为了提高对信息特征图的敏感性，构建了一个SE单元来执行自适应特征响应重新校准<br>1）DSCN直接使用原始的多传感器数据作为输入，摆脱了手动特征提取和选择的复杂过程。2）DSCN明确考虑了不同传感器数据之间的相关性。</p>
 
       
     </div>
