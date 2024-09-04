@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer2024 福州大学 4.5 1区 Biomimetics abstractIn response to the need for multiple complete bearing degradation datasets in t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer2024 福州大学 4.5 1区 Biomimetics abstractIn response to the need for multiple complete bearing degradation datasets in t">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e876a19f345e8d037e5c9e.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70e759f345e8d038fa844.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70e759f345e8d038fa8ee.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70e759f345e8d038fa969.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e874e19f345e8d0375e261.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70e759f345e8d038faa07.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e874e19f345e8d0375e307.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e874e19f345e8d0375e3b6.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f5d0.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70eda9f345e8d0390f6dd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f66b.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f47d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e7121d9f345e8d039c916c.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e7121d9f345e8d039c9220.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e7121d9f345e8d039c933f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e7121d9f345e8d039c93cc.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e7121d9f345e8d039c9417.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e961c89f345e8d039b3fb5.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65e874e29f345e8d0375e75d.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.247Z">
+<meta property="article:modified_time" content="2024-03-07T06:45:59.189Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65e876a19f345e8d037e5c9e.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/","path":"2024/06/06/paper-note/RUL/特征提取+分段预测/Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer/","title":"Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Remaining-Useful-Life-Prediction-of-Rolling-Bearings-Based-on-ECA-CAE-and-Autoformer"><span class="nav-number">1.</span> <span class="nav-text">Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2preliminary"><span class="nav-number">1.3.</span> <span class="nav-text">2preliminary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-CAE-Model-convolutional-Auto-Encode"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1. CAE Model(convolutional Auto-Encode)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-ECANet-Efficient-Channel-Attention"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2. ECANet(Efficient Channel Attention)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Autoformer-Model"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3. Autoformer Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3Feature-Extraction-Method-and-Remaining-Useful-Life-Prediction-Algorithm"><span class="nav-number">1.4.</span> <span class="nav-text">3Feature Extraction Method and Remaining Useful Life Prediction Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-ECA-CAE"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1. ECA-CAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Remaining-Useful-Life-Prediction-Based-on-ECA-CAE-and-Autoformer-Model"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Remaining Useful Life Prediction Based on ECA-CAE and Autoformer Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Experimental-Validation"><span class="nav-number">1.5.</span> <span class="nav-text">4. Experimental Validation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Data-Sources"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1. Data Sources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Data-Processing-and-Partitioning"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2. Data Processing and Partitioning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Timing-and-Remaining-Useful-Life-Prediction-The-above-mentioned-training-set-and-predict"><span class="nav-number">1.5.3.</span> <span class="nav-text">4.3. Timing and Remaining Useful Life Prediction The above-mentioned training set and predict</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-07 14:45:59" itemprop="dateModified" datetime="2024-03-07T14:45:59+08:00">2024-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Remaining-Useful-Life-Prediction-of-Rolling-Bearings-Based-on-ECA-CAE-and-Autoformer"><a href="#Remaining-Useful-Life-Prediction-of-Rolling-Bearings-Based-on-ECA-CAE-and-Autoformer" class="headerlink" title="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer"></a>Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer</h2><p><strong>2024 福州大学 4.5 1区 Biomimetics</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>In response to the need for multiple complete bearing degradation datasets in traditional deep learning networks to predict the impact on individual bearings, a novel deep learning-based rolling bearing remaining life prediction method is proposed <strong>in the absence of fully degraded bearng data</strong><br>This method involves processing the raw vibration data through <strong>Channel-wise Attention Encoder (CAE) from the Encoder-Channel Attention (ECA)</strong>, extracting features related to mutual correlation and relevance, selecting the desired characteristics, and incorporating the selected features into the constructed <strong>Autoformer-based time prediction model</strong> to forecast the degradation trend of bearings’ remaining time.</p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>In summary, in order to minimize the impact of limited degraded bearing data on the accuracy of life prediction, this paper proposes a new deep learning network model framework.</p>
+<ul>
+<li>Compared with traditional deep learning methods that require a large amount of complete degraded bearing data for model training, this method only uses the first half of the current bearing degradation features to predict future degradation trends. <strong>This solves the problem of non-optimal model parameters due to insufficient data volume</strong></li>
+<li>By comparing with the latest Informer and Transformer models [34,35], the advantages of the proposed method are validated.</li>
+<li>Additionally, this model is suitable for predicting the life of bearings under the same operating conditions.</li>
+</ul>
+<h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><h4 id="2-1-CAE-Model-convolutional-Auto-Encode"><a href="#2-1-CAE-Model-convolutional-Auto-Encode" class="headerlink" title="2.1. CAE Model(convolutional Auto-Encode)"></a>2.1. CAE Model(convolutional Auto-Encode)</h4><p>卷积自编码器的编码器部分由卷积层（Convolution2D）和MaxPooling层（MaxPooling2D）构成，MaxPooling负责空域下采样。而解码器由卷积层（Convolution2D）和上采样层（UpSampling2D）构成。</p>
+<hr>
+<p>最为简单的自动编码器是由线性层构成的，它看起来就像是一个普通的深度神经网络DNN，只不过包含两大其他架构不具备的特征：</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e876a19f345e8d037e5c9e.png" >
+</div>
+
+<p>①输出层的神经元数量往往与输入层的神经元数量一致<br>②网络架构往往呈对称性，且中间结构简单、两边结构复杂<br>在上面的架构图中，从输入层开始压缩数据、直至架构中心的部分被称为编码器Encoder，编码器的职责是从原始数据中提取必要的信息，从原始数据中提纯出的信息被称之为编码Code或隐式表示；<br>从编码开始拓展数据、直至输出层的部分被称为解码器Decoder，解码器的输出一般被称为重构数据，解码器的职责是将提取出的信息还原为原来的结构。</p>
+<hr>
+<h4 id="2-2-ECANet-Efficient-Channel-Attention"><a href="#2-2-ECANet-Efficient-Channel-Attention" class="headerlink" title="2.2. ECANet(Efficient Channel Attention)"></a>2.2. ECANet(Efficient Channel Attention)</h4><p>To cope with the problem of weight assignment among different channels, scholars have proposed ECANet</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70e759f345e8d038fa844.png" >
+</div>
+
+
+<p>dynamic convolution kernels are used to effectively extract features under different sensory fields and learn the weights between different channels.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70e759f345e8d038fa8ee.png" >
+</div>
+
+<h4 id="2-3-Autoformer-Model"><a href="#2-3-Autoformer-Model" class="headerlink" title="2.3. Autoformer Model"></a>2.3. Autoformer Model</h4><ul>
+<li>as the prediction time lengthens,<strong>it is difficult to find reliable temporal dependencies from complex temporal patterns by directly using the self-attention mechanism</strong></li>
+<li>secondly, due to the <strong>self-attention secondary complexity problem</strong>, the model has to use its <strong>sparse version</strong>, but it will <strong>limit the information utilization efficiency and affect the prediction effect</strong></li>
+</ul>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70e759f345e8d038fa969.png" >
+</div>
+
+<p>Based on the above progressive decomposition architecture, the model can gradually decompose the hidden variables in the forecasting process and obtain the forecasting results of cycle and trend components respectively through the autocorrelation mechanism and accumulation, so as to realize the alternate and mutual promotion of decomposition and optimization of forecasting results.</p>
+<hr>
+<ul>
+<li>series decomposition module</li>
+</ul>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e874e19f345e8d0375e261.png" >
+</div>
+
+<ul>
+<li><p>In the Encoder part, a stepwise elimination of thetrend term is taken to obtain the periodic terms . And based on this periodicity,an <strong>autocorrelation mechanism is used to aggregate similar sub processes of different periods</strong></p>
+</li>
+<li><p>In the Decoder section, the trend term and the period term are modeled separately. In which, </p>
+<ul>
+<li>for the period term, the autocorrelation mechanism uses the periodic nature of the sequence to aggregate subsequences with similar processes in different cycles; </li>
+<li>for the trend term T, the trend information is gradually extracted from the predicted hidden variables using a cumulative approach.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3Feature-Extraction-Method-and-Remaining-Useful-Life-Prediction-Algorithm"><a href="#3Feature-Extraction-Method-and-Remaining-Useful-Life-Prediction-Algorithm" class="headerlink" title="3Feature Extraction Method and Remaining Useful Life Prediction Algorithm"></a>3Feature Extraction Method and Remaining Useful Life Prediction Algorithm</h3><h4 id="3-1-ECA-CAE"><a href="#3-1-ECA-CAE" class="headerlink" title="3.1. ECA-CAE"></a>3.1. ECA-CAE</h4><p>In order to verify the effectiveness of the ECA-CAE method proposed in this chapter, the proposed method is compared with the ECA encoder MLP and the convolutional self-encoder CAE</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70e759f345e8d038faa07.png" >
+</div>
+
+<p>why EAC？</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e874e19f345e8d0375e307.png" >
+</div>
+
+<h4 id="3-2-Remaining-Useful-Life-Prediction-Based-on-ECA-CAE-and-Autoformer-Model"><a href="#3-2-Remaining-Useful-Life-Prediction-Based-on-ECA-CAE-and-Autoformer-Model" class="headerlink" title="3.2. Remaining Useful Life Prediction Based on ECA-CAE and Autoformer Model"></a>3.2. Remaining Useful Life Prediction Based on ECA-CAE and Autoformer Model</h4><p>During the training of the network model, due to <strong>the difference in the failure criteria adopted by different bearings or the sampling time interval is too large,</strong> there is easily too much <strong>difference in the vibration signals leading to the threshold value cannot be unified</strong>; the trend difference problem is shown in Figure 6, if bearing 1,2 is used as training, the model is unable to learn any degradation process about bearing 3, and the RUL of bearing 3 is predicted on this basis, without deliberate tuning of the parameter optimization, the theoretical accuracy is not high.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e874e19f345e8d0375e3b6.png" >
+</div>
+
+<hr>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f5d0.png" >
+</div>
+
+<p>part1:</p>
+<div align=center >
+<img src="https://pic.imgdb.cn/item/65e70eda9f345e8d0390f6dd.png"  width= 750 height=350 >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f66b.png" >
+</div>
+
+<ul>
+<li>in order to preserve the spatial information and minimize the loss of decoding, the global average pooling layer (GAP) is used outside the encoder to obtain 200×1 data. Using GAP instead of fully connected layer (FC) will reduce a lot of training time, reduce the spatial parameters to make the model more robust, and at the same time anti-overﬁtting eﬀect is bett</li>
+<li>The 200 dimensional signals obtained by ECA-CAE have similar features and useless features with small variance, which need to do feature processing.</li>
+</ul>
+<h3 id="4-Experimental-Validation"><a href="#4-Experimental-Validation" class="headerlink" title="4. Experimental Validation"></a>4. Experimental Validation</h3><h4 id="4-1-Data-Sources"><a href="#4-1-Data-Sources" class="headerlink" title="4.1. Data Sources"></a>4.1. Data Sources</h4><p>XJTU-SY bearing dataset</p>
+<h4 id="4-2-Data-Processing-and-Partitioning"><a href="#4-2-Data-Processing-and-Partitioning" class="headerlink" title="4.2. Data Processing and Partitioning"></a>4.2. Data Processing and Partitioning</h4><ul>
+<li>A and B are the data without CAE processing, and C and D are the data after CAE processing, where B and D are part of the data of A and C respectively taken out separately for T-SNE.<br><strong>T-SNE</strong> processing, the purpose is to <strong>separate the fault stage and normal stage</strong>, the signal of normal stage is smooth, and it has no guiding meaning to the actual prediction.<blockquote>
+<p>T-SNE 一种降维方法，在这里用来区分normal and fault stage</p>
+</blockquote>
+</li>
+<li>Since the signal distribution of the normal operation phase of the bearing is irregular, the features related to the life time cannot be extracted, <strong>so the failure phase data is chosen as the training and prediction data.</strong></li>
+</ul>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e70ed99f345e8d0390f47d.png" >
+</div>
+
+<ul>
+<li>After feature screening, five features representing different degradation characteristics were finally obtained, and the correlation between the features and the correlation with time (time) were calculated as shown in Figure 12.</li>
+</ul>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e7121d9f345e8d039c916c.png" >
+</div>
+
+<ul>
+<li>If the resulting features are considered for lifetime prediction at this point, the required sequence length is not sufficient to support the training of the model, which leads to overfitting. At the same time, if the period information is added, the prediction accuracy of the sequences will be greatly increased. Therefore, a <strong>multi-dimensional sequence splicing</strong> approach is proposed as shown in Figure 13 below<br><strong>To achieve a smooth connection between the points of the sequence</strong>, the sequence is uniformly increased to a length of 9600 using <strong>cubic spline interpolation</strong>(三次样条插值).</li>
+</ul>
+<blockquote>
+<p>三次样条插值法是一种常用的数值分析方法，可以通过给定的一组散点数据来拟合出一条光滑的连续函数曲线。其基本思想是用低次多项式逼近一段小区间内的数据，并利用这些多项式的连接处衔接条件来保证整个曲线的光滑性</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e7121d9f345e8d039c9220.png" >
+</div>
+
+
+
+</blockquote>
+<h4 id="4-3-Timing-and-Remaining-Useful-Life-Prediction-The-above-mentioned-training-set-and-predict"><a href="#4-3-Timing-and-Remaining-Useful-Life-Prediction-The-above-mentioned-training-set-and-predict" class="headerlink" title="4.3. Timing and Remaining Useful Life Prediction The above-mentioned training set and predict"></a>4.3. Timing and Remaining Useful Life Prediction The above-mentioned training set and predict</h4><p>If the prediction is taken to the training set by fitting the double exponential model, the error exists between the fitted curve and the actual degradation curve because the degradation trend at the later stage is unknown, and the proposed method in this paper is the prediction of the degradation process, and the prediction results tend to be close to the real life.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e7121d9f345e8d039c933f.png" >
+</div>
+
+<p><strong>对比实验</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e7121d9f345e8d039c93cc.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e7121d9f345e8d039c9417.png" >
+</div>
+
+<p><strong>泛用性</strong><br>taking working condition three as an example, the model parameters of bearing 1 signal processing and feature screening are retained for the prediction of bearing 2 and bearing 5. Since the degradation curve of each bearing is different, so each bearing does a separate Autoformer model training, and the prediction results obtained are shown in Table 10,</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e961c89f345e8d039b3fb5.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65e874e29f345e8d0375e75d.png" >
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/A%20piecewise%20method%20for%20bearing%20remaining%20useful%20life%20estimation%20using%20temporal%20convolutional%20networks/" rel="prev" title="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks">
+                  <i class="fa fa-angle-left"></i> A piecewise method for bearing remaining useful life estimation using temporal convolutional networks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Enhanced%20residual%20convolutional%20domain%20adaptation%20network%20with%20CBAM%20for%20RUL%20prediction%20of%20cross-machine%20rolling%20bearing/" rel="next" title="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing">
+                  Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

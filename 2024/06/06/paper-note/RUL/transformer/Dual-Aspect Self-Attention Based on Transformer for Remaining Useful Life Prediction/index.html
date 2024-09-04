@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction2022.12 电子科技大学  arxiv abstractWith the widespread deployment of sensors on industrial equipment, building the Indust">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction2022.12 电子科技大学  arxiv abstractWith the widespread deployment of sensors on industrial equipment, building the Indust">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5dd6d871b83018a2add19.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5dd6e871b83018a2adda1.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5dd6e871b83018a2addea.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade24.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade73.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b7810.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b787a.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b78db.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5ddb7871b83018a2b7939.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.183Z">
+<meta property="article:modified_time" content="2024-01-16T01:38:01.841Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65a5dd6d871b83018a2add19.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/","path":"2024/06/06/paper-note/RUL/transformer/Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction/","title":"Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dual-Aspect-Self-Attention-Based-on-Transformer-for-Remaining-Useful-Life-Prediction"><span class="nav-number">1.</span> <span class="nav-text">Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2preliminary"><span class="nav-number">1.3.</span> <span class="nav-text">2preliminary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Multi-head-Attention"><span class="nav-number">1.4.</span> <span class="nav-text">2.1 Multi-head Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-proposed-methond"><span class="nav-number">1.5.</span> <span class="nav-text">2.2 proposed methond</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment-Setting"><span class="nav-number">1.6.</span> <span class="nav-text">3. Experiment Setting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1DATAset"><span class="nav-number">1.6.1.</span> <span class="nav-text">3.1DATAset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Data-Pre%E2%80%94%E2%80%94Processing"><span class="nav-number">1.6.2.</span> <span class="nav-text">3.2 Data Pre——Processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-setup"><span class="nav-number">1.6.3.</span> <span class="nav-text">3.3 setup</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-result-analysis"><span class="nav-number">1.7.</span> <span class="nav-text">4 result analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-parameter-study"><span class="nav-number">1.7.1.</span> <span class="nav-text">4.1 parameter study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-ablation-study"><span class="nav-number">1.7.2.</span> <span class="nav-text">4.2 ablation study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Attention-Scheme-Study"><span class="nav-number">1.7.3.</span> <span class="nav-text">4.3 Attention Scheme Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4Case-Study"><span class="nav-number">1.7.4.</span> <span class="nav-text">4.4Case Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-Interpretability-of-Attention"><span class="nav-number">1.7.5.</span> <span class="nav-text">4.5. Interpretability of Attention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-Comparison-with-other-work"><span class="nav-number">1.7.6.</span> <span class="nav-text">4.6. Comparison with other work</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Conclution"><span class="nav-number">1.8.</span> <span class="nav-text">5 Conclution</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-16 09:38:01" itemprop="dateModified" datetime="2024-01-16T09:38:01+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Dual-Aspect-Self-Attention-Based-on-Transformer-for-Remaining-Useful-Life-Prediction"><a href="#Dual-Aspect-Self-Attention-Based-on-Transformer-for-Remaining-Useful-Life-Prediction" class="headerlink" title="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction"></a>Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction</h2><p><strong>2022.12 电子科技大学  arxiv</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>With the widespread deployment of sensors on industrial equipment, building the Industrial Internet of Things (IIoT) to interconnect these devices has become an inexorable trend in the development of the digital factory.<br>介绍了IIOT</p>
+<p>We investigated the mainstream RUL prediction models and summarized the basic steps of RUL prediction modeling in this scenario. On this basis, a data-driven approach for RUL estimation is proposed in this paper.<br>介绍方法</p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>The emergence of low-cost micro-sensors and high-bandwidth wireless networks enables real-time access to machine data. Big data and AI extract valuable insights, enhancing productivity and reducing failure risks. This has led to the rise of Industrial Internet of Things (IIoT), transforming data into a critical resource. A key IIoT application involves using big data for predictive maintenance of complex machinery.</p>
+<p>RUL estimation algorithm is the core algorithms for predictive maintenance and PHM systems.</p>
+<p>In recent years, data-driven RUL prediction algorithms have received increasing attention.</p>
+<p>Traditional machine learning algorithms (such as SVM[11], ANN[12], and DBN[13]) have achieved good results in RUL prediction.</p>
+<p><strong>However, these networks all treat the time series of multiple sensors equally, but in fact, different sensors have different contributions to theRUL values.According to where the attention mechanisms are used, they are divided into three types: time weighting, feature (sensor) weighting, and two dimensions weighting together.Furthermore, the basic attention mechanism cannot model the intrinsic connection of features.</strong><br>上述方法中没有考虑不同传感器的重要程度，而对于注意力机制有time weighting和feature weighting and two dimensions weighting together，而传统的注意力机制没有考虑特征的内在联系。</p>
+<p>the self-attention mechanism does not require external information and is better at capturing the internal correlations of features. Additionally, the multi-head attention mechanism uses the attention weights of multiple dimensions to aggregate different contributions of features from multiple perspectives.</p>
+<h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><h3 id="2-1-Multi-head-Attention"><a href="#2-1-Multi-head-Attention" class="headerlink" title="2.1 Multi-head Attention"></a>2.1 Multi-head Attention</h3><p>Polosukhin, Attention is all you need (2017）</p>
+<h3 id="2-2-proposed-methond"><a href="#2-2-proposed-methond" class="headerlink" title="2.2 proposed methond"></a>2.2 proposed methond</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6d871b83018a2add19.png" >
+</div>
+
+<h3 id="3-Experiment-Setting"><a href="#3-Experiment-Setting" class="headerlink" title="3. Experiment Setting"></a>3. Experiment Setting</h3><h4 id="3-1DATAset"><a href="#3-1DATAset" class="headerlink" title="3.1DATAset"></a>3.1DATAset</h4><p>CMAPSS dataset</p>
+<h4 id="3-2-Data-Pre——Processing"><a href="#3-2-Data-Pre——Processing" class="headerlink" title="3.2 Data Pre——Processing"></a>3.2 Data Pre——Processing</h4><p><strong>piece-wise RUL</strong></p>
+<p>refer：<br>Sun, Remaining useful life estimation in prognostics using deep convolution neural networks, Reliability Engineering &amp; System Safety 172 (2018) 1–11</p>
+<p>Li, Machine remaining useful life prediction via an attention-based deep learning approach, IEEE Transactions on Industrial Electronics 68 (3) (2021) 2521–2531</p>
+<p><strong>cluster and normalization</strong></p>
+<p>In the absence of prior expertise, reasonable max-min values for sensors are difficult to determine, so we use z-score normalization,</p>
+<p>why norm by cluster：<br>Figure 7.c) illustrates the data colored by working conditions, and 7.d) is the data normalized separately by working conditions, which shows that the data trend with the time step is distinct from the unnormalized data.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2adda1.png" >
+</div>
+
+<p><strong>time window</strong></p>
+<p>sliding_size=T step=1</p>
+<p>对于序列长度小于time window的用第一个数据值对数据pad</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># row number &lt; sequence length, only one sequence</span></span><br><span class="line"><span class="comment"># pad width first time-cycle value</span></span><br><span class="line">all_array.append(np.pad(id_array, ((seq_len - id_array.shape[<span class="number">0</span>], <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>)), <span class="string">&#x27;edge&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-setup"><a href="#3-3-setup" class="headerlink" title="3.3 setup"></a>3.3 setup</h4><p><strong>metric</strong></p>
+<p>RMSE and score</p>
+<p><strong>hyper parameters</strong></p>
+<p>T=30<br>use all sensor feature</p>
+<p>The Adam[44] algorithm was applied to optimize the proposed model. The learning rate of Adam was set to 0.0002. The number of training batches was set to 128, and the early stop mechanism was employed to stop training after 50 rounds without better results. For the proposed model, the LSTM uses three hidden layers with 100 nodes per layer. The MLP layer has a hidden layer with 100 nodes, the activation function is ReLU[45], and the dropout is set to 0.5. The final output layer uses a single node to predict the RUL value.</p>
+<h3 id="4-result-analysis"><a href="#4-result-analysis" class="headerlink" title="4 result analysis"></a>4 result analysis</h3><h4 id="4-1-parameter-study"><a href="#4-1-parameter-study" class="headerlink" title="4.1 parameter study"></a>4.1 parameter study</h4><p><strong>feature head</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2addea.png" >
+</div>
+
+<p><strong>time head</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade24.png" >
+</div>
+
+<p><strong>Impact of RNN Cell</strong></p>
+<p>RNN and GRU：Among them, RNN has the worst performance, followed by GRU. Meanwhile, the repeated trials of these two models are not as stable as others.</p>
+<p>Bi-LSTM performs better than GRU but worse than LSTM because the bidirectional LSTM increases the model complexity. Further, the Bi-LSTM is intended to infer the following content through the bidirectional relationship of the sequences. In contrast, the signal sequence of the sensor in the RUL estimation scenario is meaningless when reversed. Therefore BiLSTM did not achieve the desired results.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5dd6e871b83018a2ade73.png" >
+</div>
+
+<p><strong>Impact of Window Size</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b7810.png" >
+</div>
+
+<p><strong>Impact of Piece-Wise RUL</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b787a.png" >
+</div>
+
+<h4 id="4-2-ablation-study"><a href="#4-2-ablation-study" class="headerlink" title="4.2 ablation study"></a>4.2 ablation study</h4><p>Where L denotes the single LSTM network, A denotes the single head attention mechanism on features, F denotes using only multi-head attention on features, and F + T denotes using multi-head attention both on features and sequences.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb6871b83018a2b78db.png" >
+</div>
+
+
+<h4 id="4-3-Attention-Scheme-Study"><a href="#4-3-Attention-Scheme-Study" class="headerlink" title="4.3 Attention Scheme Study"></a>4.3 Attention Scheme Study</h4><p>Where P is the proposed model; F and S are basic attention weighted in feature and time dimension, respectively; F+S represents first weighted by features and then weighted by time.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5ddb7871b83018a2b7939.png" >
+</div>
+
+<h4 id="4-4Case-Study"><a href="#4-4Case-Study" class="headerlink" title="4.4Case Study"></a>4.4Case Study</h4><h4 id="4-5-Interpretability-of-Attention"><a href="#4-5-Interpretability-of-Attention" class="headerlink" title="4.5. Interpretability of Attention"></a>4.5. Interpretability of Attention</h4><h4 id="4-6-Comparison-with-other-work"><a href="#4-6-Comparison-with-other-work" class="headerlink" title="4.6. Comparison with other work"></a>4.6. Comparison with other work</h4><p>Results on C-MAPSS</p>
+<p>Results on PHM08</p>
+<h3 id="5-Conclution"><a href="#5-Conclution" class="headerlink" title="5 Conclution"></a>5 Conclution</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/Remaining%20useful%20life%20estimation%20via%20transformer%20encoder%20enhanced%20by%20a%20gated%20convolutional%20unit/" rel="prev" title="Remaining useful life estimation via transformer encoder enhanced by a gated convolutional unit">
+                  <i class="fa fa-angle-left"></i> Remaining useful life estimation via transformer encoder enhanced by a gated convolutional unit
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/" rel="next" title="Variational encoding approach for interpretable assessment of remaining useful life estimation">
+                  Variational encoding approach for interpretable assessment of remaining useful life estimation <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

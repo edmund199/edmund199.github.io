@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="bounding box(目标的外接矩形框)用来表达bbox的格式通常有两种，(x1, y1, x2, y2) 和 (c_x, c_y, w, h)如图      python中assert的用法使用assert是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，与其让它在运行时崩溃，不如在出现错误条件时就崩溃。用一个程序说明： 12345def  zero(s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="study-note4">
+<meta property="og:url" content="https://edmund199.github.io.git/2022/05/18/study-note/study-note4/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="bounding box(目标的外接矩形框)用来表达bbox的格式通常有两种，(x1, y1, x2, y2) 和 (c_x, c_y, w, h)如图      python中assert的用法使用assert是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，与其让它在运行时崩溃，不如在出现错误条件时就崩溃。用一个程序说明： 12345def  zero(s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62850fea0947543129ce5992.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62850fea0947543129ce599d.png">
+<meta property="article:published_time" content="2022-05-18T15:12:03.000Z">
+<meta property="article:modified_time" content="2022-05-18T15:54:41.880Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/62850fea0947543129ce5992.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2022/05/18/study-note/study-note4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2022/05/18/study-note/study-note4/","path":"2022/05/18/study-note/study-note4/","title":"study-note4"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>study-note4 | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bounding-box-%E7%9B%AE%E6%A0%87%E7%9A%84%E5%A4%96%E6%8E%A5%E7%9F%A9%E5%BD%A2%E6%A1%86"><span class="nav-number">1.</span> <span class="nav-text">bounding box(目标的外接矩形框)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E4%B8%ADassert%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">python中assert的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iou-%E4%BA%A4%E5%B9%B6%E6%AF%94"><span class="nav-number">3.</span> <span class="nav-text">iou(交并比)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matching-strategy"><span class="nav-number">4.1.</span> <span class="nav-text">matching strategy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%B8%B8%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-%E7%B1%BB%E5%88%AB%E6%8D%9F%E5%A4%B1-%E4%BD%8D%E7%BD%AE%E6%8D%9F%E5%A4%B1"><span class="nav-number">4.2.</span> <span class="nav-text">目标检测常用损失函数-类别损失+位置损失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hard-negative-minin"><span class="nav-number">4.3.</span> <span class="nav-text">Hard negative minin</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/18/study-note/study-note4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="study-note4 | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          study-note4
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-18 23:12:03 / 修改时间：23:54:41" itemprop="dateCreated datePublished" datetime="2022-05-18T23:12:03+08:00">2022-05-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="bounding-box-目标的外接矩形框"><a href="#bounding-box-目标的外接矩形框" class="headerlink" title="bounding box(目标的外接矩形框)"></a>bounding box(目标的外接矩形框)</h2><p>用来表达bbox的格式通常有两种，(x1, y1, x2, y2) 和 (c_x, c_y, w, h)如图 </p>
+<div align=center>
+<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5992.png'width='70%'higth='70%'>
+</div>
+
+<h2 id="python中assert的用法"><a href="#python中assert的用法" class="headerlink" title="python中assert的用法"></a>python中assert的用法</h2><p>使用assert是学习python的一个非常好的习惯，在没完善一个程序之前，我们不知道程序在哪里会出错，与其让它在运行时崩溃，不如在出现错误条件时就崩溃。用一个程序说明：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">zero</span>(<span class="params">s</span>):</span><br><span class="line">    a = <span class="built_in">int</span>(s)</span><br><span class="line">    <span class="keyword">assert</span> a &gt; <span class="number">0</span>,<span class="string">&quot;a超出范围&quot;</span>   <span class="comment">#这句的意思：如果a确实大于0，程序正常往下运行</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">zero(<span class="string">&quot;-2&quot;</span>)  <span class="comment">#但是如果a是小于0的，程序会抛出AssertionError错误，报错为参数内容“a超出范围”</span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<blockquote>
+<p>Traceback (most recent call last):<br>  File “e:\Python_list\class_student\temp.py”, line 6, in <module><br>    zero(“-2”)<br>  File “e:\Python_list\class_student\temp.py”, line 3, in zero<br>    assert a &gt; 0,”a超出范围”<br>AssertionError: a超出范围</p>
+</blockquote>
+<h2 id="iou-交并比"><a href="#iou-交并比" class="headerlink" title="iou(交并比)"></a>iou(交并比)</h2><p>在目标检测任务中，关于IOU的计算贯穿整个模型的训练测试和评价过程，是非常非常重要的一个概念，其目的是用来衡量两个目标框的重叠程度。<br>IoU的全称是交并比（Intersection over Union），表示两个目标框的交集占其并集的比例</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h3 id="matching-strategy"><a href="#matching-strategy" class="headerlink" title="matching strategy"></a>matching strategy</h3><p>第一个原则：从ground truth box出发，寻找与每一个ground truth box有最大的jaccard overlap的prior bbox，这样就能保证每一个groundtruth box一定与一个prior bbox对应起来(jaccard overlap就是IOU)。 反之，若一个prior bbox没有与任何ground truth进行匹配，那么该prior bbox只能与背景匹配，就是负样本。<br>第二个原则：从prior bbox出发，对剩余的还没有配对的prior bbox与任意一个ground truth box尝试配对，只要两者之间的jaccard overlap大于阈值（一般是0.5），那么该prior bbox也与这个ground truth进行匹配。这意味着某个ground truth可能与多个Prior box匹配，这是可以的。但是反过来却不可以，因为一个prior bbox只能匹配一个ground truth，如果多个ground truth与某个prior bbox的 IOU 大于阈值，那么prior bbox只与IOU最大的那个ground truth进行匹配。</p>
+<h3 id="目标检测常用损失函数-类别损失-位置损失"><a href="#目标检测常用损失函数-类别损失-位置损失" class="headerlink" title="目标检测常用损失函数-类别损失+位置损失"></a>目标检测常用损失函数-类别损失+位置损失</h3><div align=center>
+<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg'width=100%>
+</div>
+
+<p><strong>类别损失</strong>为交叉熵损失cross entropy loss 如图4 因为背景的类别为0所以添加一项</p>
+<div align=center>
+<img src='https://pic.imgdb.cn/item/62850fea0947543129ce5989.jpg'width=100%>
+</div>
+
+<p><strong>位置损失</strong>为 smooth l1 loss </p>
+<p><img src="https://pic.imgdb.cn/item/62850fea0947543129ce599d.png" alt=""></p>
+<p>参考网站<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjp_xujiping/article/details/107589950">目标检测常用损失函数-类别损失+位置损失</a></p>
+<h3 id="Hard-negative-minin"><a href="#Hard-negative-minin" class="headerlink" title="Hard negative minin"></a>Hard negative minin</h3><p>值得注意的是，一般情况下negative prior bboxes数量 &gt;&gt; positive prior bboxes数量，直接训练会导致网络过于重视负样本，预测效果很差。为了保证正负样本尽量平衡，我们这里使用SSD使用的在线难例挖掘策略(hard negative mining)，即依据confidience loss对属于负样本的prior bbox进行排序，只挑选其中confidience loss高的bbox进行训练，将正负样本的比例控制在positive：negative=1:3。其核心作用就是只选择负样本中容易被分错类的困难负样本来进行网络训练，来保证正负样本的平衡和训练的有效性。</p>
+<p>举个例子：假设在这 441 个 prior bbox 里，经过匹配后得到正样本先验框P个，负样本先验框 441−P 个。将负样本prior bbox按照prediction loss从大到小顺序排列后选择最高的M个prior bbox。这个M需要根据我们设定的正负样本的比例确定，比如我们约定正负样本比例为1:3时。我们就取M=3P，这M个loss最大的负样本难例将会被作为真正参与计算loss的prior bboxes，其余的负样本将不会参与分类损失的loss计算。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/17/study-note/study-note3/" rel="prev" title="study-note3">
+                  <i class="fa fa-angle-left"></i> study-note3
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/20/study-note/study-note5/" rel="next" title="study-note5">
+                  study-note5 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

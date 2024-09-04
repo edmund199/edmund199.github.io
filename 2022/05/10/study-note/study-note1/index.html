@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False) 3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分布">
+<meta property="og:type" content="article">
+<meta property="og:title" content="study-note1">
+<meta property="og:url" content="https://edmund199.github.io.git/2022/05/10/study-note/study-note1/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="1.blog中图片的正确使用方式    2.transfer learning123resnet18 model:import torch, torchvisionmodel &#x3D; torchvision.models.resnet18(pretrained&#x3D;False) 3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量torch.randn用于生成服从均值为0、方差为1正太分布">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/datawhalechina/dive-into-cv-pytorch/master/markdown_imgs/whale_pytorch.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6294e0bf09475431295c6e4d.png">
+<meta property="article:published_time" content="2022-05-10T15:17:20.000Z">
+<meta property="article:modified_time" content="2022-05-30T15:26:18.752Z">
+<meta property="article:author" content="edmund">
+<meta property="article:tag" content="study notes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/datawhalechina/dive-into-cv-pytorch/master/markdown_imgs/whale_pytorch.jpg">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2022/05/10/study-note/study-note1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2022/05/10/study-note/study-note1/","path":"2022/05/10/study-note/study-note1/","title":"study-note1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>study-note1 | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-blog%E4%B8%AD%E5%9B%BE%E7%89%87%E7%9A%84%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">1.blog中图片的正确使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-transfer-learning"><span class="nav-number">2.</span> <span class="nav-text">2.transfer learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-torch-rand%E7%94%A8%E4%BA%8E%E7%94%9F%E6%88%90%E6%9C%8D%E4%BB%8E%E5%8C%BA%E9%97%B4-0-1-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%BC%A0%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-tensor-detach"><span class="nav-number">4.</span> <span class="nav-text">4.tensor.detach()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-pytorch%E4%B8%80%E4%BA%9B%E5%8C%85%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">5.pytorch一些包的总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-dataloader-%E6%9C%AC%E8%B4%A8%E6%98%AF%E4%B8%80%E4%B8%AAlist%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">6.dataloader 本质是一个list迭代器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-torchvision-%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">7.torchvision 数据集的下载方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%9E%84%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">8.</span> <span class="nav-text">8.构建数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-imagefolder"><span class="nav-number">9.</span> <span class="nav-text">9.imagefolder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E7%AE%80%E4%BB%8B"><span class="nav-number">10.</span> <span class="nav-text">10.数据增强简介</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2022/05/10/study-note/study-note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="study-note1 | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          study-note1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-10 23:17:20" itemprop="dateCreated datePublished" datetime="2022-05-10T23:17:20+08:00">2022-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-30 23:26:18" itemprop="dateModified" datetime="2022-05-30T23:26:18+08:00">2022-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="1-blog中图片的正确使用方式"><a href="#1-blog中图片的正确使用方式" class="headerlink" title="1.blog中图片的正确使用方式"></a>1.blog中图片的正确使用方式</h2><div align=center>
+<img src="https://raw.githubusercontent.com/datawhalechina/dive-into-cv-pytorch/master/markdown_imgs/whale_pytorch.jpg" width="250">
+</div>
+
+<h2 id="2-transfer-learning"><a href="#2-transfer-learning" class="headerlink" title="2.transfer learning"></a>2.transfer learning</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resnet18 model:</span><br><span class="line"><span class="keyword">import</span> torch, torchvision</span><br><span class="line">model = torchvision.models.resnet18(pretrained=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量"><a href="#3-torch-rand用于生成服从区间-0-1-均匀分布的随机张量" class="headerlink" title="3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量"></a>3.torch.rand用于生成服从区间[0,1)均匀分布的随机张量</h2><p>torch.randn用于生成服从均值为0、方差为1正太分布的随机张量</p>
+<h2 id="4-tensor-detach"><a href="#4-tensor-detach" class="headerlink" title="4.tensor.detach()"></a>4.tensor.detach()</h2><p>如果某个张量不想要被继续追踪，可以调用.detach()将其从追踪记录中分离出来，可以防止将来的计算被追踪，这样梯度就传不过去了。</p>
+<h2 id="5-pytorch一些包的总结"><a href="#5-pytorch一些包的总结" class="headerlink" title="5.pytorch一些包的总结"></a>5.pytorch一些包的总结</h2><p><strong>torch.nn：包含一些网络和module(构造网络）,functional（激活函数，需要在开始导入包)<br>import torch.nn.functional as F<br>torch.optim：包含优化器<br>torch.utils.data: 包含dataset和dataloadaer（构造数据集和loader）<br>torchvision: 包含transforms，datasets（数据集），models（模型用于transfer learning)</strong></p>
+<ul>
+<li>models：提供深度学习中各种经典网络的网络结构以及预训练好的模型，包括<code>AlexNet</code>、VGG系列、ResNet系列、Inception系列等。</li>
+<li>datasets： 提供常用的数据集加载，设计上都是继承<code>torhc.utils.data.Dataset</code>，主要包括<code>MNIST</code>、<code>CIFAR10/100</code>、<code>ImageNet</code>、<code>COCO</code>等。</li>
+<li>transforms：提供常用的数据预处理操作，主要包括对Tensor以及PIL Image对象的操作。</li>
+</ul>
+<span id="more"></span>
+<h2 id="6-dataloader-本质是一个list迭代器？"><a href="#6-dataloader-本质是一个list迭代器？" class="headerlink" title="6.dataloader 本质是一个list迭代器？"></a>6.dataloader 本质是一个list迭代器？</h2><p>可以用len（某个loader）知道样本数量</p>
+<h2 id="7-torchvision-数据集的下载方法"><a href="#7-torchvision-数据集的下载方法" class="headerlink" title="7.torchvision 数据集的下载方法"></a>7.torchvision 数据集的下载方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision </span><br><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms        </span><br></pre></td></tr></table></figure>
+<p>读取训练集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">custom_transform=transforms.transforms.Compose([</span><br><span class="line">              transforms.Resize((<span class="number">64</span>, <span class="number">64</span>)),    <span class="comment"># 缩放到指定大小 64*64</span></span><br><span class="line">              transforms.ColorJitter(<span class="number">0.2</span>, <span class="number">0.2</span>, <span class="number">0.2</span>),    <span class="comment"># 随机颜色变换</span></span><br><span class="line">              transforms.RandomRotation(<span class="number">5</span>),    <span class="comment"># 随机旋转</span></span><br><span class="line">              transforms.Normalize([<span class="number">0.485</span>,<span class="number">0.456</span>,<span class="number">0.406</span>],    <span class="comment"># 对图像像素进行归一化</span></span><br><span class="line">                                   [<span class="number">0.229</span>,<span class="number">0.224</span>,<span class="number">0.225</span>])])</span><br><span class="line">train_data=torchvision.datasets.CIFAR10(<span class="string">&#x27;../../../dataset&#x27;</span>, </span><br><span class="line">                                        train=<span class="literal">True</span>,                                       </span><br><span class="line">                                        transform=custom_transforms,</span><br><span class="line">                                        target_transform=<span class="literal">None</span>, </span><br><span class="line">                                        download=<span class="literal">False</span>)   </span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<blockquote>
+<p>dataset_dir：存放数据集的路径。<br>train（bool，可选）–如果为True，则构建训练集，否则构建测试集。<br>transform：定义数据预处理，数据增强方案都是在这里指定。<br>target_transform：标注的预处理，分类任务不常用。<br>download：是否下载，若为True则从互联网下载，如果已经在dataset_dir下存在，就不会再次下载</p>
+</blockquote>
+<h2 id="8-构建数据集"><a href="#8-构建数据集" class="headerlink" title="8.构建数据集"></a>8.构建数据集</h2><p>图像数据 ➡ 图像索引文件 ➡ 使用Dataset构建数据集 ➡ 使用DataLoader读取数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data.dataset <span class="keyword">import</span> Dataset</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDataset</span>(<span class="title class_ inherited__">Dataset</span>):  <span class="comment"># 继承Dataset类</span></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="comment"># 初始化图像文件路径或图像文件名列表等</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="comment"># 1.根据索引index从文件中读取一个数据（例如，使用numpy.fromfile，PIL.Image.open，cv2.imread）</span></span><br><span class="line">        <span class="comment"># 2.预处理数据（例如torchvision.Transform）</span></span><br><span class="line">        <span class="comment"># 3.返回数据对（例如图像和标签）</span></span><br><span class="line">       <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="keyword">return</span> count  <span class="comment"># 返回数据量</span></span><br></pre></td></tr></table></figure>
+<h2 id="9-imagefolder"><a href="#9-imagefolder" class="headerlink" title="9.imagefolder"></a>9.imagefolder</h2><p>特殊的构造数据集方式imagefolder（针对以文件目录分类好的图像）</p>
+<blockquote>
+<p>ImageFolder(root, transform=None, target_transform=None, loader=default_loader)</p>
+</blockquote>
+<p>它主要有四个参数：</p>
+<ul>
+<li><code>root</code>：在root指定的路径下寻找图片</li>
+<li><code>transform</code>：对PIL Image进行的转换操作，transform的输入是使用loader读取图片的返回对象</li>
+<li><code>target_transform</code>：对label的转换</li>
+<li><code>loader</code>：给定路径后如何读取图片，默认读取为RGB格式的PIL Image对象</li>
+</ul>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6294e0bf09475431295c6e4d.png" width ="90%">
+</div>
+
+<h2 id="10-数据增强简介"><a href="#10-数据增强简介" class="headerlink" title="10.数据增强简介"></a>10.数据增强简介</h2><p>图像的增广是通过对训练图像进行一系列变换，产生相似但不同于主体图像的训练样本，来扩大数据集的规模的一种常用技巧。另一方面，随机改变训练样本降低了模型对特定数据进行记忆的可能，有利于增强模型的泛化能⼒，提高模型的预测效果，因此可以说数据增强已经不算是一种优化技巧，而是CNN训练中默认要使用的标准操作。在常见的数据增广方法中，一般会从图像颜色、尺寸、形态、亮度/对比度、噪声和像素等角度进行变换。当然不同的数据增广方法可以自由进行组合，得到更加丰富的数据增广方法。<br><strong><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/dive-into-cv-pytorch/#/chapter02_image_classification_introduction/appendix/appendixA_data_augment">torchvision.transforms速查</a></strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/study-notes/" rel="tag"># study notes</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/09/blog-use/blog-use1/" rel="prev" title="how to use blog">
+                  <i class="fa fa-angle-left"></i> how to use blog
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/11/study-note/study-note2/" rel="next" title="study-note2">
+                  study-note2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

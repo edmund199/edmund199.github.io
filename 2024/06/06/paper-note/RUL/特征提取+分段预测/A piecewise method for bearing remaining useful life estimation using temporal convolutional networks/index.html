@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks2023.04 华科 12.1 1区 Journal of Manufacturing Systems abstracttraditional network models such as CNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/A%20piecewise%20method%20for%20bearing%20remaining%20useful%20life%20estimation%20using%20temporal%20convolutional%20networks/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks2023.04 华科 12.1 1区 Journal of Manufacturing Systems abstracttraditional network models such as CNN">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f115ad9f345e8d039be4c5.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f115ad9f345e8d039be5f9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f115ad9f345e8d039be64a.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f118d39f345e8d03a74722.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f115ad9f345e8d039be6b7.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f116bb9f345e8d03a042e6.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f1173b9f345e8d03a1e980.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1eb4c.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1ec58.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1ed40.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f117859f345e8d03a2e695.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f117859f345e8d03a2e70b.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f117859f345e8d03a2e96f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f117859f345e8d03a2e8ca.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f118aa9f345e8d03a6bede.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65f118aa9f345e8d03a6bf4a.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.237Z">
+<meta property="article:modified_time" content="2024-03-13T03:09:31.078Z">
+<meta property="article:author" content="edmund">
+<meta property="article:tag" content="特征提取+分段预测">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65f115ad9f345e8d039be4c5.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/A%20piecewise%20method%20for%20bearing%20remaining%20useful%20life%20estimation%20using%20temporal%20convolutional%20networks/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/A%20piecewise%20method%20for%20bearing%20remaining%20useful%20life%20estimation%20using%20temporal%20convolutional%20networks/","path":"2024/06/06/paper-note/RUL/特征提取+分段预测/A piecewise method for bearing remaining useful life estimation using temporal convolutional networks/","title":"A piecewise method for bearing remaining useful life estimation using temporal convolutional networks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A piecewise method for bearing remaining useful life estimation using temporal convolutional networks | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-piecewise-method-for-bearing-remaining-useful-life-estimation-using-temporal-convolutional-networks"><span class="nav-number">1.</span> <span class="nav-text">A piecewise method for bearing remaining useful life estimation using temporal convolutional networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2Temporal-convolutional-network"><span class="nav-number">1.3.</span> <span class="nav-text">2Temporal convolutional network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Proposed-ADSD-TCNPE-approach"><span class="nav-number">1.4.</span> <span class="nav-text">3. Proposed ADSD-TCNPE approach</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Feature-extraction"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1. Feature extraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Feature-selection-using-comprehensive-evaluation-metric"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Feature selection using comprehensive evaluation metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Degradation-state-division"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3. Degradation state division</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4RUL-piecewise-estimation-based-on-TCN"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4RUL piecewise estimation based on TCN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Experimental-verification"><span class="nav-number">1.5.</span> <span class="nav-text">4. Experimental verification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Data-description"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1. Data description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Feature-extraction-and-selection"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2. Feature extraction and selection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Division-of-degradation-stages"><span class="nav-number">1.5.3.</span> <span class="nav-text">4.3. Division of degradation stages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-RUL-estimation-results-and-analysis"><span class="nav-number">1.5.4.</span> <span class="nav-text">4.4. RUL estimation results and analysis</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/A%20piecewise%20method%20for%20bearing%20remaining%20useful%20life%20estimation%20using%20temporal%20convolutional%20networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A piecewise method for bearing remaining useful life estimation using temporal convolutional networks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-13 11:09:31" itemprop="dateModified" datetime="2024-03-13T11:09:31+08:00">2024-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="A-piecewise-method-for-bearing-remaining-useful-life-estimation-using-temporal-convolutional-networks"><a href="#A-piecewise-method-for-bearing-remaining-useful-life-estimation-using-temporal-convolutional-networks" class="headerlink" title="A piecewise method for bearing remaining useful life estimation using temporal convolutional networks"></a>A piecewise method for bearing remaining useful life estimation using temporal convolutional networks</h2><p><strong>2023.04 华科 12.1 1区 Journal of Manufacturing Systems</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>traditional network models such as <strong>CNN and RNN have limitations in directly dealing with time series problems</strong>. This paper proposes an adaptive degradation stage division strategy and a temporal convolutional network (TCN)-based RUL piecewise estimation method, called ADSD-TCNPE. This method mainly includes three steps.</p>
+<ul>
+<li>(1) <strong>Extract features</strong> from different domains and select the features that are highly correlated with bearing degradation. </li>
+<li>(2) <strong>Adaptively divide the whole lifecycle</strong> of bearing into different degradation stages.</li>
+<li>(3) Establish a <strong>TCN-based piecewise degradation model</strong> for <strong>different degradation stages</strong> to accurately predict bearing RUL.</li>
+</ul>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>PHM -&gt;model-based methods [2,3] and data-driven methods -&gt;<br>Although the above deep learning-based methods have achieved excellent results, <strong>there are still some challenges</strong>:</p>
+<ul>
+<li>Firstly, most existing methods focus on building a <strong>whole-lifecycle degradation model for bearings</strong>, which is <strong>different from the actual bearing degradation process</strong>.</li>
+<li>Secondly, the <strong>corresponding mapping relationships</strong> between extracted features and operating states have not been fully learned for these different degradation states.</li>
+<li>Thirdly, some commonly used deep learning <strong>models have limitations</strong> for the RUL prediction problem.like CNN,RNN</li>
+</ul>
+<hr>
+<p>The main contributions of this paper can be summarized as follows.</p>
+<ul>
+<li>First, <strong>multiple degradation features</strong>, including time-domain features, frequency domain features, and time-frequency domain features, are extracted from the vibration signal. <strong>Then the effective features are selected according to the established comprehensive evaluation metric.</strong> <strong>多尺度退化特征的筛选及评级指标</strong></li>
+<li>the density-based clustering algorithm is used to adaptively divide the bearing degradation state. <strong>退化过程的自适应划分</strong></li>
+<li>A piecewise estimation model is established for the RUL prediction of bearings. <strong>The corresponding estimation model is built for each health state to predict RUL.</strong> Our <strong>TCN-based RUL estimation method has superior</strong> feature extraction ability and long-term sequence processing capability, which is more suitable for the bearing RUL prediction task.</li>
+</ul>
+<h3 id="2Temporal-convolutional-network"><a href="#2Temporal-convolutional-network" class="headerlink" title="2Temporal convolutional network"></a>2Temporal convolutional network</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/65f115ad9f345e8d039be4c5.png">
+</div>
+
+<h3 id="3-Proposed-ADSD-TCNPE-approach"><a href="#3-Proposed-ADSD-TCNPE-approach" class="headerlink" title="3. Proposed ADSD-TCNPE approach"></a>3. Proposed ADSD-TCNPE approach</h3><div align=center>
+<img src=https://pic.imgdb.cn/item/65f115ad9f345e8d039be584.png >
+</div>
+
+<ul>
+<li><p>Firstly, <strong>the time, frequency, and time-frequency domain features are extracted</strong> from bearing vibration signals to form the original feature space. Meanwhile, <strong>a comprehensive evaluation metric is constructed to select features with high degradation correlation from the original feature space.</strong><br>时域，频域，时频域特征的提取及用综合评价指标进行特征筛选</p>
+</li>
+<li><p>Secondly, <strong>a nonlinear compression method is used to make the boundaries between different degradation stages more exact, and density-based clustering is employed to adaptively divide different degradation stages</strong>.<br>用非线性压缩方法(T-SNE)使不同退化阶段的特征边界更明显，再使用密度聚类的方法区分不同退化阶段</p>
+</li>
+<li><p>Finally, the TCN-based degradation models of different degradation stages are established to realize bearing RUL prediction. The detailed description of each step is as follows.<br>最后在不同退化阶段建立不同的TCN模型进行预测</p>
+</li>
+</ul>
+<h4 id="3-1-Feature-extraction"><a href="#3-1-Feature-extraction" class="headerlink" title="3.1. Feature extraction"></a>3.1. Feature extraction</h4><p>why？</p>
+<blockquote>
+<p>the original signal data is often high-dimensional and has redundant information, making it difficult to establish an accurate degradation model.</p>
+</blockquote>
+<p>3.1.1. Time-domain features<br>Time-domain features that give a general profile of bearing degradation trends have been verified to be effective in monitoring machinery health states.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f115ad9f345e8d039be5f9.png" >
+</div>
+
+<hr>
+<p>3.1.2. Frequency-domain features</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f115ad9f345e8d039be64a.png" >
+</div>
+
+<hr>
+<p>3.1.3. Time-frequency features</p>
+<p>The time and frequency domain features give a general profile of bearing degradation trends, while the time-frequency domain features can represent the local characteristics of the vibration signal.</p>
+<p><strong>empirical mode decomposition (EMD) and Hilbert spectrum analysis</strong></p>
+<p>todo</p>
+<h4 id="3-2-Feature-selection-using-comprehensive-evaluation-metric"><a href="#3-2-Feature-selection-using-comprehensive-evaluation-metric" class="headerlink" title="3.2. Feature selection using comprehensive evaluation metric"></a>3.2. Feature selection using comprehensive evaluation metric</h4><p>why?</p>
+<blockquote>
+<p>It can be found that <strong>good prediction features have similar degradation properties</strong>, so the distance between feature sequences should be as close as possible, and they should also <strong>be monotonically correlated with the degradation process</strong>.</p>
+</blockquote>
+<p><strong>The dynamic time warping distance</strong> is first used to measure the <strong>similarity between feature sequences</strong>. Moreover, <strong>monotonicity and correlation metrics are employed to measure the monotonic correlation of features</strong></p>
+<hr>
+<p>3.2.1. Dynamic time warping distance metric<br>Compared with traditional distance measurement methods such as Euclidean distance, <strong>dynamic time warping (DTW) shows superior performance in measuring the similarity of time series.</strong></p>
+<p><strong>补充：</strong><br><strong>Dynamic Time Warping（动态时间调），用来进行时间序列相似性度量</strong></p>
+<p>在传统算法中，可以用余弦相似度和pearson相关系数来描述两个序列的相似度。但是时间序列比较特殊，可能存在两个问题：</p>
+<ul>
+<li>两段时间序列长度不同。如何求相似度？</li>
+<li>一个序列是另一个序列平移之后得到的。如何求相似距离？</li>
+</ul>
+<p>第一个问题，导致了根本不能用余弦相似度和pearson相关系数来求解相似。第二个问题，导致了也不能基于欧式距离这样的算法，来求解相似距离。<br>Dynamic Time Warping (DTW) 本质上和通过动态规划来计算这个序列的相似距离。</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f118d39f345e8d03a74722.png" >
+</div>
+
+<p>在文中用DWT获得了不同特征序列与特征序列中心的相似度，原因是Features with smaller similarity distances are more appropriate for RUL prediction.</p>
+<p>参考:<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39910711/article/details/108178110">https://blog.csdn.net/weixin_39910711/article/details/108178110</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xsdxs/article/details/86648605">https://blog.csdn.net/xsdxs/article/details/86648605</a></p>
+<hr>
+<p>3.2.2. Correlation metric</p>
+<p>The time correlation metric measures the degree of linear correlation between feature sequences and running time, denoted as Corr and the calculation equation is as follows:</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f115ad9f345e8d039be6b7.png" >
+</div>
+
+<p>3.2.3. Monotonicity metric</p>
+<p>The monotonicity metric (denoted as Mon) assesses the feature increasing or decreasing trend as follows</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f116bb9f345e8d03a042e6.png" >
+</div>
+
+<p>the  comprehensive evaluation metric</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f1173b9f345e8d03a1e980.png" >
+</div>
+
+<h4 id="3-3-Degradation-state-division"><a href="#3-3-Degradation-state-division" class="headerlink" title="3.3. Degradation state division"></a>3.3. Degradation state division</h4><p>why？</p>
+<blockquote>
+<p>The degraded expression after feature selection may still have some redundant information.which may lead to a long distance between degradation state points in the same degradation stage and a short distance between state points in different degradation stages, further resulting in <strong>the boundaries between different degradation stages are not distinguishable enough</strong>.<br>经过特征提取后的特征可能有冗余的信息，会导致在相同退化阶段的退化特征点之间距离较长，不同退化阶段的点之间的距离较短，从而使不同退化阶段的边界不够明显。</p>
+</blockquote>
+<hr>
+<p>3.3.1. Feature compression based on t-SNE<br>This algorithm first transforms the Euclidean distance into a joint probability distribution and then compresses the data from high-dimension to low-dimension to express the similarity between state points.<br>经过t-SNE的降维后，不同阶段的退化状态点距离拉长，相同点距离缩短。</p>
+<p><strong>补充两种常见的降维方法</strong>：<br>Principal Component Analysis(PCA)，t-Distributed Stochastic Neighbour Embedding(t-SNE，t分布随机邻居嵌入)<br>减少数据维数的目标 (Goals for reducing the dimensionality of the data)</p>
+<ol>
+<li><p>Preserve as much significant structure or information of the data present in the high-dimensional data as possible in the low-dimensional representation.<br><strong>在低维表示中，尽可能保留高维数据中存在的数据的重要结构或信息。</strong></p>
+</li>
+<li><p>Increase the interpretability of the data in the lower dimension<strong>在较低维度上增加数据的可解释性</strong></p>
+</li>
+<li><p>Minimizing information loss of data due to dimensionality reduction<strong>最小化因降维而导致的数据信息丢失</strong></p>
+</li>
+</ol>
+<p><strong>主成分分析(PCA)</strong>:</p>
+<blockquote>
+<p>一种无监督的确定性算法，用于特征提取和可视化<br>应用线性降维技术 ，其重点是在低维空间中将相异的点保持较远的距离 。<br>通过使用特征值保留数据中的方差，将原始数据转换为新数据 。<br>离群值影响PCA。</p>
+</blockquote>
+<p><strong>t-分布随机邻居嵌入(t-SNE) (t-Distributed Stochastic Neighbourh Embedding(t-SNE))</strong></p>
+<blockquote>
+<p>一种无监督的随机算法，仅用于可视化<br>应用非线性 降 维技术 ，其中重点是在低维空间中将非常相似的数据点保持在一起 。<br>使用学生t分布保留数据的局部结构，以计算低维空间中两点之间的相似度。<br>t-SNE使用重尾学生t分布来计算低维空间中两点之间的相似度，而不是高斯分布，这有助于解决拥挤和优化问题 。<br>t-SNE使用重尾学生t分布来计算低维空间中两点之间的相似度，而不是高斯分布，这有助于解决拥挤和优化问题<br>离群值不影响t-SNE</p>
+</blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_26752765/article/details/108132823">https://blog.csdn.net/weixin_26752765/article/details/108132823</a></p>
+<p>3.3.2. Degradation state division based on DBSCAN</p>
+<blockquote>
+<p>why?<br>Since the spatial distribution shape of <strong>feature state points after feature compression may be irregular</strong>, this paper adopts the density-based spatial clustering of applications with noise (DBSCAN) algorithm to deal with the state points after feature compression.</p>
+</blockquote>
+<h4 id="3-4RUL-piecewise-estimation-based-on-TCN"><a href="#3-4RUL-piecewise-estimation-based-on-TCN" class="headerlink" title="3.4RUL piecewise estimation based on TCN"></a>3.4RUL piecewise estimation based on TCN</h4><p>why piecewise estimation？<br>Mixing data from the slow and rapid degradation stages to train the RUL estimation model together will <strong>generate an unbalanced data problem and result in an inaccurate prediction model</strong> for the rapid degradation stage.</p>
+<p>Here the input data for both SVM and TCN models are the feature points vector f after feature selection, and the output data are the degradation stage labels and RUL labels, respectively.</p>
+<p>normalization：minmax<br>metric：RMSE，MAPE，Er(percent error)</p>
+<h3 id="4-Experimental-verification"><a href="#4-Experimental-verification" class="headerlink" title="4. Experimental verification"></a>4. Experimental verification</h3><h4 id="4-1-Data-description"><a href="#4-1-Data-description" class="headerlink" title="4.1. Data description"></a>4.1. Data description</h4><p>FEMTO</p>
+<h4 id="4-2-Feature-extraction-and-selection"><a href="#4-2-Feature-extraction-and-selection" class="headerlink" title="4.2. Feature extraction and selection"></a>4.2. Feature extraction and selection</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1eb4c.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1ec58.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f1173c9f345e8d03a1ed40.png" >
+</div>
+
+<p>In this study, 14 features least correlated to bearing degradation are eliminated to keep the number of selected features the same.</p>
+<h4 id="4-3-Division-of-degradation-stages"><a href="#4-3-Division-of-degradation-stages" class="headerlink" title="4.3. Division of degradation stages"></a>4.3. Division of degradation stages</h4><p>In this section, the <strong>t-SNE algorithm</strong> is adopted to compress the selected effective features into two dimensions. <strong>The low-dimensional spatial distribution of compressed features can distinguish different degradation states.</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f117859f345e8d03a2e695.png" >
+</div>
+
+<h4 id="4-4-RUL-estimation-results-and-analysis"><a href="#4-4-RUL-estimation-results-and-analysis" class="headerlink" title="4.4. RUL estimation results and analysis"></a>4.4. RUL estimation results and analysis</h4><p>4.4.1. Estimation results and analysis</p>
+<blockquote>
+<p>为什么不用T—sne降维后的特征作为输入？<br>To avoid the loss of degradation information, this paper uses the 30-dimensional features after feature selection as network inputs instead of the 2-dimensional features after t-SNE dimensionality reduction.</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f117859f345e8d03a2e70b.png" >
+</div>
+
+<hr>
+<p>The comparison of <strong>piecewise estimation</strong> using the ADSD-TCNPE model proposed in this paper, and Who represents the result of the unified degradation model for <strong>the whole lifecycle</strong>.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f117859f345e8d03a2e96f.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f117859f345e8d03a2e8ca.png" >
+</div>
+
+
+<p>prediction model can achieve <strong>better prediction</strong> results, especially <strong>in the rapid degradation stage</strong> when the bearing is about to fail. <strong>This is because the prediction model in the rapid degradation stage focuses on a small number of training samples in that stage and is not affected by the noise of other samples in the slow degradation stage.</strong></p>
+<p>4.4.2. Method validation</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f118aa9f345e8d03a6bede.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65f118aa9f345e8d03a6bf4a.png" >
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96-%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/" rel="tag"># 特征提取+分段预测</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/8.Remaining%20useful%20life%20prediction%20of%20bearing%20based%20on%20stacked%20autoencoder%20and%20recurrent%20neural%20network/" rel="prev" title="AE构建HI">
+                  <i class="fa fa-angle-left"></i> AE构建HI
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/" rel="next" title="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer">
+                  Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

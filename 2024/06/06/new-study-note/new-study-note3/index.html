@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="tensorboard的使用一、创建一个writer实例tensorboard的所有记录操作都是实例化了SummaryWriter这个对象，首先需要创建一个writer实例，有如下几种创建方式，如果创建writer时没有参数，默认文件在runs目录下，默认的子文件夹名字为该文件的创建日期，当然也可以手动设定子文件夹的名字 1234from tensorboardX import SummaryWr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="new-study-note3">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note3/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="tensorboard的使用一、创建一个writer实例tensorboard的所有记录操作都是实例化了SummaryWriter这个对象，首先需要创建一个writer实例，有如下几种创建方式，如果创建writer时没有参数，默认文件在runs目录下，默认的子文件夹名字为该文件的创建日期，当然也可以手动设定子文件夹的名字 1234from tensorboardX import SummaryWr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-06T06:01:07.081Z">
+<meta property="article:modified_time" content="2023-12-14T02:26:50.819Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note3/","path":"2024/06/06/new-study-note/new-study-note3/","title":"new-study-note3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>new-study-note3 | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorboard%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">tensorboard的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAwriter%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">一、创建一个writer实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">二、添加数据形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%90%E8%A1%8Ctensorboard"><span class="nav-number">1.3.</span> <span class="nav-text">三、运行tensorboard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additive-Attention-%E5%92%8C-Dot-product-Attention"><span class="nav-number">2.</span> <span class="nav-text">Additive Attention 和 Dot-product Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#argparse-ArgumentParser-%E7%94%A8%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">argparse.ArgumentParser()用法解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-pandas-DataFrame-ewm%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Python pandas.DataFrame.ewm函数方法的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="new-study-note3 | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          new-study-note3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-14 10:26:50" itemprop="dateModified" datetime="2023-12-14T10:26:50+08:00">2023-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="tensorboard的使用"><a href="#tensorboard的使用" class="headerlink" title="tensorboard的使用"></a>tensorboard的使用</h2><h3 id="一、创建一个writer实例"><a href="#一、创建一个writer实例" class="headerlink" title="一、创建一个writer实例"></a>一、创建一个writer实例</h3><p>tensorboard的所有记录操作都是实例化了SummaryWriter这个对象，首先需要创建一个writer实例，有如下几种创建方式，如果创建writer时没有参数，默认文件在runs目录下，默认的子文件夹名字为该文件的创建日期，当然也可以手动设定子文件夹的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorboardX <span class="keyword">import</span> SummaryWriter </span><br><span class="line"></span><br><span class="line"><span class="comment"># SummaryWriter encapsulates everything </span></span><br><span class="line">writer = SummaryWriter()</span><br></pre></td></tr></table></figure>
+<h3 id="二、添加数据形式"><a href="#二、添加数据形式" class="headerlink" title="二、添加数据形式"></a>二、添加数据形式</h3><ol>
+<li>记录标量<br>记录一个标量<br><code>add_scalar(tag, scalar_value, global_step, walltime)</code></li>
+</ol>
+<ul>
+<li>tag：数据标签</li>
+<li>scalar_value：数据的值，即y轴的值</li>
+<li>global_step：全局步数，即x轴的值</li>
+<li>walltime：记录event的时间，可选</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">range</span>(<span class="number">100</span>) </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x:     </span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    writer.add_scalar(<span class="string">&#x27;y=2x&#x27;</span>, i * <span class="number">2</span>, i, walltime=time.time()) </span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+<p>记录多个标量<br><code>add_scalars(main_tag, scalar_dict, global_step, walltime)</code></p>
+<ul>
+<li>main_tag：数据标签</li>
+<li>tag_scalar_dict：数据的值，即y轴的值</li>
+<li>global_step：全局步数，即x轴的值</li>
+<li>walltime：记录event的时间，可选</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorboardX <span class="keyword">import</span> </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">SummaryWriter writer = SummaryWriter() </span><br><span class="line">r = <span class="number">5</span> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):     </span><br><span class="line">    writer.add_scalars(<span class="string">&#x27;run_14h&#x27;</span>, </span><br><span class="line">    				  &#123;<span class="string">&#x27;xsinx&#x27;</span>:i*np.sin(i/r),                                                                               </span><br><span class="line">					   <span class="string">&#x27;xcosx&#x27;</span>:i*np.cos(i/r),</span><br><span class="line">                       <span class="string">&#x27;tanx&#x27;</span>: np.tan(i/r)&#125;, </span><br><span class="line">                       i) </span><br><span class="line">writer.close() </span><br><span class="line"><span class="comment"># This call adds three values to the same scalar plot with the tag</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、运行tensorboard"><a href="#三、运行tensorboard" class="headerlink" title="三、运行tensorboard"></a>三、运行tensorboard</h3><p>当程序运行完成后会自动生成tensorboard文件和目录，在cmd终端使用<code>tensorboard --logdir=&lt;your_log_dir&gt;</code>运行日志进行可视化了</p>
+<h2 id="Additive-Attention-和-Dot-product-Attention"><a href="#Additive-Attention-和-Dot-product-Attention" class="headerlink" title="Additive Attention 和 Dot-product Attention"></a>Additive Attention 和 Dot-product Attention</h2><p>additive attention 和 dot-product attention 是最常用的两种attention函数，都是用于在attention中计算两个向量之间的相关度，下面对这两个function进行简单的比较整理。</p>
+<p><strong>计算原理</strong><br><code>additive attention</code>使用了一个有一个隐层的前馈神经网络，输入层是两个向量的横向拼接，输出层的激活函数是sigmoid表示二者的相关度，对每一对向量都需要进行一次计算，得到的结果再计算softmax得到attention相关度权重。<br>举个栗子<br>计算向量Q与向量K1，K2，… ，Kn的attention权重，先拼接Q-K1计算，再拼接Q-K2计算，…，直到所有的都计算出一个结果再套softmax。</p>
+<p><code>dot-product attention</code>一般用矩阵运算，Q K V 分别是三个矩阵，均表示一组向量，dot-product attention想做的是如何用V中的向量表示Q，Q一般指的是要表示的目标，K要和Q建立联系，计算相关性，以计算出的相关性为权重，加权叠加矩阵V中的向量。下图是Transformer中用的dot-product attention，根号dk作用是缩放，一般的dot-product attention可以不用缩放。</p>
+<p>这里Q和K的都是由维度为dk的向量组成的，V的维度为dv，最终生成的Q‘也是由维度为dv的向量组成的。<br>用同一个栗子，这里的矩阵Q 就是 1 × dk，K是 n × dk，V是 n × dv。</p>
+<h2 id="argparse-ArgumentParser-用法解析"><a href="#argparse-ArgumentParser-用法解析" class="headerlink" title="argparse.ArgumentParser()用法解析"></a>argparse.ArgumentParser()用法解析</h2><ol>
+<li>import argparse ；首先导入该模块</li>
+<li>parser = argparse.ArgumentParser()；创建一个解析对象</li>
+<li>parser.add_argument()；然后向该对象中添加要关注的命令行参数和选项，每一个add_argument方法对应一个要关注的参数或选项；</li>
+<li>parser.parse_args()；调用parse_args()方法进行解析，解析成功之后即可使用。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="comment">#设置可选参数（常用）</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--family&#x27;</span>, defalut=<span class="string">&#x27;chen&#x27;</span>,<span class="built_in">type</span>=<span class="built_in">str</span>,<span class="built_in">help</span>=<span class="string">&#x27;姓&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--name&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>,<span class="built_in">help</span>=<span class="string">&#x27;名&#x27;</span>)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用args.参数名即可调用对应参数</span></span><br><span class="line"><span class="built_in">print</span>(args.family)</span><br></pre></td></tr></table></figure>
+<h2 id="Python-pandas-DataFrame-ewm函数方法的使用"><a href="#Python-pandas-DataFrame-ewm函数方法的使用" class="headerlink" title="Python pandas.DataFrame.ewm函数方法的使用"></a>Python pandas.DataFrame.ewm函数方法的使用</h2><p><code>DataFrame.ewm(self, com=None, span=None, halflife=None, alpha=None, min_periods=0, adjust=True, ignore_na=False, axis=0)</code><br><code>Returns:pandas.api.typing.ExponentialMovingWindow</code></p>
+<ul>
+<li>com ：  float，可选<br>根据质心指定衰减， α=1/(1+com), for com≥0。</li>
+<li>span ：  float，可选<br>根据范围指定衰减， α=2/(span+1), for span≥1。</li>
+<li>halflife ：  float，可选<br>根据半衰期指定衰减， α=1−exp(log(0.5)/halflife),forhalflife&gt;0。</li>
+<li>alpha ：  float，可选<br>直接指定平滑系数α， 0&lt;α≤1。</li>
+<li>min_periods ： int，默认0<br>窗口中具有值的最小观察数（否则结果为NA）。</li>
+<li>adjust ： bool，默认为True<br>除以开始阶段的衰减调整因子，以解释相对权重的不平衡(将EWMA视为移动平均线)。</li>
+<li>ignore_na ： bool，默认为False<br>计算权重时忽略缺失值；指定True可重现0.15.0之前的行为。</li>
+<li>axis ： {0或’index’，1或’columns’}，默认0<br>要使用的轴。值0标识行，值1标识列。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;B&#x27;</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, np.nan, <span class="number">4</span>]&#125;)</span><br><span class="line"></span><br><span class="line">df.ewm(com=<span class="number">1</span>).mean()</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>Additive Attention 和 Dot-product Attention<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/bd/art/366993073?source_id=1001">https://www.zhihu.com/tardis/bd/art/366993073?source_id=1001</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/new-study-note/new-study-note2/" rel="prev" title="GCN">
+                  <i class="fa fa-angle-left"></i> GCN
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/new-study-note/new-study-note4/" rel="next" title="new-study-note4">
+                  new-study-note4 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

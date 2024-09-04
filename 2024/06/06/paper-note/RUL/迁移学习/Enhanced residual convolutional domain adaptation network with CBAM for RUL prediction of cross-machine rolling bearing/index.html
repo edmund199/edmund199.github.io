@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing2024 苏科大 8.1 1区 Reliability Engineering &amp; System Safety abstractMost of the e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Enhanced%20residual%20convolutional%20domain%20adaptation%20network%20with%20CBAM%20for%20RUL%20prediction%20of%20cross-machine%20rolling%20bearing/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing2024 苏科大 8.1 1区 Reliability Engineering &amp; System Safety abstractMost of the e">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d251d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d2533.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d2578.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d258f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d24ba.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d71bc.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d7209.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d7241.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aab30ea9cb14035d9fa7.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aab40ea9cb14035da01b.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aab40ea9cb14035d9fc3.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aab30ea9cb14035d9f77.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629aab40ea9cb14035da05e.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6629ac9d0ea9cb14036197c6.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.259Z">
+<meta property="article:modified_time" content="2024-04-25T01:10:41.385Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d251d.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Enhanced%20residual%20convolutional%20domain%20adaptation%20network%20with%20CBAM%20for%20RUL%20prediction%20of%20cross-machine%20rolling%20bearing/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Enhanced%20residual%20convolutional%20domain%20adaptation%20network%20with%20CBAM%20for%20RUL%20prediction%20of%20cross-machine%20rolling%20bearing/","path":"2024/06/06/paper-note/RUL/迁移学习/Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing/","title":"Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Enhanced-residual-convolutional-domain-adaptation-network-with-CBAM-for-RUL-prediction-of-cross-machine-rolling-bearing"><span class="nav-number">1.</span> <span class="nav-text">Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Proposed-RUL-prediction-method"><span class="nav-number">1.3.</span> <span class="nav-text">2. Proposed RUL prediction method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Problem-description"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1. Problem description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Overview"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2. Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Enhanced-residual-convolutional-domain-adaptation-network"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3. Enhanced residual convolutional domain adaptation network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Training-optimization-objective"><span class="nav-number">1.3.4.</span> <span class="nav-text">2.4. Training optimization objective</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-ERCDAN-for-cross-machine-rolling-bearing-RUL-prediction"><span class="nav-number">1.3.5.</span> <span class="nav-text">2.5. ERCDAN for cross-machine rolling bearing RUL prediction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experimental-analysis"><span class="nav-number">1.4.</span> <span class="nav-text">3. Experimental analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Experimental-setup"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1. Experimental setup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Ablation-experiment-analysis"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Ablation experiment analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Comparative-experiment-analysis"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3. Comparative experiment analysis</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Enhanced%20residual%20convolutional%20domain%20adaptation%20network%20with%20CBAM%20for%20RUL%20prediction%20of%20cross-machine%20rolling%20bearing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-25 09:10:41" itemprop="dateModified" datetime="2024-04-25T09:10:41+08:00">2024-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Enhanced-residual-convolutional-domain-adaptation-network-with-CBAM-for-RUL-prediction-of-cross-machine-rolling-bearing"><a href="#Enhanced-residual-convolutional-domain-adaptation-network-with-CBAM-for-RUL-prediction-of-cross-machine-rolling-bearing" class="headerlink" title="Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing"></a>Enhanced residual convolutional domain adaptation network with CBAM for RUL prediction of cross-machine rolling bearing</h2><p><strong>2024 苏科大 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>Most of the existing methods are domain adaptation (DA) based RUL prediction on the same machine with different conditions, but <strong>few on cross-machine</strong>.</p>
+<p>DA can cope with the data distribution discrepancy (domain shift) under different machines or other conditions, but <strong>the potential negative transfer will affect the effect of DA and prediction performance.</strong></p>
+<p><strong>an enhanced residual convolutional domain adaptation network (ERCDAN)</strong></p>
+<ol>
+<li>Firstly, the enhanced residual convolutional module (ERCM) is designed for degradation feature extraction from limited data, and with the convolutional block attention module (CBAM) to enhance the extracted features. （特征提取：残差加卷积注意力）</li>
+<li>Secondly, the DA module with a collaborative full connection structure and attenuation multi-kernel maximum mean discrepancy is designed <strong>for mitigating negative transfer to effective domain-invariant feature extraction.</strong>（域适应：协同全连接层设计加衰减多核MMD）</li>
+<li>Finally, the experimental analysis of cross-machine rolling bearing RUL prediction is conducted on the PHM2012, XJTUSY, and EBFL datasets.</li>
+</ol>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>相对其他域适应模型的改进</p>
+<ol>
+<li><p>The above cross-machine RUL prediction methods all use a training set composed of data from multiple bearings to train the prediction model. However, under the practical engineering with the lack of prior operating data, there may be the situation where trainable resources (trainable bearing data) are scarce, which makes it difficult to ensure that sufficient data is available to train the prediction model.(模型的特征提取能力更强，需要的训练样本更少)</p>
+</li>
+<li><p>by reducing the data distribution discrepancy, its potential negative transfer will affect the effect of domain-invariant feature extraction and prediction performance, so a negative transfer mitigation scheme is designed in ERCDAN.（模型能有效解决负迁移问题）</p>
+</li>
+</ol>
+<h3 id="2-Proposed-RUL-prediction-method"><a href="#2-Proposed-RUL-prediction-method" class="headerlink" title="2. Proposed RUL prediction method"></a>2. Proposed RUL prediction method</h3><h4 id="2-1-Problem-description"><a href="#2-1-Problem-description" class="headerlink" title="2.1. Problem description"></a>2.1. Problem description</h4><h4 id="2-2-Overview"><a href="#2-2-Overview" class="headerlink" title="2.2. Overview"></a>2.2. Overview</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d251d.png" >
+</div>
+
+<h4 id="2-3-Enhanced-residual-convolutional-domain-adaptation-network"><a href="#2-3-Enhanced-residual-convolutional-domain-adaptation-network" class="headerlink" title="2.3. Enhanced residual convolutional domain adaptation network"></a>2.3. Enhanced residual convolutional domain adaptation network</h4><p>2.3.1. Enhanced residual convolutional module</p>
+<p>(1) To use two convolutional layers of Conv-BN to simulate a large channel convolutional layer to improve the network’s feature representation ability.<br>(2) To address the degradation of network performance caused by the deepening of network layers, a residual structure is used </p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d2533.png" >
+</div>
+
+<p>2.3.2. CBAM attention mechanism</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d2578.png" >
+</div>
+
+<p>2.3.3. Unsupervised domain adaptation and negative transfer mitigation</p>
+<ol>
+<li><p>Unsupervised domain adaptation:<br>多核最大均值差异Multiple Kernel Maximum Mean Discrepancy（MK-MMD）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42983182/article/details/127430650">https://blog.csdn.net/qq_42983182/article/details/127430650</a></p>
+</li>
+<li><p>negative transfer mitigation</p>
+<ol>
+<li>A collaborative full connection structure is designed between the feature extractor, RUL predictor, and DA module (as shown in FC1 and FC2_1 in Fig. 1), in a way that <strong>the parameters are not shared to avoid the impact of MK-MMD on the RUL predictor during loss backpropagation.</strong></li>
+<li>An exponential type attenuation penalty coefficient is designed for the MK-MMD loss, as shown in Fig. 1, to obtain a larger DA gain generated by the larger proportion of the MK-MMD loss in the total loss during the early stages of network training for helping learn domain-invariant features and achieving domain adaptation. <strong>As the number of training iterations increases, the proportion of MK-MMD in total loss gradually decreases, weakening the impact of DA gain on the network</strong>,<strong>(系数取值为1-0.5)</strong> enhancing the network’s stability, and relying more on the feature extractor composed of ERCM with CBAM and RUL predictor for feature learning and RUL prediction, thereby achieving negative transfer mitigation and enhancing feature learning. Domain adaptation loss calculation of the constructed network and the exponential type atten- uation penalty coefficient λattenuation are as follows:</li>
+</ol>
+</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d258f.png" >
+</div>
+
+<h4 id="2-4-Training-optimization-objective"><a href="#2-4-Training-optimization-objective" class="headerlink" title="2.4. Training optimization objective"></a>2.4. Training optimization objective</h4><h4 id="2-5-ERCDAN-for-cross-machine-rolling-bearing-RUL-prediction"><a href="#2-5-ERCDAN-for-cross-machine-rolling-bearing-RUL-prediction" class="headerlink" title="2.5. ERCDAN for cross-machine rolling bearing RUL prediction"></a>2.5. ERCDAN for cross-machine rolling bearing RUL prediction</h4><ol>
+<li>数据预处理(z-score,寿命标签尺度缩放)，划分数据集</li>
+<li>模型训练</li>
+<li>寿命预测</li>
+</ol>
+<h3 id="3-Experimental-analysis"><a href="#3-Experimental-analysis" class="headerlink" title="3. Experimental analysis"></a>3. Experimental analysis</h3><h4 id="3-1-Experimental-setup"><a href="#3-1-Experimental-setup" class="headerlink" title="3.1. Experimental setup"></a>3.1. Experimental setup</h4><p>数据集：PHM 2012 bearing dataset [40], XJTU-SY bearing dataset [41], and EBFL dataset</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa4f0ea9cb14035d24ba.png" >
+</div>
+
+<p>3.1.2. Performance evaluation metrics<br>RMSE，MAE，R2（The closer the value of R2 is to 1, the better the regression fitting effect）</p>
+<h4 id="3-2-Ablation-experiment-analysis"><a href="#3-2-Ablation-experiment-analysis" class="headerlink" title="3.2. Ablation experiment analysis"></a>3.2. Ablation experiment analysis</h4><p>3.2.1. Comparison of backbone networks<br><strong>对比不同特征提取网络</strong> </p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d71bc.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d7209.png" >
+</div>
+
+<p>3.2.2. Comparison of penalty coefficients<br><strong>对比不同损失系数</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aa8d0ea9cb14035d7241.png" >
+</div>
+
+<p>3.2.3. Comparison of different modules<br><strong>对比不同模型结构</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aab30ea9cb14035d9fa7.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aab40ea9cb14035da01b.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aab40ea9cb14035d9fc3.png" >
+</div>
+
+<blockquote>
+<p>Fig. 8 shows the visualization effect of RUL prediction for various methods in structural ablation experiments. It can be seen from Fig. 8 that the RUL curve predicted by the proposed method can better fit the real RUL line. From Fig. 8(a), (h), and (k), it can be seen that Method 4, due to the attenuation MK-MMD and the RUL predictor sharing the fully connected layer, is affected by the MK-MMD during backpropagation, resulting in the final output of the RUL prediction value being more easily misled by negative transfer. The prediction trend of the local RUL curve is opposite to the real RUL, and even significant prediction errors occur, as shown in Fig. 8(b) and (e). From Fig. 8(a) and (e), it can be seen that both Method 4 and Method 5 exhibit a predicted trend of RUL curves that is opposite to the real RUL, while the proposed method does not exhibit a predicted trend of RUL curves that is opposite to the real RUL, indicating the effectiveness of the collaborative full connection structure designed in the proposed method in alleviating negative transfer.</p>
+</blockquote>
+<h4 id="3-3-Comparative-experiment-analysis"><a href="#3-3-Comparative-experiment-analysis" class="headerlink" title="3.3. Comparative experiment analysis"></a>3.3. Comparative experiment analysis</h4><p>Method 1: CNN-based method; Method 2: CNN-Attention-based method; Method 3: CNN-LSTM-based method. Domain-adaptation methods, Method 4: CORAL-based method; Method 5: DAN-based method; Method 6: DANNbased method.</p>
+<p>3.3.1. Cross-machine experiment</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aab30ea9cb14035d9f77.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629aab40ea9cb14035da05e.png" >
+</div>
+
+<p>负迁移产生的原因</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/6629ac9d0ea9cb14036197c6.png" >
+</div>
+
+<p>3.3.2. Cross-bearing experiment on the same machine</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/Remaining%20Useful%20Life%20Prediction%20of%20Rolling%20Bearings%20Based%20on%20ECA-CAE%20and%20Autoformer/" rel="prev" title="Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer">
+                  <i class="fa fa-angle-left"></i> Remaining Useful Life Prediction of Rolling Bearings Based on ECA-CAE and Autoformer
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/Mixup%20domain%20adaptations%20for%20dynamic%20remaining%20useful%20life%20predictions/" rel="next" title="Mixup domain adaptations for dynamic remaining useful life predictions">
+                  Mixup domain adaptations for dynamic remaining useful life predictions <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

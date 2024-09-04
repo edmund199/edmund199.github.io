@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A deep attention residual neural network-based remaining useful life prediction of machinery2021 东北大学 5.6 2区 measurement abstract这篇论文提出了一种新颖的深度注意力残差神经网络（DARNN）用于机械剩余寿命（RUL）的预测。DARNN可以有效提取信号中的降解特征，并且在预">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A deep attention residual neural network-based remaining useful life prediction of machinery">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="A deep attention residual neural network-based remaining useful life prediction of machinery2021 东北大学 5.6 2区 measurement abstract这篇论文提出了一种新颖的深度注意力残差神经网络（DARNN）用于机械剩余寿命（RUL）的预测。DARNN可以有效提取信号中的降解特征，并且在预">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00b2c458853aef1653a0.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00b3c458853aef1654de.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00b3c458853aef165522.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00b3c458853aef165637.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00b2c458853aef165213.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657f00e0c458853aef1719f3.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.115Z">
+<meta property="article:modified_time" content="2023-12-20T14:03:33.910Z">
+<meta property="article:author" content="edmund">
+<meta property="article:tag" content="Dual attention mechanism，Resnet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/657f00b2c458853aef1653a0.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/","path":"2024/06/06/paper-note/RUL/A deep attention residual neural network-based remaining useful life prediction of machinery/","title":"A deep attention residual neural network-based remaining useful life prediction of machinery"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A deep attention residual neural network-based remaining useful life prediction of machinery | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery"><span class="nav-number">1.</span> <span class="nav-text">A deep attention residual neural network-based remaining useful life prediction of machinery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Proposed-DARNN-model"><span class="nav-number">1.3.</span> <span class="nav-text">2. Proposed DARNN model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-DAR-module"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1. DAR module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Deep-domain-adaption"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2. Deep domain adaption</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Case-study-1-FEMTO-dataset"><span class="nav-number">1.4.</span> <span class="nav-text">3. Case study 1: FEMTO dataset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Data-description"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1. Data description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Prognostic-metrics"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Prognostic metrics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Hyperparameters-selection-of-DARNN"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3. Hyperparameters selection of DARNN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Ablation-studies"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4. Ablation studies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-Experiment-results-and-discussion"><span class="nav-number">1.4.5.</span> <span class="nav-text">3.5. Experiment results and discussion</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Case-study-2-CAMPSS-dataset"><span class="nav-number">1.5.</span> <span class="nav-text">4. Case study 2: CAMPSS dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">5. Conclusion</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A deep attention residual neural network-based remaining useful life prediction of machinery | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A deep attention residual neural network-based remaining useful life prediction of machinery
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-20 22:03:33" itemprop="dateModified" datetime="2023-12-20T22:03:33+08:00">2023-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery"><a href="#A-deep-attention-residual-neural-network-based-remaining-useful-life-prediction-of-machinery" class="headerlink" title="A deep attention residual neural network-based remaining useful life prediction of machinery"></a>A deep attention residual neural network-based remaining useful life prediction of machinery</h2><p><strong>2021 东北大学 5.6 2区 measurement</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>这篇论文提出了一种新颖的深度注意力残差神经网络（DARNN）用于机械剩余寿命（RUL）的预测。DARNN可以有效提取信号中的降解特征，并且在预测性能和自稳定性上显著优于现有方法。</p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><p>PHM -&gt; Model-based approaches -&gt; The AI-based approach -&gt; deep learning (DL) -&gt; RNN models for RUL estimation -&gt; Although the above research has achieved great success, the following <strong>limitations</strong> still exist. (1) The performance of the data-driven model depends on a large amount of training data, and the prediction accuracy is still limited by the lack of training samples. (2) In practical application, the established model may be affected by noise, resulting in a serious decline in prediction accuracy.<br>-&gt; <strong>DARNN</strong> is proposed in this paper. The proposed method has the following advantages. (1) The proposed deep attention residual (DAR) module can effectively improve the feature extraction capability of the model and improve the prediction performance of the model. (2) The Bayesian approximation technique is applied to the established model to turn point forecasting into interval forecasting and improve the self-stability of the proposed model.</p>
+<h3 id="2-Proposed-DARNN-model"><a href="#2-Proposed-DARNN-model" class="headerlink" title="2. Proposed DARNN model"></a>2. Proposed DARNN model</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b2c458853aef1653a0.png" >
+</div>
+
+<h4 id="2-1-DAR-module"><a href="#2-1-DAR-module" class="headerlink" title="2.1. DAR module"></a>2.1. DAR module</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef1654de.png" >
+</div>
+
+<p>2.1.1. Temporal convolution<br>Both causal convolution operation as well as dilation rate strategy are used in the temporal convolution to improve the representative extraction capability of the established DL model.<br>(1) Causal convolution:<br>(2) Dilation rate strategy:</p>
+<p>2.1.2. PReLU activation function<br>‘‘Dead ReLU Problem’’ for using the ReLU activation function, i.e., during the process of training, when the weighted inputs of neurons are negative, outputs of neurons become 0 consistently</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165522.png" >
+</div>
+
+<p>2.1.3. Dual attention mechanism</p>
+<p>(1) Channel attention mechanism<br>The channel attention mechanism [28,29] is utilized to judge which channels are more informative, and an attention weights are given to each channel according to their importance.<br>(2) Temporal attention mechanism<br>Similar to the principle of channel attention mechanism, temporal attention mechanism is capable of aggregating some crucial information in the time dimension of feature maps.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b3c458853aef165637.png" >
+</div>
+
+<p>2.1.4. BayesIan approximation technique (Dropout)</p>
+<p>To improve the self-stability of model, the Bayesian approximation technique is adopted in our DARNN to reduce the interference from environmental noise and turn point estimation into interval estimation</p>
+<h4 id="2-2-Deep-domain-adaption"><a href="#2-2-Deep-domain-adaption" class="headerlink" title="2.2. Deep domain adaption"></a>2.2. Deep domain adaption</h4><p>In order to solve these two problems and improve the generalization ability of the established model, maximum mean discrepancy is applied to realize deep domain adaption.</p>
+<h3 id="3-Case-study-1-FEMTO-dataset"><a href="#3-Case-study-1-FEMTO-dataset" class="headerlink" title="3. Case study 1: FEMTO dataset"></a>3. Case study 1: FEMTO dataset</h3><h4 id="3-1-Data-description"><a href="#3-1-Data-description" class="headerlink" title="3.1. Data description"></a>3.1. Data description</h4><p>z-score</p>
+<h4 id="3-2-Prognostic-metrics"><a href="#3-2-Prognostic-metrics" class="headerlink" title="3.2. Prognostic metrics"></a>3.2. Prognostic metrics</h4><ol>
+<li>RMSE</li>
+<li>score</li>
+<li>CRA is also used to illustrate performance of models. The closer the calculated CRA value is to 1, the smaller the relative error between the real values and the predicted values is. CRA is defined as:</li>
+</ol>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657f00b2c458853aef165213.png" >
+</div>
+
+<h4 id="3-3-Hyperparameters-selection-of-DARNN"><a href="#3-3-Hyperparameters-selection-of-DARNN" class="headerlink" title="3.3. Hyperparameters selection of DARNN"></a>3.3. Hyperparameters selection of DARNN</h4><p>Rectified Adam (RAdam) Optimizer ,early stopping and gradient cropping<br>to promote the convergence of the model, the RUL label corresponding to the data is converted into RUL percentage for training.</p>
+<h4 id="3-4-Ablation-studies"><a href="#3-4-Ablation-studies" class="headerlink" title="3.4. Ablation studies"></a>3.4. Ablation studies</h4><p>(1) Effectiveness of dual attention block:<br>a model without dual attention mechanism,</p>
+<p>(2) Effectiveness of temporal convolution: Meanwhile, a model with traditional convolution is also established,</p>
+<h4 id="3-5-Experiment-results-and-discussion"><a href="#3-5-Experiment-results-and-discussion" class="headerlink" title="3.5. Experiment results and discussion"></a>3.5. Experiment results and discussion</h4><p>3.5.1. Effectiveness of the proposed DARNN<br>the absolute value of Pearson correlation coefficient is adopted to evaluate the correlation between features and predicted values. The Pearson correlation coefficient is defined as</p>
+<p>3.5.2. Comparison and discussion</p>
+<p>3.5.3. Self-stability of the proposed DARNN<br>Signal–Noise ratio (SNR) is usually used to describe the level of noise in the signal, which is defined as</p>
+<p><div align=center>
+<img src="https://pic.imgdb.cn/item/657f00e0c458853aef1719f3.png" >
+</div><br>where 𝑃𝑆 and 𝑃𝑁 denote the power of signal and noise respectively. The lower the SNR, the larger the random noise contained in the data, e.g., when the SNR equals 0 dB, the power of noise is equivalent to that of the original signal. In the experiment, signals with different levels of additive white Gaussian noise from −2 dB to 8 dB were used as noisy data.</p>
+<h3 id="4-Case-study-2-CAMPSS-dataset"><a href="#4-Case-study-2-CAMPSS-dataset" class="headerlink" title="4. Case study 2: CAMPSS dataset"></a>4. Case study 2: CAMPSS dataset</h3><p>4.1. Dataset description and preprocessing<br>preprocess the training data set and the test data set by using min–max normalization and time window strategy, and the size of time window is 30.</p>
+<p>4.2. Experiment results and discussion</p>
+<h3 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h3><p>(1) In this paper, a DAR module is proposed to improve the representations extraction capability and prediction performance. Also, the Bayesian approximation technique is also applied to the proposed DARNN model to improve the self-stability of the DARNN model. (2) To demonstrate the effectiveness and superiority of the proposed DARNN, we organized two case study experiments. In the first case study, rolling element bearing dataset is adopted to illustrate the effectiveness and self-stability of the proposed DARNN model. In the second experiment, the famous CMAPSS dataset is utilized to further validate the effectiveness of the proposed model by making a comparison with the four state-of-art methods. The experimental results demonstrate the proposed model actually has better performance compared with other four data driven methods.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Dual-attention-mechanism%EF%BC%8CResnet/" rel="tag"># Dual attention mechanism，Resnet</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/new-study-note/new-study-note5/" rel="prev" title="new-study-note5">
+                  <i class="fa fa-angle-left"></i> new-study-note5
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/An%20enhanced%20encoder%E2%80%93decoder%20framework%20for%20bearing%20remaining%20useful%20life%20prediction/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

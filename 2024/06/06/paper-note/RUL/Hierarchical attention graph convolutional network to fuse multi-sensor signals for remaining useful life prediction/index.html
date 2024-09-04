@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction2021 西安交通大学 8.1 1区 Reliability Engineering &amp; System Safety 1abstract1.过去方法的缺陷：1）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction2021 西安交通大学 8.1 1区 Reliability Engineering &amp; System Safety 1abstract1.过去方法的缺陷：1）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805ffc458853aef01eea2.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805ffc458853aef01ef50.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805ffc458853aef01ef92.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f8c458853aef01ddc1.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f8c458853aef01dde8.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f4c458853aef01d40d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f4c458853aef01d43c.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f4c458853aef01d37e.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f4c458853aef01d3a3.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f0c458853aef01ca65.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f0c458853aef01cadd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805f0c458853aef01ca03.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/656805efc458853aef01c9a7.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.144Z">
+<meta property="article:modified_time" content="2023-12-16T13:38:58.007Z">
+<meta property="article:author" content="edmund">
+<meta property="article:tag" content="RUL">
+<meta property="article:tag" content="GCU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/656805ffc458853aef01eea2.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/","path":"2024/06/06/paper-note/RUL/Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction/","title":"Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hierarchical-attention-graph-convolutional-network-to-fuse-multi-sensor-signals-for-remaining-useful-life-prediction"><span class="nav-number">1.</span> <span class="nav-text">Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1abstract"><span class="nav-number">1.1.</span> <span class="nav-text">1abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2introduction"><span class="nav-number">1.2.</span> <span class="nav-text">2introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3preliminary"><span class="nav-number">1.3.</span> <span class="nav-text">3preliminary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#problem-definition-of-RUL-prediction-with-GCN"><span class="nav-number">1.3.1.</span> <span class="nav-text">problem definition of RUL prediction with GCN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#temporal-dependency-modeling"><span class="nav-number">1.3.2.</span> <span class="nav-text">temporal dependency modeling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spatial-dependency-modeling"><span class="nav-number">1.3.3.</span> <span class="nav-text">spatial dependency modeling</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4HAGCN"><span class="nav-number">1.4.</span> <span class="nav-text">4HAGCN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-self-attention-graph-pooling-layer"><span class="nav-number">1.4.1.</span> <span class="nav-text">Regularized self-attention graph pooling layer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Framework-of-HAGCN-for-RUL-prediction"><span class="nav-number">1.4.2.</span> <span class="nav-text">Framework of HAGCN for RUL prediction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5case-study"><span class="nav-number">1.5.</span> <span class="nav-text">5case study</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CMAPSS"><span class="nav-number">1.5.1.</span> <span class="nav-text">CMAPSS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-model-analysis"><span class="nav-number">1.6.</span> <span class="nav-text">6 model analysis</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-16 21:38:58" itemprop="dateModified" datetime="2023-12-16T21:38:58+08:00">2023-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Hierarchical-attention-graph-convolutional-network-to-fuse-multi-sensor-signals-for-remaining-useful-life-prediction"><a href="#Hierarchical-attention-graph-convolutional-network-to-fuse-multi-sensor-signals-for-remaining-useful-life-prediction" class="headerlink" title="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction"></a>Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction</h2><p><strong>2021 西安交通大学 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h3 id="1abstract"><a href="#1abstract" class="headerlink" title="1abstract"></a>1abstract</h3><p>1.过去方法的缺陷：1）传感器间的联系为被考虑。2）更注重对传感器时间依赖性的建模，而忽略空间依赖性。<br>2.文章提出的Hierarchical attention graph convolutional network(HAGCN),包含对spatial dependencies建模的<em>the hierarchical graph representation layer</em>和对tenporal dependencies建模的 <em>bi-directional long short-term memory network</em><br>此外还设计了 <em>regularized self-attention graph pooling</em>对传感器信息的融合</p>
+<h3 id="2introduction"><a href="#2introduction" class="headerlink" title="2introduction"></a>2introduction</h3><p>PHM<br>model-driven and data-driven<br>ML and DL in data-driven<br>DL focus more temporal dependencies than spatial and geographic information<br>GCN<br>HAGCN</p>
+<h3 id="3preliminary"><a href="#3preliminary" class="headerlink" title="3preliminary"></a>3preliminary</h3><h4 id="problem-definition-of-RUL-prediction-with-GCN"><a href="#problem-definition-of-RUL-prediction-with-GCN" class="headerlink" title="problem definition of RUL prediction with GCN"></a>problem definition of RUL prediction with GCN</h4><p>for a graph G=(V,E,X) and label y<br>X change with time ,with constructd datasetD={(G1,y1),(G2,y2),……},the task of rul can mapping f:G-&gt;y</p>
+<h4 id="temporal-dependency-modeling"><a href="#temporal-dependency-modeling" class="headerlink" title="temporal dependency modeling"></a>temporal dependency modeling</h4><p>BiLSTM</p>
+<h4 id="spatial-dependency-modeling"><a href="#spatial-dependency-modeling" class="headerlink" title="spatial dependency modeling"></a>spatial dependency modeling</h4><p>by stacking graph convolution layers and graph pooling layers</p>
+<p><strong>1.graph isomorphism convolution layer</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805ffc458853aef01eea2.png" >
+</div>
+
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805ffc458853aef01ef50.png" >
+</div>
+GNN中aggregate和combine结合在一起
+
+对于GIN
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805ffc458853aef01ef92.png" >
+</div>
+
+<p><strong>2.self-attention graph pooling</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f8c458853aef01ddc1.png" >
+</div>
+
+<h3 id="4HAGCN"><a href="#4HAGCN" class="headerlink" title="4HAGCN"></a>4HAGCN</h3><h4 id="Regularized-self-attention-graph-pooling-layer"><a href="#Regularized-self-attention-graph-pooling-layer" class="headerlink" title="Regularized self-attention graph pooling layer"></a>Regularized self-attention graph pooling layer</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/656805f8c458853aef01dde8.png" >
+</div>
+
+<h4 id="Framework-of-HAGCN-for-RUL-prediction"><a href="#Framework-of-HAGCN-for-RUL-prediction" class="headerlink" title="Framework of HAGCN for RUL prediction"></a>Framework of HAGCN for RUL prediction</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/656805f4c458853aef01d40d.png" >
+</div>
+
+<h3 id="5case-study"><a href="#5case-study" class="headerlink" title="5case study"></a>5case study</h3><h4 id="CMAPSS"><a href="#CMAPSS" class="headerlink" title="CMAPSS"></a>CMAPSS</h4><p><strong>1.overview</strong></p>
+<p><strong>2.data preprocessing</strong></p>
+<p>按工况进行了数据标准化</p>
+<p><strong>3.Constructing spatial-temporal graph datasets</strong></p>
+<blockquote>
+<p>for every time stamps constructing the graph G=(V,E,X)<br>V vetex set<br>E edge set<br>X 特征矩阵 (M,WL) WL:length of sliding window<br>A 连接矩阵 (2,|E|) |E|:number of edge  [[[[0,1,2],[1,2,3]]]] 代表0与1 ，1与2，,2与3相连 </p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f4c458853aef01d43c.png" >
+</div>
+
+<p><strong>input:</strong></p>
+<p>X for M sensor use sliding window of length 30<br>A<br>把M个传感器当成M个点，用两个点的Euclidean distance判断两个node是否相连</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f4c458853aef01d37e.png" >
+</div>
+
+<p>因为前面做过标准化</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f4c458853aef01d3a3.png" >
+</div>
+
+<p>cos(Θ)即代表两个点的余弦相似度</p>
+<p><strong>label</strong><br>piece-wise linear degradation</p>
+<p><strong>4评价标准</strong><br>RMSE and SF</p>
+<p><strong>5模型设置</strong></p>
+<p>optimzer:</p>
+<center>adam with lr decay</center>
+
+<p>loss：</p>
+<script type="math/tex; mode=display">
+L{total} = L_{MSE}(ω)+ αL_{att}(Θ)</script><h3 id="6-model-analysis"><a href="#6-model-analysis" class="headerlink" title="6 model analysis"></a>6 model analysis</h3><p><strong>1The influence of prediction interval</strong></p>
+<p><strong>2Ablation study and the importance analysis of RSAGPool</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f0c458853aef01ca65.png" >
+</div>
+
+<p>Model I without the ability to model the temporal dependencies of the sensor measurements achieves the worst performance in these four models.Model II without the ability to model the spatial dependencies of the multiple sensors performs worse than Model III without ability to achieve hierarchical learning.</p>
+<p><strong>3The influence of the attention loss of RSAGPool</strong><br>with the increase of alpha, especially when the training graphs come from a difficult dataset. This may be because the more complex the graph, the more difficult it is for the model to simultaneously focus on the importance of each node and learn the graph representation to make predictions. However, we can still observe that when the value of alpha is 100, HAGCN can achieve the best results on all datasets.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f0c458853aef01cadd.png" >
+</div>
+
+<p><strong>4The influence of number of HGRLs</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805f0c458853aef01ca03.png" >
+</div>
+
+
+<p><strong>5The graph topology learned by HAGCN</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/656805efc458853aef01c9a7.png" >
+</div>
+
+
+<p>GIN <a target="_blank" rel="noopener" href="https://www.cnblogs.com/akaman98/p/17355702.html(详">https://www.cnblogs.com/akaman98/p/17355702.html(详</a>)<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3b072a2813cf(略">https://www.jianshu.com/p/3b072a2813cf(略</a>)</p>
+<p>SAGpooling <a target="_blank" rel="noopener" href="https://blog.csdn.net/yyl424525/article/details/103327551">https://blog.csdn.net/yyl424525/article/details/103327551</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RUL/" rel="tag"># RUL</a>
+              <a href="/tags/GCU/" rel="tag"># GCU</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/" rel="prev" title="Deep separable convolutional network for remaining useful life prediction of machinery">
+                  <i class="fa fa-angle-left"></i> Deep separable convolutional network for remaining useful life prediction of machinery
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/layout/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

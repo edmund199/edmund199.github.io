@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="2024.02.08 西北工业大学 8.1 1区 Reliability Engineering &amp; System Safety AbstractTo solve the above problems, a novel adaptive multi-source fusion method based on genetic programming is proposed for build">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="2024.02.08 西北工业大学 8.1 1区 Reliability Engineering &amp; System Safety AbstractTo solve the above problems, a novel adaptive multi-source fusion method based on genetic programming is proposed for build">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660403cb9f345e8d035eb868.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660403cb9f345e8d035eb9a2.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660403cb9f345e8d035ebbeb.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660403cc9f345e8d035ebc92.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660403cc9f345e8d035ebd30.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660404099f345e8d0360abfd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660404099f345e8d0360ad5f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/660404099f345e8d0360afd2.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.218Z">
+<meta property="article:modified_time" content="2024-04-11T11:13:12.143Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/660403cb9f345e8d035eb868.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/","path":"2024/06/06/paper-note/RUL/特征提取+分段预测/7.Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model/","title":"Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1introduction"><span class="nav-number">2.</span> <span class="nav-text">1introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction"><span class="nav-number">2.1.</span> <span class="nav-text">1.1. Review of different signals for machinery CM and RUL prediction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Review-of-LSTM-based-RUL-prediction-methods"><span class="nav-number">2.2.</span> <span class="nav-text">1.2. Review of LSTM-based RUL prediction methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Contributions"><span class="nav-number">2.3.</span> <span class="nav-text">1.3. Contributions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GP-based-feature-fusion"><span class="nav-number">3.</span> <span class="nav-text">2. GP-based feature fusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Developed-LSTM-DAU-method"><span class="nav-number">4.</span> <span class="nav-text">3. Developed LSTM-DAU method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Proposed-methodology"><span class="nav-number">5.</span> <span class="nav-text">4. Proposed methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-HI-construction"><span class="nav-number">5.1.</span> <span class="nav-text">4.1. HI construction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-Feature-extraction"><span class="nav-number">5.1.1.</span> <span class="nav-text">4.1.1. Feature extraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-Feature-selection"><span class="nav-number">5.1.2.</span> <span class="nav-text">4.1.2. Feature selection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-Feature-fusion"><span class="nav-number">5.1.3.</span> <span class="nav-text">4.1.3. Feature fusion</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU"><span class="nav-number">5.2.</span> <span class="nav-text">4.2. The specific procedure of RUL prediction based on LSTM-DAU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Case-study"><span class="nav-number">6.</span> <span class="nav-text">5. Case study</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Data-description-and-preprocessing"><span class="nav-number">6.1.</span> <span class="nav-text">5.1. Data description and preprocessing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-HI-construction"><span class="nav-number">6.2.</span> <span class="nav-text">5.2. HI construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-LSTM-DAU-network-setting-and-evaluation-metric"><span class="nav-number">6.3.</span> <span class="nav-text">5.3. LSTM-DAU network setting and evaluation metric</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-RUL-prognosis-and-comparison-analysis"><span class="nav-number">6.4.</span> <span class="nav-text">5.4. RUL prognosis and comparison analysis</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/7.Towards%20trustworthy%20remaining%20useful%20life%20prediction%20through%20multi-source%20information%20fusion%20and%20a%20novel%20LSTM-DAU%20model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Towards trustworthy remaining useful life prediction through multi-source information fusion and a novel LSTM-DAU model
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-11 19:13:12" itemprop="dateModified" datetime="2024-04-11T19:13:12+08:00">2024-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><strong>2024.02.08 西北工业大学 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>To solve the above problems, a novel adaptive multi-source fusion method based on genetic programming is proposed for building a HI that can effectively reflect the health state of machines. Subsequently, a new LSTM model with a dual-attention mechanism</p>
+<h2 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h2><p>Condition-based maintenance (CBM) exploits condition monitoring (CM) information to identify or predict potential problems</p>
+<h3 id="1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction"><a href="#1-1-Review-of-different-signals-for-machinery-CM-and-RUL-prediction" class="headerlink" title="1.1. Review of different signals for machinery CM and RUL prediction"></a>1.1. Review of different signals for machinery CM and RUL prediction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb868.png" >
+</div>
+
+<p>Considering the advantages of high utility and low cost of vibration and temperature signals, this paper proposes a novel method for machine degradation monitoring and RUL prediction based on the fusion of vibration and temperature signals.</p>
+<h3 id="1-2-Review-of-LSTM-based-RUL-prediction-methods"><a href="#1-2-Review-of-LSTM-based-RUL-prediction-methods" class="headerlink" title="1.2. Review of LSTM-based RUL prediction methods"></a>1.2. Review of LSTM-based RUL prediction methods</h3><blockquote>
+<p><strong>lstm不足:</strong><br> uses the same updating method for all input and recurrent information which fails to process the data in accordance with the importance of the information<br><strong>Attention不足：</strong><br> the attentional mechanisms on the input side to weigh different input features. These methods ignore the backward and forward dependencies of the sequences and seldom investigate the attentional mechanism of the recurrent information in the sequences.</p>
+</blockquote>
+<h3 id="1-3-Contributions"><a href="#1-3-Contributions" class="headerlink" title="1.3. Contributions"></a>1.3. Contributions</h3><ul>
+<li>First, feature extraction is performed based on vibration and temperature signals, and two optimal features are selected respectively.提取振动和温度信号的特征。 </li>
+<li>Second, considering that vibration and temperature features may contribute differently to the RUL prediction, genetic programming (GP) is adopted to adaptively fuse the above two features, which in turn yields the HI characterizing the equipment’s health state. 用GP算法进行特征融合，构造HI</li>
+<li>Finally, based on the proposed LSTMDAU, an unsupervised learning framework is developed to predict the health state and RUL of machines.用LSTM结合注意力的网络进行预测</li>
+</ul>
+<h2 id="2-GP-based-feature-fusion"><a href="#2-GP-based-feature-fusion" class="headerlink" title="2. GP-based feature fusion"></a>2. GP-based feature fusion</h2><p><strong>why GP?</strong></p>
+<blockquote>
+<p>GP is a popular heuristic <strong>nonlinear algorithm</strong>. It not only preserves the original features as much as possible but also finds the optimal HI in a shorter time. Most importantly, the HI generated adaptively by GP can be expressed in an easy-to-read and well-interpretable form, which <strong>solves the black-box modeling problem</strong> of some approaches, such as NN.</p>
+</blockquote>
+<h2 id="3-Developed-LSTM-DAU-method"><a href="#3-Developed-LSTM-DAU-method" class="headerlink" title="3. Developed LSTM-DAU method"></a>3. Developed LSTM-DAU method</h2><p>3.1. Input attention unit<br>3.2. Recurrent attention unit<br>3.3. Dual attention unit</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035eb9a2.png" >
+</div>
+
+<h2 id="4-Proposed-methodology"><a href="#4-Proposed-methodology" class="headerlink" title="4. Proposed methodology"></a>4. Proposed methodology</h2><div align=center>
+<img src="https://pic.imgdb.cn/item/660403cb9f345e8d035ebbeb.png" >
+</div>
+
+<h3 id="4-1-HI-construction"><a href="#4-1-HI-construction" class="headerlink" title="4.1. HI construction"></a>4.1. HI construction</h3><h4 id="4-1-1-Feature-extraction"><a href="#4-1-1-Feature-extraction" class="headerlink" title="4.1.1. Feature extraction"></a>4.1.1. Feature extraction</h4><p>振动信号特征<br>AWSPT-Kurtosis, AWSPT-SI, AWSPT-NE, AWSPT-SI, AWSPT-GI [41]<br>温度信号特征<br>mean, root mean square (RMS), maximum (Max), and minimum (Min) of temperature signals</p>
+<h4 id="4-1-2-Feature-selection"><a href="#4-1-2-Feature-selection" class="headerlink" title="4.1.2. Feature selection"></a>4.1.2. Feature selection</h4><p><strong>why</strong>?</p>
+<blockquote>
+<p>The purpose of feature selection is to obtain preferred features from the original feature set according to some rules that minimize the redundancy between features while containing the most valuable degradation features [42]. This section describes the detailed steps of feature selection</p>
+</blockquote>
+<p>筛选指标<br>composite evaluation index (CEI)</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebc92.png" >
+</div>
+
+<h4 id="4-1-3-Feature-fusion"><a href="#4-1-3-Feature-fusion" class="headerlink" title="4.1.3. Feature fusion"></a>4.1.3. Feature fusion</h4><p><strong>why？</strong></p>
+<blockquote>
+<p>the vibration signal is more sensitive to structural damage and the temperature signal is more sensitive to non-structural damage</p>
+</blockquote>
+<p>Employ the GP algorithm to adaptively fuse the preferred features by the fitness function</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660403cc9f345e8d035ebd30.png" >
+</div>
+
+<h3 id="4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU"><a href="#4-2-The-specific-procedure-of-RUL-prediction-based-on-LSTM-DAU" class="headerlink" title="4.2. The specific procedure of RUL prediction based on LSTM-DAU"></a>4.2. The specific procedure of RUL prediction based on LSTM-DAU</h3><p>pass</p>
+<h2 id="5-Case-study"><a href="#5-Case-study" class="headerlink" title="5. Case study"></a>5. Case study</h2><h3 id="5-1-Data-description-and-preprocessing"><a href="#5-1-Data-description-and-preprocessing" class="headerlink" title="5.1. Data description and preprocessing"></a>5.1. Data description and preprocessing</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360abfd.png" >
+</div>
+
+<h3 id="5-2-HI-construction"><a href="#5-2-HI-construction" class="headerlink" title="5.2. HI construction"></a>5.2. HI construction</h3><div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360ad5f.png" >
+</div>
+
+<p>对比不同的降维方法在bearing1_1</p>
+<blockquote>
+<p>Moreover, GP is nonlinear learning compared to PCA. To better characterize the nonlinear nature of the degradation process, GP is adopted to generate HI.</p>
+</blockquote>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/660404099f345e8d0360afd2.png" >
+</div>
+
+<h3 id="5-3-LSTM-DAU-network-setting-and-evaluation-metric"><a href="#5-3-LSTM-DAU-network-setting-and-evaluation-metric" class="headerlink" title="5.3. LSTM-DAU network setting and evaluation metric"></a>5.3. LSTM-DAU network setting and evaluation metric</h3><h3 id="5-4-RUL-prognosis-and-comparison-analysis"><a href="#5-4-RUL-prognosis-and-comparison-analysis" class="headerlink" title="5.4. RUL prognosis and comparison analysis"></a>5.4. RUL prognosis and comparison analysis</h3><p>only the data in the degradation phase of a bearing are adopted to train the LSTM-DAU. The determination of the degradation phase can be found in Ref. [42].</p>
+<p>实验部分：<br>对比不同窗口大小，对比不同训练数据集大小，消融实验（两个单特征，两个单注意力LSTM，和LSTM），对比实验（对比SOTA）</p>
+<p>[41]:Hou B, Wang D, Wang Y, Yan T, Peng Z, Tsui K-L. Adaptive weighted signal preprocessing technique for machine health monitoring. IEEE Trans Instrum Meas 2020;70:1–11.<br>[42]:Mi J, Liu L, Zhuang Y, Bai L, Li Y-F. A synthetic feature processing method for remaining useful life prediction of rolling bearings. IEEE Trans Reliab 2022;72(1):125–36.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/Contrastive%20BiLSTM-enabled%20Health%20Representation%20Learning%20for%20Remaining%20Useful%20Life%20Prediction/" rel="prev" title="Contrastive BiLSTM-enabled Health Representation Learning for Remaining Useful Life Prediction">
+                  <i class="fa fa-angle-left"></i> Contrastive BiLSTM-enabled Health Representation Learning for Remaining Useful Life Prediction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96+%E5%88%86%E6%AE%B5%E9%A2%84%E6%B5%8B/8.Remaining%20useful%20life%20prediction%20of%20bearing%20based%20on%20stacked%20autoencoder%20and%20recurrent%20neural%20network/" rel="next" title="AE构建HI">
+                  AE构建HI <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

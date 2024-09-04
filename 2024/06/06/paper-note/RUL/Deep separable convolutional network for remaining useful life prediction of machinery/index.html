@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Deep separable convolutional network for remaining useful life prediction of machinery2019 西安交通大学 8.4 1区 Mechanical Systems and Signal Processing abstractThese deep learning-based prognostics approach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep separable convolutional network for remaining useful life prediction of machinery">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Deep separable convolutional network for remaining useful life prediction of machinery2019 西安交通大学 8.4 1区 Mechanical Systems and Signal Processing abstractThese deep learning-based prognostics approach">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb7f1c458853aefe27d21.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb7f1c458853aefe27e00.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb7f2c458853aefe27e92.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb7f1c458853aefe27b76.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb7f1c458853aefe27bf7.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/657eb835c458853aefe37206.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.134Z">
+<meta property="article:modified_time" content="2023-12-21T03:47:50.888Z">
+<meta property="article:author" content="edmund">
+<meta property="article:tag" content="Separable convolutions">
+<meta property="article:tag" content="Resnet">
+<meta property="article:tag" content="Squeeze and excitation operations">
+<meta property="article:tag" content="RUL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/657eb7f1c458853aefe27d21.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/","path":"2024/06/06/paper-note/RUL/Deep separable convolutional network for remaining useful life prediction of machinery/","title":"Deep separable convolutional network for remaining useful life prediction of machinery"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Deep separable convolutional network for remaining useful life prediction of machinery | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery"><span class="nav-number">1.</span> <span class="nav-text">Deep separable convolutional network for remaining useful life prediction of machinery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1 introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-preliminary"><span class="nav-number">1.3.</span> <span class="nav-text">2 preliminary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1Convolutional-networks"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1Convolutional networks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Residual-connections-for-convolutional-networks"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2. Residual connections for convolutional networks</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Proposed-DSCN-for-RUL-prediction-of-machinery"><span class="nav-number">1.4.</span> <span class="nav-text">3 Proposed DSCN for RUL prediction of machinery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Separable-convolutions"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1. Separable convolutions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Feature-response-recalibrations"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Feature response recalibrations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Separable-convolutional-building-blocks"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3. Separable convolutional building blocks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Architecture-of-the-proposed-DSCN"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4. Architecture of the proposed DSCN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Experimental-verification"><span class="nav-number">1.5.</span> <span class="nav-text">4. Experimental verification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Case-study-1-XJTU-SU-dataset"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1. Case study 1: XJTU-SU dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Case-study-2-Public-C-MAPSS-datasets"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2. Case study 2: Public C-MAPSS datasets</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Conclusions"><span class="nav-number">1.6.</span> <span class="nav-text">5. Conclusions</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/Deep%20separable%20convolutional%20network%20for%20remaining%20useful%20life%20prediction%20of%20machinery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Deep separable convolutional network for remaining useful life prediction of machinery | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep separable convolutional network for remaining useful life prediction of machinery
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-21 11:47:50" itemprop="dateModified" datetime="2023-12-21T11:47:50+08:00">2023-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery"><a href="#Deep-separable-convolutional-network-for-remaining-useful-life-prediction-of-machinery" class="headerlink" title="Deep separable convolutional network for remaining useful life prediction of machinery"></a>Deep separable convolutional network for remaining useful life prediction of machinery</h2><p><strong>2019 西安交通大学 8.4 1区 Mechanical Systems and Signal Processing</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p>These deep learning-based prognostics approaches, however, have the following weaknesses: 1) Their prediction performance largely depends on the hand-crafted feature design. 2) The correlations of different sensor data are not explicitly considered in representation learning.</p>
+<h3 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1 introduction"></a>1 introduction</h3><ul>
+<li>With the advancement of sensor technologies, telecommunications and computer science, industrial internet of things has been widely applied into health monitoring of machinery in recent years, and a considerable number of monitoring data are acquired by multiple sensors during machine operation.</li>
+<li>In general,<strong>data-driven RUL prediction</strong> consists of four major processes: data acquisition, feature extraction and selection, degradation behavior learning and RUL estimation<br>Recently, <strong>deep learning</strong> [13] is gaining more and more attention in data-driven RUL prediction. </li>
+<li>Although deep learning has achieved promising results in RUL prediction of machinery, existing prognostics approaches suffer from the following limitations. 1) Their prediction performance largely depends on the hand-crafted feature design in RUL prediction of many machines 2) Current deep prognostics models do not explicitly consider the correlations of different sensor data in representation learning.</li>
+<li>To deal with the above-mentioned limitations, a new deep prognostics network, named deep separable convolutional network (DSCN), is proposed for RUL prediction of machinery in this paper.</li>
+</ul>
+<h3 id="2-preliminary"><a href="#2-preliminary" class="headerlink" title="2 preliminary"></a>2 preliminary</h3><h4 id="2-1Convolutional-networks"><a href="#2-1Convolutional-networks" class="headerlink" title="2.1Convolutional networks"></a>2.1Convolutional networks</h4><p>1) Convolutional layer.<br>2) Pooling layer.<br>3) Fully-connected layer.</p>
+<h4 id="2-2-Residual-connections-for-convolutional-networks"><a href="#2-2-Residual-connections-for-convolutional-networks" class="headerlink" title="2.2. Residual connections for convolutional networks"></a>2.2. Residual connections for convolutional networks</h4><p>Residual connections are first proposed by He et al. in [27], aiming at reducing the training complexity of convolutional networks and enabling them to be substantially deeper.</p>
+<h3 id="3-Proposed-DSCN-for-RUL-prediction-of-machinery"><a href="#3-Proposed-DSCN-for-RUL-prediction-of-machinery" class="headerlink" title="3 Proposed DSCN for RUL prediction of machinery"></a>3 Proposed DSCN for RUL prediction of machinery</h3><h4 id="3-1-Separable-convolutions"><a href="#3-1-Separable-convolutions" class="headerlink" title="3.1. Separable convolutions"></a>3.1. Separable convolutions</h4><p>multi-channel time-series data are usually used as the inputs of deep prognostics models, where each channel represents one sensor sequence,aiming to effectively model interrelationships of different sensor data by decoupling temporal correlations and cross-channel correlations.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27d21.png" >
+</div>
+
+<p>代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Separable_conv</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_ch, out_ch</span>):</span><br><span class="line">        <span class="built_in">super</span>(Separable_conv, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.channelwise_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                          out_channels=in_ch,</span><br><span class="line">                                          kernel_size=<span class="number">8</span>,</span><br><span class="line">                                          stride=<span class="number">1</span>,</span><br><span class="line">                                          groups=in_ch)</span><br><span class="line">        <span class="comment">#在创建conv1d时指定groups数量可以设定卷积核数量实现separable_conv</span></span><br><span class="line">        self.point_conv = nn.Conv1d(in_channels=in_ch,</span><br><span class="line">                                    out_channels=out_ch,</span><br><span class="line">                                    kernel_size=<span class="number">1</span>,</span><br><span class="line">                                    stride=<span class="number">1</span>,</span><br><span class="line">                                    padding=<span class="number">0</span>,</span><br><span class="line">                                    groups=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,<span class="built_in">input</span></span>):</span><br><span class="line">        <span class="built_in">input</span> = F.pad(<span class="built_in">input</span>=<span class="built_in">input</span>, pad=(<span class="number">4</span>,<span class="number">3</span>), mode=<span class="string">&#x27;constant&#x27;</span>, value=<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># print(input.shape)</span></span><br><span class="line">        out = self.channelwise_conv(<span class="built_in">input</span>)</span><br><span class="line">        out = self.point_conv(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<p><strong>conv1d中groups作用</strong></p>
+<ul>
+<li>groups: 控制输入和输出之间的连接， group=1，输出是所有的输入的卷积；group=2，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来。</li>
+</ul>
+<p>groups=1时与标准卷积一致，具体作用参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/616003771">1</a></p>
+<h4 id="3-2-Feature-response-recalibrations"><a href="#3-2-Feature-response-recalibrations" class="headerlink" title="3.2. Feature response recalibrations"></a>3.2. Feature response recalibrations</h4><p>the process of feature response recalibrations is comprised of two steps, including squeeze operation and excitation operation.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27e00.png" >
+</div>
+
+<h4 id="3-3-Separable-convolutional-building-blocks"><a href="#3-3-Separable-convolutional-building-blocks" class="headerlink" title="3.3. Separable convolutional building blocks"></a>3.3. Separable convolutional building blocks</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f2c458853aefe27e92.png" >
+</div>
+
+<p><strong>pre-activate</strong><br>BN and ReLU are added after convolution operations in the standard convolutional networks, but this postactivation strategy may not take full advantage of the benefits of BN in the convolutional networks with residual connections [33].the pre-activation strategy in [33] is also used to improve the regularization of DSCN so as to relieve the problem of overfitting.<br><strong>bn</strong><br>the use of BN is to make the input distribution of each separable convolution more stable and reduce the overfitting [34]. Further, BN is able to allow DSCN to use much higher learning rates and to be insensitive to the parameter initialization.<br><strong>identity skip connection</strong><br>kernel size为1<br>stride为4，为了与另一条conv输出特征一样的conv1d</p>
+<h4 id="3-4-Architecture-of-the-proposed-DSCN"><a href="#3-4-Architecture-of-the-proposed-DSCN" class="headerlink" title="3.4. Architecture of the proposed DSCN"></a>3.4. Architecture of the proposed DSCN</h4><div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27b76.png" >
+</div>
+
+<p>1) The representation learning sub-network firstly uses a separable convolutional layer to convolute the input sensor data，$\rightarrow$ an average pooling layer is employed to conduct down-sampling $\rightarrow$  forwarded to succeeding separable convolutional building blocks to obtain higher-level representations<br>2) The RUL estimation sub-network utilizes a global average pooling layer to receive the high-level representations from the representation learning sub-network,</p>
+<h3 id="4-Experimental-verification"><a href="#4-Experimental-verification" class="headerlink" title="4. Experimental verification"></a>4. Experimental verification</h3><h4 id="4-1-Case-study-1-XJTU-SU-dataset"><a href="#4-1-Case-study-1-XJTU-SU-dataset" class="headerlink" title="4.1. Case study 1: XJTU-SU dataset"></a>4.1. Case study 1: XJTU-SU dataset</h4><p>4.1.1. Data description</p>
+<p>4.1.2. Evaluation metrics</p>
+<p>1) Scoring function<br>2) RMSE</p>
+<p>4.1.3. Data preprocessing</p>
+<p>1) Normalization<br>2) Time window embedding</p>
+<p><strong>4.1.4. Configuration of DSCN</strong></p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb7f1c458853aefe27bf7.png" >
+</div>
+
+<p>hyperparameters are determined by performing 4-fold cross-validation on the training datasets</p>
+<p>the input to net is (batch_size,chanel,time_windows_lengh*time_sequence_length)<br>(128,2,5*2560)<br>the out put of net is (128)</p>
+<p><strong>4.1.5. Experimental results</strong></p>
+<p>1) Analysis of time window embedding<br>the time window embedding is able to gather more useful degradation information<br>2) Effect of dimensionality reduction ratio and network depth<br>The dimensionality reduction ratio r is a critical hyperparameter in the SE units, whose size may affect the capacity and computational cost of SE units.<br>3) Benefits of separable convolutions and feature response recalibrations<br>the network with standard convolutions (denoted as standard ConvNet) and the network with separable convolutions (denoted as separable ConvNet). Except for not containing the SE units, these two prognostics networks have the same architecture and hyperparameter settings as the proposed DSCN.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/657eb835c458853aefe37206.png" >
+</div>
+
+<p>4) Comparison with state-of-the-art prognostics approaches<br>SVM [9], DBN [24], multi-scale CNN (MCNN) [25] and convolutional LSTM (CLSTM) [26].</p>
+<h4 id="4-2-Case-study-2-Public-C-MAPSS-datasets"><a href="#4-2-Case-study-2-Public-C-MAPSS-datasets" class="headerlink" title="4.2. Case study 2: Public C-MAPSS datasets"></a>4.2. Case study 2: Public C-MAPSS datasets</h4><p>4.2.1. C-MAPSS datasets</p>
+<p><strong>4.2.2. Prognostics results, comparison and discussion</strong></p>
+<p>using min-max scaling [28]. In addition, a time window of size 30.piece-wise linear degradation assumption,the same configuration tabulated in Table 2 except for the time window size<br>the input of net is (batch_size,num_sensor,time_windows_lengh*time_sequence_length)<br>(128,14,30*1)</p>
+<h3 id="5-Conclusions"><a href="#5-Conclusions" class="headerlink" title="5. Conclusions"></a>5. Conclusions</h3><p>引入可分离卷积操作来代替标准卷积操作，以有效地建模不同传感器数据之间的相互关系。同时，为了提高对信息特征图的敏感性，构建了一个SE单元来执行自适应特征响应重新校准<br>1）DSCN直接使用原始的多传感器数据作为输入，摆脱了手动特征提取和选择的复杂过程。2）DSCN明确考虑了不同传感器数据之间的相关性。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Separable-convolutions/" rel="tag"># Separable convolutions</a>
+              <a href="/tags/Resnet/" rel="tag"># Resnet</a>
+              <a href="/tags/Squeeze-and-excitation-operations/" rel="tag"># Squeeze and excitation operations</a>
+              <a href="/tags/RUL/" rel="tag"># RUL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/An%20enhanced%20encoder%E2%80%93decoder%20framework%20for%20bearing%20remaining%20useful%20life%20prediction/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/Hierarchical%20attention%20graph%20convolutional%20network%20to%20fuse%20multi-sensor%20signals%20for%20remaining%20useful%20life%20prediction/" rel="next" title="Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction">
+                  Hierarchical attention graph convolutional network to fuse multi-sensor signals for remaining useful life prediction <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

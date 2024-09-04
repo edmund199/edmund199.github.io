@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Variational encoding approach for interpretable assessment of remaining useful life estimation2022.1 西班牙 8.1 1区 Reliability Engineering &amp; System Safety abstractmost of them lack an explanatory com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Variational encoding approach for interpretable assessment of remaining useful life estimation">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Variational encoding approach for interpretable assessment of remaining useful life estimation2022.1 西班牙 8.1 1区 Reliability Engineering &amp; System Safety abstractmost of them lack an explanatory com">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65a5de07871b83018a2c1688.png">
+<meta property="article:published_time" content="2024-06-06T06:01:07.192Z">
+<meta property="article:modified_time" content="2024-01-16T01:38:38.716Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65a5de07871b83018a2c1688.png">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/","path":"2024/06/06/paper-note/RUL/transformer/Variational encoding approach for interpretable assessment of remaining useful life estimation/","title":"Variational encoding approach for interpretable assessment of remaining useful life estimation"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Variational encoding approach for interpretable assessment of remaining useful life estimation | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Variational-encoding-approach-for-interpretable-assessment-of-remaining-useful-life-estimation"><span class="nav-number">1.</span> <span class="nav-text">Variational encoding approach for interpretable assessment of remaining useful life estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2preliminary"><span class="nav-number">1.3.</span> <span class="nav-text">2preliminary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3model"><span class="nav-number">1.4.</span> <span class="nav-text">3model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1model1"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1model1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Interpretable-diagnosis"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2. Interpretable diagnosis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Experimental-design"><span class="nav-number">1.5.</span> <span class="nav-text">4. Experimental design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Experimental-results"><span class="nav-number">1.6.</span> <span class="nav-text">5. Experimental results</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/paper-note/RUL/transformer/Variational%20encoding%20approach%20for%20interpretable%20assessment%20of%20remaining%20useful%20life%20estimation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Variational encoding approach for interpretable assessment of remaining useful life estimation | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Variational encoding approach for interpretable assessment of remaining useful life estimation
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-16 09:38:38" itemprop="dateModified" datetime="2024-01-16T09:38:38+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper-note/" itemprop="url" rel="index"><span itemprop="name">paper note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Variational-encoding-approach-for-interpretable-assessment-of-remaining-useful-life-estimation"><a href="#Variational-encoding-approach-for-interpretable-assessment-of-remaining-useful-life-estimation" class="headerlink" title="Variational encoding approach for interpretable assessment of remaining useful life estimation"></a>Variational encoding approach for interpretable assessment of remaining useful life estimation</h2><p><strong>2022.1 西班牙 8.1 1区 Reliability Engineering &amp; System Safety</strong></p>
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><p><strong>most of them lack an explanatory component to understand model learning and/or the nature of the data. To overcome this gap we propose a novel approach based on variational encoding.</strong>The model consists of a recurrent encoder and a regression model: the encoder learns to compress the input data to a latent space that serves as a basis to build a self-explanatory map that can visually evaluate the rate of deterioration of aircraft engines. <strong>Obtaining such a latent space is regularized by a new cost function guided by variational inference and a term that penalizes prediction errors.</strong></p>
+<h3 id="1introduction"><a href="#1introduction" class="headerlink" title="1introduction"></a>1introduction</h3><ul>
+<li>model-based and data-driven approaches </li>
+<li>the use of machine learing models</li>
+<li>the use of cnn and rnn(there is a clear gap between all Deep Learning oriented approaches: although they do achieve remarkable results, models are treated as black boxes where inputs are used to obtain some output) </li>
+<li>To meet the goals stated one can think of unsupervised learning techniques as a possible way to approach this. Especially, when it comes to reveal insights about the nature of the data, Representation Learning approaches such as autoencoders come in handy</li>
+<li>Variational Autoencoders (VAEs).(In VAEs, variational inference is added to the error function through the Kullback–Leibler term, which guarantees that data with similar patterns will also be encoded nearby in the latent space. VAEs are a recent but well-known alternative with numerous applications in anomaly analysis)</li>
+<li>This problem has many points in common with the diagnosis of anomalies and has also been solved by using autoencoders [36,37]. Despite these similarities, both problems have a fundamental difference: in anomaly diagnosis, the aim is to look for individuals in unlikely areas of the latent space. In RUL prediction, on the contrary, the objective for a complete and interpretable diagnosis should be to project the evolution of the system in the latent space</li>
+</ul>
+<h3 id="2preliminary"><a href="#2preliminary" class="headerlink" title="2preliminary"></a>2preliminary</h3><p>2.1 piece-wise RUL</p>
+<p>2.2 metric<br>RMSE and Score</p>
+<h3 id="3model"><a href="#3model" class="headerlink" title="3model"></a>3model</h3><h4 id="3-1model1"><a href="#3-1model1" class="headerlink" title="3.1model1"></a>3.1model1</h4><p>The proposed model consists of three components: an encoder network, a regression model and a latent space.<br><strong>encode:</strong><br> The encoder learns to compress the data into the latent space so that it is described by the parameters that initialize the probability distribution to which the data belongs. Variational inference is added to the loss function through the <strong>Kullback–Leibler divergence, which measures how much one probability distribution diverges from another, to learn the abovementioned parameters. A second term is also added to penalize wrong estimations of the regression model.</strong><br>Thereby, the main difference with respect to a VAE is that we replace the decoder with a regression model, as shown in Fig. 3, and the training is done differently.</p>
+<div align=center>
+<img src="https://pic.imgdb.cn/item/65a5de07871b83018a2c1688.png" >
+</div>
+
+<p><strong>regression</strong><br>Among the different types of RNNs that can be found, LSTM networks are the most popular. These networks process data from backward to forward conserving information from the past through hidden states. However,<br>Bidirectional LSTM networks are in high demand because they provide not only information about the past but also about the future: data is first processed from past to future and then from future to past, thus preserving the information from both periods.</p>
+<h4 id="3-2-Interpretable-diagnosis"><a href="#3-2-Interpretable-diagnosis" class="headerlink" title="3.2. Interpretable diagnosis"></a>3.2. Interpretable diagnosis</h4><p>The diagnostic tool introduced in this work is a map that shows the actual state of the engine and also the rate of change from healthy to deteriorated</p>
+<h3 id="4-Experimental-design"><a href="#4-Experimental-design" class="headerlink" title="4. Experimental design"></a>4. Experimental design</h3><p>preprocess:<br>With this approach, all records of the same operating condition are grouped together and scaled using a standard scaler.(工况标准化)</p>
+<p>On the other hand, although sensor data have a general trend, it is known that they are subject to local oscillations, mainly caused by highfrequency sensors, which lead to noise [23,43]. To ease the processing of the series, an exponential weighted moving average is carried out.（输入指数平滑）</p>
+<p>In time series problems it is quite recurrent to split the data into sequences for better prediction performance.In those cases a masked value is used and will be treated in the first layer of the model by simply ignoring those values. In this way, as much information as possible is used.（time window）</p>
+<p><strong>along with the use of the Hyperopt Bayesian optimization library（hyperparameter 确定）</strong></p>
+<p><strong>The choice of the sensors is not arbitrary, we only use the following six: T30, T50, P30, EPRA, PS30 and phi。Moreover, for datasets FD001 and FD003 the EPRA sensor is not necessary since it measures the engine thrust under different operating conditions while FD001 and FD003 operate under the same condition</strong></p>
+<h3 id="5-Experimental-results"><a href="#5-Experimental-results" class="headerlink" title="5. Experimental results"></a>5. Experimental results</h3><p>bold. It can be quickly noted that with datasets FD001 and FD003, although the metrics are considered good, they are not the best. However, the interest lies mostly in FD002 and FD004 as the increasing number of operating conditions and failure modes make these two datasets contain more complicated multiscale degradation features.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/transformer/Dual-Aspect%20Self-Attention%20Based%20on%20Transformer%20for%20Remaining%20Useful%20Life%20Prediction/" rel="prev" title="Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction">
+                  <i class="fa fa-angle-left"></i> Dual-Aspect Self-Attention Based on Transformer for Remaining Useful Life Prediction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/Contrastive%20BiLSTM-enabled%20Health%20Representation%20Learning%20for%20Remaining%20Useful%20Life%20Prediction/" rel="next" title="Contrastive BiLSTM-enabled Health Representation Learning for Remaining Useful Life Prediction">
+                  Contrastive BiLSTM-enabled Health Representation Learning for Remaining Useful Life Prediction <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

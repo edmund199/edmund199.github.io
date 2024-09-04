@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"edmund199.github.io.git","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="wandb 基本使用（使用wandb替换tensorboard）  12345678910111213141516171819202122232425262728293031import wandb# start a new wandb run to track this scriptwandb.init(    # set the wandb project where this run wil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="new-study-note5">
+<meta property="og:url" content="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note5/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="wandb 基本使用（使用wandb替换tensorboard）  12345678910111213141516171819202122232425262728293031import wandb# start a new wandb run to track this scriptwandb.init(    # set the wandb project where this run wil">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-06T06:01:07.097Z">
+<meta property="article:modified_time" content="2024-03-08T10:45:33.804Z">
+<meta property="article:author" content="edmund">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note5/","path":"2024/06/06/new-study-note/new-study-note5/","title":"new-study-note5"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>new-study-note5 | </title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title"></p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wandb"><span class="nav-number">1.</span> <span class="nav-text">wandb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%B3%A2%E5%8C%85%E5%88%86%E8%A7%A3%E5%B0%86%E4%B8%80%E4%BD%8D%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E7%BB%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">使用小波包分解将一位时间数据转换为二维数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VAE-%E5%8F%98%E5%88%86%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">VAE(变分自动编码器)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">VAE的基本架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE%E7%9A%84%E6%AD%A3%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">3.2.</span> <span class="nav-text">VAE的正向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">VAE的损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE%E7%9A%84%E9%87%8D%E5%8F%82%E6%95%B0%E5%8C%96"><span class="nav-number">3.4.</span> <span class="nav-text">VAE的重参数化</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">edmund</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://edmund199.github.io.git/2024/06/06/new-study-note/new-study-note5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="edmund">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="new-study-note5 | null">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          new-study-note5
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:01:07" itemprop="dateCreated datePublished" datetime="2024-06-06T14:01:07+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-08 18:45:33" itemprop="dateModified" datetime="2024-03-08T18:45:33+08:00">2024-03-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study-notes/" itemprop="url" rel="index"><span itemprop="name">study notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="wandb"><a href="#wandb" class="headerlink" title="wandb"></a>wandb</h2><ol>
+<li><strong>基本使用（使用wandb替换tensorboard）</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wandb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># start a new wandb run to track this script</span></span><br><span class="line">wandb.init(</span><br><span class="line">    <span class="comment"># set the wandb project where this run will be logged</span></span><br><span class="line">    project=<span class="string">&quot;my-awesome-project&quot;</span>,</span><br><span class="line">    <span class="comment">#记录项目名称</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># track hyperparameters and run metadata</span></span><br><span class="line">    config=&#123;</span><br><span class="line">    <span class="string">&quot;learning_rate&quot;</span>: <span class="number">0.02</span>,</span><br><span class="line">    <span class="string">&quot;architecture&quot;</span>: <span class="string">&quot;CNN&quot;</span>,</span><br><span class="line">    <span class="string">&quot;dataset&quot;</span>: <span class="string">&quot;CIFAR-100&quot;</span>,</span><br><span class="line">    <span class="string">&quot;epochs&quot;</span>: <span class="number">10</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">#记录参数</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># simulate training</span></span><br><span class="line">epochs = <span class="number">10</span></span><br><span class="line">offset = random.random() / <span class="number">5</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, epochs):</span><br><span class="line">    acc = <span class="number">1</span> - <span class="number">2</span> ** -epoch - random.random() / epoch - offset</span><br><span class="line">    loss = <span class="number">2</span> ** -epoch + random.random() / epoch + offset</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># log metrics to wandb</span></span><br><span class="line">    wandb.log(&#123;<span class="string">&quot;acc&quot;</span>: acc, <span class="string">&quot;loss&quot;</span>: loss&#125;) <span class="comment">#选择要记录的数据</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># [optional] finish the wandb run, necessary in notebooks</span></span><br><span class="line">wandb.finish()</span><br></pre></td></tr></table></figure>
+<p>将要记录的数据一次性记录下来使他们有相同的步长，也可以设置wandb记录的横坐标</p>
+<ol>
+<li><strong>想要科学上网和wandb一起使用（离线使用）</strong></li>
+</ol>
+<p>需求： 一般情况下挂VPN会导致wandb初始化出错，不能连接到wandb服务器进行数据同步上传，因此可以采用离线上传数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> wandb</span><br><span class="line">os.environ[<span class="string">&quot;WANDB_API_KEY&quot;</span>] = <span class="string">&#x27;自己的API KEY&#x27;</span> </span><br><span class="line">os.environ[<span class="string">&quot;WANDB_MODE&quot;</span>] = <span class="string">&quot;offline&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在导包时加上如上语句，在训练后在根据提升上传数据到网站上。</p>
+<blockquote>
+<p>使用命令wandb sync 数据地址 上传数据</p>
+</blockquote>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.wandb.ai/tutorials">https://docs.wandb.ai/tutorials</a></p>
+<h2 id="使用小波包分解将一位时间数据转换为二维数据"><a href="#使用小波包分解将一位时间数据转换为二维数据" class="headerlink" title="使用小波包分解将一位时间数据转换为二维数据"></a>使用小波包分解将一位时间数据转换为二维数据</h2><p><strong>原理：</strong><br>小波包分解是常用的信号分析方法，能够将原始信号分解至多个频段，获得多组小波系数。<br>而这些小波系数可以堆叠在一起，构成二维的小波系数矩阵，如下图所示[1]。<br>值得注意的是，这个矩阵有着明确的意义：<strong>每一行表示了某个具体频段的信息。</strong></p>
+<div align=center>
+<img src= >
+</div>
+
+<p>更进一步地，在小波包分解时，可以采用多个小波基函数，从而获得多个二维矩阵，堆叠成三维矩阵[2]。</p>
+<div align=center>
+<img src= >
+</div>
+
+<h2 id="VAE-变分自动编码器"><a href="#VAE-变分自动编码器" class="headerlink" title="VAE(变分自动编码器)"></a>VAE(变分自动编码器)</h2><h3 id="VAE的基本架构"><a href="#VAE的基本架构" class="headerlink" title="VAE的基本架构"></a>VAE的基本架构</h3><p>由AE发展而来，却不同于AE，属于生成模型的一种。<br>与普通自动编码器一样，变分自动编码器有编码器Encoder与解码器Decoder两大部分组成，原始图像从编码器输入，经编码器后形成隐式表示（Latent Representation），之后隐式表示被输入到解码器、再复原回原始输入的结构。然而，与普通Autoencoders不同的是，<strong>变分自用编码器的Encoder与Decoder在数据流上并不是相连的，我们不会直接将Encoder编码后的结果传递给Decoder，而是要使得隐式表示满足既定分布。</strong></p>
+<p>具体流程如下：</p>
+<blockquote>
+<p>①首先，变分自动编码器中的编码器会尽量将样本$X$所携带的所有特征信息的分布转码成类高斯分布。<br>②编码器需要输出该类高斯分布的均值$\mu$与标准差$\sigma$作为编码器的输出。<br>③以编码器生成的均值$\mu$与标准差$\sigma$为基础构建高斯分布。<br>④从构建的高斯分布中随机采样出一个数值$Z$，将该数值输入解码器。<br>⑤解码器基于$Z$进行解码，并最终输出与样本的原始特征结构一致的数据，作为VAE的输出$X$′。</p>
+</blockquote>
+<div align=center>
+<img src= >
+</div>
+
+
+<p>根据以上流程，变分自动编码器的Encoder在输出时，并不会直接输出原始数据的隐式表示，而是会输出从原始数据提炼出的均值和标准差。之后，我们需要建立均值为、标准差为的正态分布，并从该正态分布中抽样出隐式表示z，再将隐式表示z输入到Decoder中进行解码。对隐式表示z而言，它传递给Decoder的就不是原始数据的信息，而只是与原始数据同均值、同标准差的分布中的信息了。这样做就正好印证了3.1节提出背景中的两点：</p>
+<ol>
+<li>斩断了神经网络中惯例的“从输入到输出”的数据流，以此杜绝了信息直接被复制到输出层的可能性。</li>
+<li>使得编码器具有以满足特定分布数据的输入到输出的能力，也就是解码器的生成能力。<br>由于第④步采样的存在，使得VAE的整体过程较为复杂，下面将一步步拆解。</li>
+</ol>
+<h3 id="VAE的正向传播"><a href="#VAE的正向传播" class="headerlink" title="VAE的正向传播"></a>VAE的正向传播</h3><p>m个样本每个样本生成一组标准差和均值</p>
+<div align=center>
+<img src= >
+</div>
+
+<p>在变分自动编码器的流程当中，<strong>均值和标准差都不是通过他们的数学定义计算出来的，而是通过Encoder提炼出来的</strong>。这就是说<strong>当前的均值和标准差不是真实数据的统计量，而是通过Encoder推断出的、当前样本数据可能服从的任意分布中的属性</strong>。我们不可能知道当前样本服从的真实分布的状态，因此这一推断过程自然可以根据不同的规则（Encoder中不同的权重）得出不同的结果。</p>
+<p>例如，我们可以令Encoder的输出层存在3个神经元，这样Encoder就会对每一个样本推断出三对不同的均值和标准差。这个行为相当于对样本数据所属的原始分布进行估计，但给出了三个可能的答案。因此现在，在每个样本下，我们就可以基于三个均值和标准差的组合生成三个不同的正态分布了。</p>
+<div align=center>
+<img src= >
+</div>
+
+<p>对任意的自动编码器而言，隐式空间越大，隐式表示z所携带的信息自然也会越多，自动编码器的表现就可能变得更好，因此在实际使用变分自动编码器的过程中，一个样本上至少都会生成10~100组均值和标准差，隐式表示z的结构一般也是较高维的矩阵。</p>
+<p><strong>变分自动编码器有如下的三个特点：</strong></p>
+<ul>
+<li>斩断了神经网络中惯例的“从输入到输出”的数据流，以此<strong>杜绝了信息直接被复制到输出层的可能性。</strong></li>
+<li><strong>无论在训练还是预测过程中，模型都存在随机性</strong>，相比之下，大部分带有随机性的算法只会在训练的过程中有随机性，而在测试过程中对模型进行固定。但由于变分自动编码器的“随机性”是与网络架构及输入数据结构都高度相关的随机性，因此当训练数据变化的时候，随机抽样的情况也会跟着变化。</li>
+<li><strong>可以作为生成模型使用</strong>。其他的自动编码器都是在原始图像上进行修改，而变分自动编码器可以从无到有生成与训练集高度相似的数据。由于输入Decoder的信息只是从正态分布中抽选的随机样本，因此其本质与随机数差异不大，当我们训练完变分自动编码器之后，就可以只使用解码器部分，只要对解码器输入结构正确随机数/随机矩阵，就可以生成与训练时所用的真实数据高度类似的数据。</li>
+</ul>
+<h3 id="VAE的损失函数"><a href="#VAE的损失函数" class="headerlink" title="VAE的损失函数"></a>VAE的损失函数</h3><ul>
+<li>第一部分：<strong>让编码器输出的概率分布和我们的先验的概率分布一样，这样就能够完成我们的生成任务。这一项是为了将数据的分布训练成为指定概率分布，方便生成任务的。</strong></li>
+<li>第二部分：<strong>为了保证输出的精度，还需要让模型的输出与输入满足一定的关系。这又叫重构损失，例如可以看作回归任务的MSE，亦可能是交叉熵等其他损失函数。这一项是衡量模型输入与输出的关系的。</strong></li>
+</ul>
+<div align=center>
+<img src= >
+</div>
+
+<h3 id="VAE的重参数化"><a href="#VAE的重参数化" class="headerlink" title="VAE的重参数化"></a>VAE的重参数化</h3><p>现在我们已经了解了变分自动编码器的基本流程和训练目标，那我们是否可以尝试着手动去实现变分自动编码器了呢？有一个隐藏的陷阱还没有被我们注意到，那就是前面讲过的VAE为了<strong>杜绝了信息直接被复制到输出层的可能性</strong>，斩断了神经网络中惯例的“从输入到输出”的数据流，用采样来连接网络的编码器与解码器。由<strong>于这个抽样流程的存在，架构中的数据流是断裂的，因此反向传播无法进行。反向传播要求每一层数据之间必有函数关系，而抽样流程不是一个函数关系，因此无法被反向传播</strong>。为了解决这一问题，变分自动编码器的原始论文提出了<strong>重参数化技巧，这一技巧可以帮助我们在抽样的同时建立$\mu$与$z$和$\sigma$之间的函数关系，这样就可以令反向传播顺利进行了。</strong></p>
+<div align=center>
+<img src= >
+</div>
+
+<p>VAE:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/628604566">https://zhuanlan.zhihu.com/p/628604566</a></p>
+<p>todo</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/new-study-note/new-study-note4/" rel="prev" title="new-study-note4">
+                  <i class="fa fa-angle-left"></i> new-study-note4
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/paper-note/RUL/A%20deep%20attention%20residual%20neural%20network-based%20remaining%20useful%20life%20prediction%20of%20machinery/" rel="next" title="A deep attention residual neural network-based remaining useful life prediction of machinery">
+                  A deep attention residual neural network-based remaining useful life prediction of machinery <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">edmund</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
